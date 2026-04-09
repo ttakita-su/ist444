@@ -3,33 +3,524 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>Yeezy and the Story of Kanye West</title>
+  <style>
+    :root {
+      --sand: #d9ccb8;
+      --stone: #b7a58d;
+      --earth: #7c634a;
+      --charcoal: #171717;
+      --cream: #f4efe7;
+      --accent: #c78d3b;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.15);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(199, 141, 59, 0.14), transparent 30%),
+        linear-gradient(135deg, #0f0f0f, #262015 45%, #574431 100%);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 18px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(10, 10, 10, 0.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem 0;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.7rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      max-width: 580px;
+      font-size: 1.05rem;
+      color: rgba(244, 239, 231, 0.88);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button {
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--cream);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: rgba(244, 239, 231, 0.82);
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .overview-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 0.6rem;
+      color: var(--sand);
+    }
+
+    .timeline-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .era-button {
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--cream);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .era-button:hover,
+    .era-button.selected {
+      background: rgba(199, 141, 59, 0.2);
+      border-color: rgba(199, 141, 59, 0.55);
+    }
+
+    .timeline-panel {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .timeline-image img {
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+    }
+
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery figure {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .gallery img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .gallery figcaption {
+      padding: 1rem;
+      color: rgba(244, 239, 231, 0.82);
+    }
+
+    .quote-box {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .quote-box p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .site-footer {
+      padding: 2rem 0 3rem;
+      color: rgba(244, 239, 231, 0.72);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .timeline-panel,
+      .overview-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 2.5rem;
+      }
+
+      .hero-card img,
+      .timeline-image img {
+        min-height: 260px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>Welcome to my IST444 course page. This is where I'll be sharing my work and projects.</p>
-  
-  <h2>About Me</h2>
-  <p>I'm a student working on web development and programming concepts.</p>
-  
-  <h2>Course Projects</h2>
-  <ul>
-    <li>Lab 1 - HTML Basics</li>
-    <li>Lab 2 - CSS Styling</li>
-    <li>Final Project - Full Website</li>
-  </ul>
-  
-  <h2>Skills</h2>
-  <ul>
-    <li>HTML5</li>
-    <li>CSS3</li>
-    <li>JavaScript</li>
-  </ul>
-  
-  <footer>
-    <p>&copy; 2026 IST444 Course Work</p>
+  <header class="site-header">
+    <div class="page-shell nav-bar">
+      <a class="logo" href="#top">YEEZY</a>
+      <ul class="nav-links">
+        <li><a href="#story">Story</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top" class="page-shell">
+    <section class="hero reveal">
+      <div class="hero-text">
+        <p>Music. Fashion. Sneaker culture.</p>
+        <h1>The Yeezy Era and the History of Kanye West</h1>
+        <p>
+          Kanye West, also known as Ye, became one of the most talked-about artists of the 21st century.
+          His career started in music production, grew into chart-topping albums, and expanded into the
+          fashion world through the Yeezy brand.
+        </p>
+        <div class="hero-buttons">
+          <a class="button" href="#timeline">Explore the timeline</a>
+          <button class="button" id="quoteButton" type="button">Show another highlight</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg" alt="Kanye West at an event">
+      </div>
+    </section>
+
+    <section id="story" class="reveal">
+      <h2 class="section-title">From Chicago Producer to Global Brand</h2>
+      <p class="section-copy">
+        Kanye West first gained attention as a producer, helping shape early 2000s hip-hop with soulful
+        beats and bold sampling. After releasing <em>The College Dropout</em> in 2004, he became one of
+        the biggest names in music. Later, he pushed into fashion and sneaker design, building Yeezy into
+        one of the most recognizable style brands of its era.
+      </p>
+
+      <div class="grid overview-grid">
+        <article class="card">
+          <h3>Early Life</h3>
+          <p>
+            Born in Atlanta and raised in Chicago, Kanye developed an interest in art, design, and music
+            at a young age. Those influences later shaped both his albums and his fashion direction.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Music Breakthrough</h3>
+          <p>
+            His first albums mixed emotional storytelling, ambition, and experimental production. That
+            sound helped redefine mainstream rap in the 2000s.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Yeezy Influence</h3>
+          <p>
+            Yeezy became known for neutral colors, oversized silhouettes, minimal design, and sneaker
+            drops that changed how streetwear and fashion worked together.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="reveal">
+      <h2 class="section-title">Timeline of Kanye and Yeezy</h2>
+      <p class="section-copy">
+        Click the buttons to switch between different moments in Kanye West's career and the rise of Yeezy.
+      </p>
+
+      <div class="timeline-controls">
+        <button class="era-button selected" data-era="0" type="button">2004 Breakthrough</button>
+        <button class="era-button" data-era="1" type="button">Creative Expansion</button>
+        <button class="era-button" data-era="2" type="button">Yeezy Era</button>
+      </div>
+
+      <div class="timeline-panel">
+        <div class="card timeline-text">
+          <h3 id="eraTitle">2004: The College Dropout</h3>
+          <p id="eraText">
+            Kanye West's debut album introduced him as more than a producer. It showed humor, honesty,
+            confidence, and a new style of hip-hop that connected with a huge audience.
+          </p>
+        </div>
+        <div class="timeline-image">
+          <img id="eraImage" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg" alt="Kanye West portrait">
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="reveal">
+      <h2 class="section-title">Visual Gallery</h2>
+      <p class="section-copy">
+        These images help give the page a fashion and sneaker feel. You can replace any image later with
+        your own favorites.
+      </p>
+
+      <div class="grid gallery">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80" alt="Sneaker close-up">
+          <figcaption>Modern sneaker culture helped make Yeezy drops a major event.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=80" alt="Neutral-toned fashion clothing">
+          <figcaption>Muted earth tones became one of the signature visuals connected to Yeezy design.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Fashion runway style">
+          <figcaption>Yeezy connected music, streetwear, and high-fashion presentation.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="impact" class="reveal">
+      <h2 class="section-title">Why Yeezy Mattered</h2>
+      <p class="section-copy">
+        Yeezy was important because it blurred the lines between artist branding, sneaker design, and
+        luxury fashion. Kanye West's work influenced music visuals, clothing trends, and the way fans
+        followed product launches online.
+      </p>
+
+      <div class="quote-box">
+        <p id="highlightText">
+          Kanye West built a career that moved from studio production to albums, fashion shows, sneakers, and cultural influence.
+        </p>
+        <button class="button" id="nextHighlight" type="button">Next highlight</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell">
+      <p>Created for IST444 | <span id="year"></span> | Yeezy and Kanye West fan page</p>
+    </div>
   </footer>
+
+  <script>
+    const eraData = [
+      {
+        title: "2004: The College Dropout",
+        text: "Kanye West's debut album introduced him as more than a producer. It showed humor, honesty, confidence, and a new style of hip-hop that connected with a huge audience.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg",
+        alt: "Kanye West at an event"
+      },
+      {
+        title: "2008 to 2013: Creative Expansion",
+        text: "Over the next several years, Kanye kept changing his sound and public image. Albums like 808s & Heartbreak and My Beautiful Dark Twisted Fantasy showed how willing he was to experiment.",
+        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80",
+        alt: "Concert lights and stage atmosphere"
+      },
+      {
+        title: "2015 and Beyond: The Yeezy Era",
+        text: "As Yeezy grew, Kanye became a bigger force in fashion. The brand became famous for limited sneaker releases, neutral palettes, and a minimalist style that influenced streetwear worldwide.",
+        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=80",
+        alt: "Sneakers displayed in a stylish fashion image"
+      }
+    ];
+
+    const highlights = [
+      "Kanye West first became famous as a producer before becoming a solo superstar.",
+      "Yeezy helped make sneaker releases feel like major pop-culture events.",
+      "The brand's neutral colors and oversized silhouettes influenced fashion trends for years.",
+      "Kanye's career connected music, design, performance, and branding in a unique way."
+    ];
+
+    const eraButtons = document.querySelectorAll(".era-button");
+    const eraTitle = document.getElementById("eraTitle");
+    const eraText = document.getElementById("eraText");
+    const eraImage = document.getElementById("eraImage");
+    const highlightText = document.getElementById("highlightText");
+    const quoteButton = document.getElementById("quoteButton");
+    const nextHighlight = document.getElementById("nextHighlight");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const revealItems = document.querySelectorAll(".reveal");
+    const year = document.getElementById("year");
+
+    let highlightIndex = 0;
+
+    function showEra(index) {
+      const era = eraData[index];
+      eraTitle.textContent = era.title;
+      eraText.textContent = era.text;
+      eraImage.src = era.image;
+      eraImage.alt = era.alt;
+
+      eraButtons.forEach((button) => button.classList.remove("selected"));
+      eraButtons[index].classList.add("selected");
+    }
+
+    function showNextHighlight() {
+      highlightIndex = (highlightIndex + 1) % highlights.length;
+      highlightText.textContent = highlights[highlightIndex];
+    }
+
+    eraButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        showEra(Number(button.dataset.era));
+      });
+    });
+
+    quoteButton.addEventListener("click", showNextHighlight);
+    nextHighlight.addEventListener("click", showNextHighlight);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+
+          const id = entry.target.getAttribute("id");
+          if (id) {
+            navLinks.forEach((link) => {
+              link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+            });
+          }
+        }
+      });
+    }, { threshold: 0.25 });
+
+    revealItems.forEach((item) => observer.observe(item));
+    year.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
-
