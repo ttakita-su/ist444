@@ -26,3 +26,16 @@ Album artwork:
   album-donda.jpg: Apple/iTunes artwork URLs from https://itunes.apple.com/search
 - album-yeezus.png: https://en.wikipedia.org/wiki/File:Yeezus_album_cover.png
 - donda-2-cover.jpg: https://en.wikipedia.org/wiki/File:Donda_2_streaming_album_cover.jpg
+- yandhi-cover-animated.gif: locally generated from yandhi-cover.jpg for the interactive Yandhi card.
+- album-vultures-1.png: https://commons.wikimedia.org/wiki/File:Kanye_West_and_Ty_Dolla_Sign_-_Vultures_Vol._1_(Cover).png
+
+Influence section additions:
+- influence-mpc.jpg: https://commons.wikimedia.org/wiki/File:Akai_MPC5000.jpg
+- influence-microphone.jpg: https://commons.wikimedia.org/wiki/File:Neumann_U87_Condenser_Microphone_-_Studio_A,_In_Your_Ear_Studios.jpg
+- influence-crowd.jpg: https://commons.wikimedia.org/wiki/File:City_of_Manchester_Stadium_concert_crowd.jpg
+- influence-stage-lights.jpg: https://commons.wikimedia.org/wiki/File:Musicians_performing_live_on_stage_during_an_outdoor_concert_at_night_with_bright_stage_lights_in_a_vibrant_atmosphere.jpg
+
+Music folder:
+- ../music/soul-sample-loop.wav, ../music/808-heartbreak-loop.wav, and
+  ../music/stadium-choir-loop.wav are original generated audio loops created for
+  this student project, not copyrighted Kanye West songs.
