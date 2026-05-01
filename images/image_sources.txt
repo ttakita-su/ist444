@@ -1,0 +1,28 @@
+Image sources for final.html
+
+Kanye photos and Wikimedia/Commons assets:
+- kanye-studio.jpg: https://commons.wikimedia.org/wiki/File:Kanye_West_in_the_Studio.jpg
+- kanye-performing.jpg: https://commons.wikimedia.org/wiki/File:West_performing.jpg
+- kanye-sxsw.jpg: https://commons.wikimedia.org/wiki/File:Kanye_West_at_SXSW_2009.jpg
+- yandhi-cover.jpg: https://commons.wikimedia.org/wiki/File:Yandhi_Cover_Art_(Free_License).jpg
+- yandhi-minidisc.png: https://commons.wikimedia.org/wiki/File:MiniDisc_and_AA-battery_IMG00.png
+- turbografx16.png: https://commons.wikimedia.org/wiki/File:TurboGrafx16-Console-Set.png
+- recording-console.jpg: https://commons.wikimedia.org/wiki/File:Mixing_desk_at_the_Hipposonic_Recording_Studio.jpg
+- archive-room.jpg: https://commons.wikimedia.org/wiki/File:Archive_Room,_Leasowe_Lighthouse.jpg
+- gap-store.jpg: https://commons.wikimedia.org/wiki/File:Gap_Store_(14749146254).jpg
+- yeezy-red-octobers.jpg: https://commons.wikimedia.org/wiki/File:Yeezy_Red_Octobers_(cropped).jpg
+- yeezy-500.jpg: https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_500_(1).jpg
+- yeezy-samples.jpg: https://commons.wikimedia.org/wiki/File:Yeezy_Samples.jpg
+
+Sneaker photos:
+- yeezy-700.jpg: https://unsplash.com/photos/white-adidas-yeezy-700-shoes-on-gray-surface-LOn2xM86wSs
+- yeezy-foam-runner.jpg: https://www.pexels.com/photo/black-adidas-yeezy-foam-runner-sneakers-11220592/
+- yeezy-slide.jpg: https://www.pexels.com/photo/white-and-brown-adidas-yeezy-slide-sandals-13698234/
+- yeezy-350-v2-zebra.jpg and yeezy-350-v2-onyx.jpg: downloaded from Pexels image CDN search results.
+
+Album artwork:
+- album-college-dropout.jpg, album-late-registration.jpg, album-graduation.jpg,
+  album-808s-heartbreak.jpg, album-mbdtf.jpg, album-life-of-pablo.jpg,
+  album-donda.jpg: Apple/iTunes artwork URLs from https://itunes.apple.com/search
+- album-yeezus.png: https://en.wikipedia.org/wiki/File:Yeezus_album_cover.png
+- donda-2-cover.jpg: https://en.wikipedia.org/wiki/File:Donda_2_streaming_album_cover.jpg

@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanye West Fan Archive | Music, Yeezy, Influence, Legacy</title>
+  <meta name="description" content="A fan-made Kanye West website covering albums, Yeezy fashion, unreleased projects, cultural influence, and legacy with interactive sections." />
+  <style>
+    :root {
+      --bg: #080807;
+      --bg-soft: #11100e;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-strong: rgba(255, 255, 255, 0.1);
+      --line: rgba(255, 255, 255, 0.13);
+      --text: #f5f0e8;
+      --muted: #c9beb0;
+      --dim: #8f8578;
+      --gold: #d7b56d;
+      --gold-soft: rgba(215, 181, 109, 0.16);
+      --red: #b84435;
+      --green: #7b9b6f;
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(215,181,109,0.16), transparent 26rem),
+        radial-gradient(circle at 80% 25%, rgba(184,68,53,0.11), transparent 24rem),
+        linear-gradient(180deg, #0b0a09 0%, #080807 42%, #0d0c0a 100%);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body.light-mode {
+      --bg: #f6f0e7;
+      --bg-soft: #fffaf1;
+      --card: rgba(20, 16, 12, 0.06);
+      --card-strong: rgba(20, 16, 12, 0.1);
+      --line: rgba(20, 16, 12, 0.16);
+      --text: #15110d;
+      --muted: #463d34;
+      --dim: #6f6254;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(215,181,109,0.24), transparent 26rem),
+        radial-gradient(circle at 80% 25%, rgba(184,68,53,0.10), transparent 24rem),
+        linear-gradient(180deg, #fff9ef 0%, #f6f0e7 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(215,181,109,0.16), transparent 65%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      z-index: 999;
+    }
+
+    header.hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 90px 22px 70px;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(4px);
+      opacity: 0.28;
+      animation: float 10s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .orb.one {
+      width: 270px;
+      height: 270px;
+      background: var(--gold);
+      top: 12%;
+      left: 8%;
+    }
+
+    .orb.two {
+      width: 210px;
+      height: 210px;
+      background: var(--red);
+      right: 10%;
+      bottom: 18%;
+      animation-delay: -3s;
+    }
+
+    .orb.three {
+      width: 150px;
+      height: 150px;
+      background: #ffffff;
+      opacity: 0.08;
+      right: 26%;
+      top: 18%;
+      animation-delay: -6s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+      50% { transform: translateY(-34px) translateX(18px) scale(1.08); }
+    }
+
+    .hero-inner {
+      width: min(var(--max), 100%);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      border: 1px solid var(--line);
+      background: var(--card);
+      padding: 8px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 22px;
+      backdrop-filter: blur(18px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(215,181,109,0.8);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(215,181,109,0); }
+      100% { box-shadow: 0 0 0 0 rgba(215,181,109,0); }
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 12vw, 9.4rem);
+      line-height: 0.86;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      max-width: 880px;
+      margin: 0 auto 32px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 13px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-size: 0.78rem;
+      transition: transform .24s ease, background .24s ease, border-color .24s ease;
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: var(--gold-soft);
+      border-color: rgba(215,181,109,0.55);
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      color: #15110d;
+      border-color: var(--gold);
+      font-weight: 800;
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .stat {
+      padding: 20px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 4px;
+      z-index: 50;
+      padding: 12px 16px;
+      background: rgba(8,8,7,0.76);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    body.light-mode nav {
+      background: rgba(246,240,231,0.82);
+    }
+
+    .nav-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a,
+    .theme-toggle {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .theme-toggle:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: var(--card);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 92px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 7vw, 5.8rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -0.065em;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(215,181,109,0.09), transparent 45%);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1.28rem;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--gold);
+      background: var(--gold-soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-wrap {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--line);
+    }
+
+    .timeline-fill {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background: linear-gradient(var(--gold), var(--red));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 64px;
+      margin-bottom: 28px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 6px rgba(215,181,109,0.1);
+    }
+
+    .timeline-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .timeline-card .year {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .album-controls,
+    .toggle-row,
+    .playlist-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--card);
+      padding: 9px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .2s ease;
+      font-size: 0.82rem;
+    }
+
+    .chip.active,
+    .chip:hover {
+      color: #15110d;
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .album-card {
+      cursor: pointer;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(215,181,109,0.55);
+    }
+
+    .album-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .mini-pill {
+      border: 1px solid var(--line);
+      color: var(--dim);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 0.72rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(0,0,0,0.72);
+      z-index: 200;
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal-panel {
+      width: min(820px, 100%);
+      max-height: 86vh;
+      overflow-y: auto;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      animation: modalIn .24s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(14px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .close {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .unreleased-panel {
+      display: none;
+    }
+
+    .unreleased-panel.active {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .yeezy-card {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .shoe-visual {
+      height: 110px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(215,181,109,0.35), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shoe-visual::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      top: 42%;
+      width: 64%;
+      height: 34%;
+      border-radius: 55% 45% 35% 65%;
+      background: rgba(245,240,232,0.18);
+      transform: skewX(-15deg);
+    }
+
+    .vote-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .bar {
+      height: 10px;
+      background: var(--card-strong);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      transition: width .5s ease;
+    }
+
+    .impact-list {
+      counter-reset: impact;
+    }
+
+    .impact-item {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 22px;
+    }
+
+    .impact-number {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--gold);
+      color: #15110d;
+      font-weight: 900;
+      font-size: 1.4rem;
+    }
+
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .track-option {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 16px;
+      padding: 12px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .track-option input {
+      accent-color: var(--gold);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      padding: 14px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .source-card {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 14px;
+      color: var(--muted);
+      transition: .2s ease;
+      min-height: 92px;
+    }
+
+    .source-card:hover {
+      color: var(--text);
+      transform: translateY(-3px);
+      border-color: rgba(215,181,109,0.55);
+    }
+
+    .source-card strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      padding: 42px 22px;
+      text-align: center;
+      color: var(--dim);
+    }
+
+    @media (max-width: 960px) {
+      .grid,
+      .grid.two,
+      .unreleased-panel.active,
+      .source-grid,
+      .playlist-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 72px 16px;
+      }
+
+      .stats-strip {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+      }
+
+      .impact-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="noise"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="hero" id="home">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+    <div class="hero-inner reveal">
+      <div class="eyebrow"><span class="pulse-dot"></span> Fan-made cultural archive</div>
+      <h1>Kanye West<br />Archive</h1>
+      <p class="hero-subtitle">
+        A one-page fan website about Ye's music timeline, Yeezy fashion, unreleased projects, sneaker models, influence on artists, and complicated legacy.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#intro">Start the archive</a>
+        <a class="btn" href="#albums">Explore albums</a>
+        <a class="btn" href="#yeezy">Yeezy models</a>
+      </div>
+      <div class="stats-strip" aria-label="Kanye West archive statistics">
+        <div class="stat"><strong class="counter" data-target="10">0</strong><span>major solo studio albums through Donda</span></div>
+        <div class="stat"><strong class="counter" data-target="6">0</strong><span>essential Yeezy models highlighted</span></div>
+        <div class="stat"><strong class="counter" data-target="3">0</strong><span>fashion chapters: Nike, adidas, Gap</span></div>
+        <div class="stat"><strong class="counter" data-target="5">0</strong><span>interactive fan features</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Ye Archive</div>
+      <div class="nav-links" id="navLinks">
+        <a href="#intro">Intro</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#albums">Albums</a>
+        <a href="#unreleased">Unreleased</a>
+        <a href="#yeezy">Yeezy</a>
+        <a href="#influence">Influence</a>
+        <a href="#sources">Sources</a>
+        <button class="theme-toggle" id="themeToggle">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="intro">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">01 / Introduction</div>
+            <h2>Sound, fashion, friction, legacy.</h2>
+          </div>
+          <p class="lead">
+            Kanye West, also known as Ye, first broke through as a producer before becoming one of the defining hip-hop artists of the 21st century. This fan page treats him as more than a rapper: he is a producer, album architect, fashion designer, sneaker disruptor, and controversial public figure whose work changed music and style at the same time.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <span class="tag">Producer</span>
+            <h3>Before the superstar image, he was a beatmaker.</h3>
+            <p>
+              Kanye's early reputation came from production work, especially soul-sample beats and his ability to make samples feel emotional, cinematic, and modern. His producer identity stayed central even after he became a solo star.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">Artist</span>
+            <h3>He reinvented his sound almost every era.</h3>
+            <p>
+              His albums move from chipmunk soul to orchestral rap, stadium synths, Auto-Tuned heartbreak, maximalist art rap, industrial minimalism, gospel, and stadium-scale memorial music.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">Designer</span>
+            <h3>Yeezy made artist-led product design feel serious.</h3>
+            <p>
+              Yeezy was not just merch. It became a footwear and fashion language built around earth tones, oversized silhouettes, sculptural footwear, minimal branding, and the idea of clothes as everyday uniforms.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">02 / Timeline</div>
+            <h2>Major creative eras.</h2>
+          </div>
+          <p class="lead">
+            Each era has a different sound and look. Use this timeline to show visitors how Kanye's music, fashion, and public image changed together.
+          </p>
+        </div>
+        <div class="timeline-wrap" id="timelineWrap">
+          <div class="timeline-line"></div>
+          <div class="timeline-fill" id="timelineFill"></div>
+          <div id="timelineItems"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="albums">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">03 / Albums</div>
+            <h2>Essential album guide.</h2>
+          </div>
+          <p class="lead">
+            Click each card for a deeper capsule. The page focuses on why each album matters, not just when it came out.
+          </p>
+        </div>
+        <div class="album-controls reveal" id="albumControls">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="classic">Classic run</button>
+          <button class="chip" data-filter="experimental">Experimental</button>
+          <button class="chip" data-filter="spiritual">Spiritual / late era</button>
+        </div>
+        <div class="grid" id="albumGrid"></div>
+      </div>
+    </section>
+
+    <section id="unreleased">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">04 / Unreleased</div>
+            <h2>The lost projects.</h2>
+          </div>
+          <p class="lead">
+            The unreleased section is what makes a Kanye fan page feel like a fan archive. The key is separating public facts from fan theories so the page stays credible.
+          </p>
+        </div>
+
+        <div class="toggle-row reveal">
+          <button class="chip active" data-panel="facts">Confirmed facts</button>
+          <button class="chip" data-panel="fanlore">Fan-lore</button>
+          <button class="chip" data-panel="siteidea">How to present it</button>
+        </div>
+
+        <div class="unreleased-panel active" id="facts">
+          <article class="card reveal"><span class="tag">Yandhi</span><h3>The most famous missing Kanye album.</h3><p>Yandhi was publicly expected in 2018, delayed more than once, and never released in its original form. Some ideas and songs from that period later changed direction or appeared in later Kanye projects.</p></article>
+          <article class="card reveal"><span class="tag">Donda 2</span><h3>A hardware-era album experiment.</h3><p>Donda 2 was tied to the Stem Player rather than a normal streaming rollout. It is best described as unfinished, mutable, and unusual in how it challenged the normal album-release model.</p></article>
+          <article class="card reveal"><span class="tag">TurboGrafx16</span><h3>A title that became fan mythology.</h3><p>Kanye announced TurboGrafx16 in 2016, named after the video game console, but no official stable public version became a standard released album.</p></article>
+        </div>
+
+        <div class="unreleased-panel" id="fanlore">
+          <article class="card"><span class="tag">Fan favorite</span><h3>Yandhi as the missing bridge.</h3><p>Many fans imagine Yandhi as the bridge between the chaotic 2018 Ye era and the religious direction of Jesus Is King. That makes it feel like an alternate timeline in his discography.</p></article>
+          <article class="card"><span class="tag">Leaks</span><h3>Why leaks became part of the story.</h3><p>Unreleased Kanye songs circulate heavily in fan communities, which makes fans feel like they are watching drafts, sketches, and abandoned ideas rather than only finished albums.</p></article>
+          <article class="card"><span class="tag">Careful wording</span><h3>Do not fake a final tracklist.</h3><p>For unreleased albums, use words like reported, leaked, rumored, fan-favorite, or early version. Avoid presenting fan-made tracklists as official.</p></article>
+        </div>
+
+        <div class="unreleased-panel" id="siteidea">
+          <article class="card"><span class="tag">Design idea</span><h3>Use a split card design.</h3><p>Put confirmed facts on the left and fan theories on the right. This lets visitors enjoy the mystery without confusing speculation with verified history.</p></article>
+          <article class="card"><span class="tag">Interactive</span><h3>Add a “what if?” poll.</h3><p>Ask: Which unreleased project would you want officially finished? Options: Yandhi, TurboGrafx16, Good Ass Job, So Help Me God, Donda 2.</p></article>
+          <article class="card"><span class="tag">Tone</span><h3>Make it feel like an archive room.</h3><p>Use darker colors, blurred cards, and labels like Draft, Lost Era, Fan Myth, and Alternate Timeline to make this section visually different.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="yeezy">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">05 / Yeezy</div>
+            <h2>Fashion and footwear timeline.</h2>
+          </div>
+          <p class="lead">
+            The Yeezy story is best shown as three chapters: Nike proved the concept, adidas made it massive, and Gap tried to bring the design language to everyday basics.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card reveal">
+            <span class="tag">Nike chapter</span>
+            <h3>Air Yeezy made a musician signature shoe feel historic.</h3>
+            <p>
+              Before adidas, Kanye's Nike Air Yeezy proved that a non-athlete could create real sneaker hysteria. This matters because it changed expectations for what a musician's product collaboration could be.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">adidas chapter</span>
+            <h3>The 350, 700, 500, Slide, and Foam Runner became a design system.</h3>
+            <p>
+              The adidas era turned Yeezy into a full footwear identity: knit runners, chunky sneakers, minimal slides, and alien-looking foam shoes. The brand did not rely on one silhouette.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">Gap chapter</span>
+            <h3>The mass-market dream was simple clothing for more people.</h3>
+            <p>
+              Yeezy Gap was built around accessible basics, hoodies, jackets, and muted colors. Kanye's public idea of extremely affordable basics, including the $20 clothing dream, works best as an ambition rather than the actual price of most major pieces.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">Design language</span>
+            <h3>Earth tones, oversized shapes, and futuristic utility.</h3>
+            <p>
+              Yeezy's look is easy to recognize: beige, gray, brown, black, sculptural shoes, minimal logos, oversized fits, and clothing that feels like a uniform from a future city.
+            </p>
+          </article>
+        </div>
+
+        <h3 style="margin:48px 0 18px;font-size:2rem;letter-spacing:-.04em;">Vote for the best Yeezy model</h3>
+        <div class="grid" id="yeezyGrid"></div>
+      </div>
+    </section>
+
+    <section id="influence">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">06 / Influence</div>
+            <h2>Why he is so influential.</h2>
+          </div>
+          <p class="lead">
+            Kanye is influential because his impact is not limited to one song or one album. His influence is a model: an artist can build a whole creative universe across music, fashion, visuals, product design, and public events.
+          </p>
+        </div>
+
+        <div class="impact-list">
+          <article class="impact-item reveal"><div class="impact-number">1</div><div><h3>He changed rap production.</h3><p>His early soul-sample style helped define a major 2000s sound. Later, he moved into orchestral, electronic, industrial, gospel, and minimal production approaches.</p></div></article>
+          <article class="impact-item reveal"><div class="impact-number">2</div><div><h3>He made vulnerability and melody more central to rap.</h3><p>808s & Heartbreak helped make Auto-Tuned emotion, heartbreak, and melodic rap feel mainstream. That influence shows up in later artists such as Drake, Travis Scott, Future, Juice WRLD, and many melodic rap/R&B performers.</p></div></article>
+          <article class="impact-item reveal"><div class="impact-number">3</div><div><h3>He treated album releases like cultural events.</h3><p>From elaborate listening parties to public revisions, Kanye helped make the rollout part of the art. The Life of Pablo and Donda are key examples.</p></div></article>
+          <article class="impact-item reveal"><div class="impact-number">4</div><div><h3>He changed sneaker culture.</h3><p>Yeezy showed that a musician-led footwear line could compete with major sneaker franchises and change mainstream taste.</p></div></article>
+          <article class="impact-item reveal"><div class="impact-number">5</div><div><h3>He connected sound and style.</h3><p>Each era has a visual identity: Graduation is colorful and futuristic, Yeezus is industrial and harsh, Pablo is merch-heavy and fragmented, and Donda is dark, masked, and stadium-sized.</p></div></article>
+          <article class="impact-item reveal"><div class="impact-number">6</div><div><h3>His legacy is powerful but complicated.</h3><p>A serious fan page should acknowledge both sides: his artistic impact is enormous, but his public controversies, offensive statements, and damaged business relationships are also part of the story.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="interactive">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">07 / Fan tools</div>
+            <h2>Build a starter pack.</h2>
+          </div>
+          <p class="lead">
+            This interactive section lets visitors create a quick Kanye starter playlist. It is intentionally fan-made and local to the browser.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <div class="card reveal">
+            <h3>Choose up to 10 songs</h3>
+            <div class="playlist-grid" id="playlistGrid"></div>
+            <div class="playlist-actions">
+              <button class="btn primary" id="generatePlaylist">Generate list</button>
+              <button class="btn" id="clearPlaylist">Clear</button>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3>Your starter pack</h3>
+            <p style="color:var(--muted);margin-bottom:12px;">Copy this list into Spotify, Apple Music, YouTube, or your notes.</p>
+            <textarea id="playlistOutput" readonly placeholder="Your selected songs will appear here..."></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">08 / Legacy</div>
+            <h2>Final argument.</h2>
+          </div>
+          <p class="lead">
+            Kanye West remains one of the most influential artists of all time because he repeatedly changed the direction of popular music, sneaker culture, fashion, visual branding, and album rollouts. Even when people disagree with him or criticize his actions, his impact is difficult to ignore.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card reveal">
+            <span class="tag">Use this as your website thesis</span>
+            <h3>Why he matters</h3>
+            <p>
+              Kanye's importance is that he expanded the job description of a modern artist. He was not only making songs. He was building eras, visuals, products, concerts, fashion systems, and public conversations. His career made it normal for musicians to think like creative directors.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">Balanced wording</span>
+            <h3>How to handle controversy</h3>
+            <p>
+              This fan page should not ignore controversy. His antisemitic remarks and other public incidents damaged his reputation and led to major business consequences, including the end of the adidas Yeezy partnership. The strongest page is honest: it can respect the art while still naming the harm and criticism.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">09 / Research sources</div>
+            <h2>Source notes.</h2>
+          </div>
+          <p class="lead">
+            Add this section at the bottom so your fan page feels researched instead of random. These sources support the biography, album reception, Yeezy timeline, and partnership history.
+          </p>
+        </div>
+        <div class="source-grid">
+          <a class="source-card reveal" href="https://www.britannica.com/biography/Kanye-West" target="_blank" rel="noopener"><strong>Britannica</strong>Biography and career overview.</a>
+          <a class="source-card reveal" href="https://pitchfork.com/reviews/albums/8767-the-college-dropout/" target="_blank" rel="noopener"><strong>Pitchfork</strong>Album reviews and critical context.</a>
+          <a class="source-card reveal" href="https://www.metacritic.com/music/college-dropout/kanye-west" target="_blank" rel="noopener"><strong>Metacritic</strong>Critical score references.</a>
+          <a class="source-card reveal" href="https://www.gq.com/gallery/kanye-west-sneakers-ranking" target="_blank" rel="noopener"><strong>GQ</strong>Yeezy sneaker culture and rankings.</a>
+          <a class="source-card reveal" href="https://investors.gapinc.com/press-releases/news-details/2020/Kanye-West-Teams-with-Gap/default.aspx" target="_blank" rel="noopener"><strong>Gap Inc.</strong>Yeezy Gap announcement.</a>
+          <a class="source-card reveal" href="https://www.adidas-group.com/en/investors/statutory-publications/ad-hoc-news/adidas-ag-adidas-terminates-partnership-with-ye-immediately-2022-10-25" target="_blank" rel="noopener"><strong>adidas</strong>Partnership termination statement.</a>
+          <a class="source-card reveal" href="https://www.reuters.com/business/retail-consumer/gap-remove-yeezy-gap-products-stores-2022-10-25/" target="_blank" rel="noopener"><strong>Reuters</strong>Gap / Yeezy business reporting.</a>
+          <a class="source-card reveal" href="https://www.thefader.com/2019/08/23/yandhi-and-the-legacy-of-kanye-west-leaks" target="_blank" rel="noopener"><strong>The FADER</strong>Yandhi and leak culture context.</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fan-made educational archive. Not affiliated with Kanye West, Yeezy, adidas, Nike, or Gap.</p>
+  </footer>
+
+  <div class="modal" id="albumModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <span class="tag" id="modalYear">Album</span>
+          <h2 id="modalTitle" style="font-size:clamp(2rem,6vw,4rem);margin-top:10px;"></h2>
+        </div>
+        <button class="close" id="modalClose" aria-label="Close album details">×</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const eras = [
+      { year: '2004', title: 'The College Dropout', copy: 'Soul samples, humor, faith, class anxiety, and self-awareness. This is the era where Kanye proved a producer-rapper could become the center of mainstream hip-hop without copying the dominant image of the time.' },
+      { year: '2005', title: 'Late Registration', copy: 'A larger and more cinematic version of his early sound. The album added orchestral textures and showed that Kanye wanted rap albums to feel arranged and composed, not just beat-driven.' },
+      { year: '2007', title: 'Graduation', copy: 'A brighter, electronic, stadium-sized album. Graduation helped shift rap toward arena sounds and global pop ambition.' },
+      { year: '2008', title: '808s & Heartbreak', copy: 'Auto-Tuned pain, sparse drums, heartbreak, and emotional isolation. This became one of his most influential albums because it helped open the lane for melodic and vulnerable rap.' },
+      { year: '2010', title: 'My Beautiful Dark Twisted Fantasy', copy: 'A maximalist comeback album built around ego, guilt, luxury, shame, and spectacle. This is often treated as his masterpiece because the production and concept feel huge but controlled.' },
+      { year: '2013', title: 'Yeezus', copy: 'Industrial, abrasive, minimal, and confrontational. Yeezus made discomfort part of the design and connected strongly to his darker fashion direction.' },
+      { year: '2016', title: 'The Life of Pablo', copy: 'A fragmented, gospel-influenced, streaming-era album. It became known as a living album because Kanye kept changing it after release.' },
+      { year: '2018–2021', title: 'Ye, Jesus Is King, Donda', copy: 'A later period focused on confession, faith, grief, family, and public spectacle. Donda especially turned the album rollout into a stadium-sized event.' }
+    ];
+
+    const albums = [
+      {
+        title: 'The College Dropout', year: '2004', filter: 'classic', score: 'Metacritic 87',
+        summary: 'Debut album built on soul samples, insecurity, ambition, faith, humor, and class mobility.',
+        key: ['Through the Wire', 'Jesus Walks', 'All Falls Down'],
+        details: 'This album introduced Kanye as a rapper who did not fit the dominant early-2000s template. Instead of presenting only toughness, he rapped about school, religion, family, insecurity, money, and wanting respect. The production helped popularize the warm soul-sample sound that became one of his signatures.',
+        impact: 'Cultural impact: it made the producer-rapper identity feel commercially powerful and helped broaden what mainstream rap could sound like.'
+      },
+      {
+        title: 'Late Registration', year: '2005', filter: 'classic', score: 'Metacritic 85',
+        summary: 'A richer, more orchestral follow-up that expanded the scale of his early sound.',
+        key: ['Gold Digger', 'Touch the Sky', 'Hey Mama'],
+        details: 'Late Registration made Kanye sound bigger and more cinematic. With more layered arrangements, strings, and dramatic builds, it showed he was not satisfied with simply repeating his debut.',
+        impact: 'Cultural impact: it confirmed Kanye was not a one-album phenomenon and pushed mainstream rap toward more ambitious album construction.'
+      },
+      {
+        title: 'Graduation', year: '2007', filter: 'classic', score: 'Metacritic 79',
+        summary: 'A colorful, electronic, stadium-sized album about celebrity, confidence, and global ambition.',
+        key: ['Stronger', 'Flashing Lights', 'Can’t Tell Me Nothing'],
+        details: 'Graduation sounds bigger, brighter, and more direct. It used electronic textures and giant hooks to make rap feel like arena music. The 2007 sales battle with 50 Cent also became a symbolic moment in rap culture.',
+        impact: 'Cultural impact: it helped move hip-hop away from one dominant street-rap image toward a more pop-facing, fashion-forward, global sound.'
+      },
+      {
+        title: '808s & Heartbreak', year: '2008', filter: 'experimental', score: 'Metacritic 75',
+        summary: 'Sparse, cold, Auto-Tuned, emotional, and one of the most influential pivots in modern rap.',
+        key: ['Heartless', 'Love Lockdown', 'Street Lights'],
+        details: 'This album used Auto-Tune as an emotional texture rather than only a radio effect. It is lonely, minimal, and focused on grief and heartbreak. At the time, it confused some fans, but later artists absorbed its sound deeply.',
+        impact: 'Cultural impact: it helped shape the emotional and melodic direction of Drake, Travis Scott, Future, Juice WRLD, and many later rap/R&B artists.'
+      },
+      {
+        title: 'My Beautiful Dark Twisted Fantasy', year: '2010', filter: 'classic', score: 'Metacritic 94',
+        summary: 'A maximalist, cinematic, critically celebrated album about fame, ego, guilt, beauty, and collapse.',
+        key: ['Runaway', 'Power', 'All of the Lights'],
+        details: 'This is the album where Kanye combined almost all of his strengths: samples, orchestration, guest features, pop hooks, rap verses, luxury, darkness, and self-criticism. It feels grand and excessive on purpose.',
+        impact: 'Cultural impact: it became a benchmark for what a rap album could achieve as a complete artistic statement.'
+      },
+      {
+        title: 'Yeezus', year: '2013', filter: 'experimental', score: 'Metacritic 84',
+        summary: 'Industrial, minimal, aggressive, and intentionally uncomfortable.',
+        key: ['New Slaves', 'Black Skinhead', 'Bound 2'],
+        details: 'Yeezus rejects polish. It uses harsh textures, clipped structures, and confrontational lyrics. Instead of trying to please everyone, it sounds like Kanye tearing down his previous style.',
+        impact: 'Cultural impact: it made experimental and abrasive production feel possible at the center of mainstream rap.'
+      },
+      {
+        title: 'The Life of Pablo', year: '2016', filter: 'experimental', score: 'Metacritic 75',
+        summary: 'A messy, gospel-touched, streaming-era collage about family, fame, desire, and instability.',
+        key: ['Ultralight Beam', 'Father Stretch My Hands Pt. 1', 'Real Friends'],
+        details: 'The Life of Pablo feels intentionally fragmented. It mixes gospel, humor, sadness, ego, and internet-era chaos. Kanye also kept changing the album after release, making the rollout part of the art.',
+        impact: 'Cultural impact: it became a major example of the living album idea in the streaming era.'
+      },
+      {
+        title: 'Donda', year: '2021', filter: 'spiritual', score: 'Metacritic 53',
+        summary: 'A long, dark, spiritual, stadium-sized project named after his mother.',
+        key: ['Hurricane', 'Jail', 'Come to Life'],
+        details: 'Donda is about grief, faith, memory, family, and spectacle. The listening events became almost as important as the album, turning its creation process into a public performance.',
+        impact: 'Cultural impact: it showed Kanye’s ability to make an album release feel like a national pop-culture event, even when critics were divided.'
+      }
+    ];
+
+    const yeezys = [
+      { name: 'Yeezy Boost 350 V2', votes: 31, detail: 'Most recognizable Yeezy. Knit upper, Boost cushioning, stripe branding, and everyday wearability.' },
+      { name: 'Yeezy 700 Wave Runner', votes: 26, detail: 'Chunky runner that helped make dad shoes and bulky silhouettes mainstream.' },
+      { name: 'Yeezy Foam Runner', votes: 24, detail: 'One-piece sculptural foam shoe. Weird at first, then one of the clearest examples of Yeezy futurism.' },
+      { name: 'Yeezy Slide', votes: 22, detail: 'Minimal comfort slide that became a casual uniform item.' },
+      { name: 'Yeezy 500', votes: 17, detail: 'Rugged, chunky, no Boost. Fits the utility and earth-tone Yeezy style.' },
+      { name: 'Yeezy 750', votes: 14, detail: 'Early adidas high-top that felt closer to luxury fashion than a normal sneaker.' }
+    ];
+
+    const playlistSongs = [
+      'Through the Wire', 'Jesus Walks', 'Touch the Sky', 'Gold Digger', 'Stronger', 'Flashing Lights',
+      'Heartless', 'Runaway', 'Power', 'All of the Lights', 'New Slaves', 'Black Skinhead',
+      'Ultralight Beam', 'Father Stretch My Hands Pt. 1', 'Ghost Town', 'Follow God', 'Hurricane', 'Come to Life'
+    ];
+
+    const timelineItems = document.getElementById('timelineItems');
+    eras.forEach((era) => {
+      timelineItems.insertAdjacentHTML('beforeend', `
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="year">${era.year}</div>
+            <h3>${era.title}</h3>
+            <p>${era.copy}</p>
+          </div>
+        </article>
+      `);
+    });
+
+    const albumGrid = document.getElementById('albumGrid');
+    function renderAlbums(filter = 'all') {
+      albumGrid.innerHTML = '';
+      albums.filter(album => filter === 'all' || album.filter === filter).forEach((album, index) => {
+        albumGrid.insertAdjacentHTML('beforeend', `
+          <article class="card album-card reveal in-view" data-index="${albums.indexOf(album)}">
+            <div>
+              <span class="tag">${album.year}</span>
+              <h3>${album.title}</h3>
+              <p>${album.summary}</p>
+              <div class="album-meta">
+                <span class="mini-pill">${album.score}</span>
+                <span class="mini-pill">${album.filter}</span>
+              </div>
+            </div>
+            <p style="color:var(--gold);font-weight:700;margin-top:18px;">Click for deeper notes →</p>
+          </article>
+        `);
+      });
+    }
+    renderAlbums();
+
+    document.getElementById('albumControls').addEventListener('click', (e) => {
+      if (!e.target.matches('.chip')) return;
+      document.querySelectorAll('#albumControls .chip').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      renderAlbums(e.target.dataset.filter);
+    });
+
+    const modal = document.getElementById('albumModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalYear = document.getElementById('modalYear');
+    const modalBody = document.getElementById('modalBody');
+
+    albumGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.album-card');
+      if (!card) return;
+      const album = albums[Number(card.dataset.index)];
+      modalTitle.textContent = album.title;
+      modalYear.textContent = album.year;
+      modalBody.innerHTML = `
+        <div class="album-meta" style="margin-bottom:18px;">
+          <span class="mini-pill">${album.score}</span>
+          <span class="mini-pill">Category: ${album.filter}</span>
+        </div>
+        <p style="color:var(--muted);font-size:1.05rem;margin-bottom:18px;">${album.details}</p>
+        <h3 style="margin-bottom:8px;">Key songs to mention</h3>
+        <ul style="margin-left:20px;color:var(--muted);margin-bottom:18px;">${album.key.map(song => `<li>${song}</li>`).join('')}</ul>
+        <h3 style="margin-bottom:8px;">Why it matters</h3>
+        <p style="color:var(--muted);">${album.impact}</p>
+      `;
+      modal.classList.add('open');
+    });
+
+    document.getElementById('modalClose').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+    document.querySelector('.toggle-row').addEventListener('click', (e) => {
+      if (!e.target.matches('.chip')) return;
+      document.querySelectorAll('.toggle-row .chip').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      document.querySelectorAll('.unreleased-panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById(e.target.dataset.panel).classList.add('active');
+    });
+
+    const yeezyGrid = document.getElementById('yeezyGrid');
+    function renderYeezys() {
+      const total = yeezys.reduce((sum, shoe) => sum + shoe.votes, 0);
+      yeezyGrid.innerHTML = '';
+      yeezys
+        .slice()
+        .sort((a, b) => b.votes - a.votes)
+        .forEach((shoe, index) => {
+          const pct = Math.round((shoe.votes / total) * 100);
+          yeezyGrid.insertAdjacentHTML('beforeend', `
+            <article class="card yeezy-card reveal in-view">
+              <div>
+                <div class="shoe-visual" aria-hidden="true"></div>
+                <span class="tag">Rank #${index + 1}</span>
+                <h3>${shoe.name}</h3>
+                <p>${shoe.detail}</p>
+                <div class="bar" aria-label="Vote percentage"><span style="width:${pct}%"></span></div>
+              </div>
+              <div class="vote-row">
+                <span style="color:var(--muted);">${shoe.votes} votes · ${pct}%</span>
+                <button class="btn" data-shoe="${shoe.name}">Vote</button>
+              </div>
+            </article>
+          `);
+        });
+    }
+    renderYeezys();
+
+    yeezyGrid.addEventListener('click', (e) => {
+      if (!e.target.matches('button[data-shoe]')) return;
+      const shoe = yeezys.find(item => item.name === e.target.dataset.shoe);
+      shoe.votes += 1;
+      renderYeezys();
+    });
+
+    const playlistGrid = document.getElementById('playlistGrid');
+    playlistSongs.forEach(song => {
+      playlistGrid.insertAdjacentHTML('beforeend', `
+        <label class="track-option">
+          <input type="checkbox" value="${song}">
+          <span>${song}</span>
+        </label>
+      `);
+    });
+
+    document.getElementById('generatePlaylist').addEventListener('click', () => {
+      const selected = [...playlistGrid.querySelectorAll('input:checked')].map(input => input.value).slice(0, 10);
+      const output = document.getElementById('playlistOutput');
+      if (selected.length === 0) {
+        output.value = 'Choose some songs first.';
+        return;
+      }
+      output.value = selected.map((song, i) => `${i + 1}. ${song} — Kanye West`).join('\n');
+    });
+
+    document.getElementById('clearPlaylist').addEventListener('click', () => {
+      playlistGrid.querySelectorAll('input').forEach(input => input.checked = false);
+      document.getElementById('playlistOutput').value = '';
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const counter = entry.target;
+        const target = Number(counter.dataset.target);
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 42));
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            counter.textContent = target;
+            clearInterval(interval);
+          } else {
+            counter.textContent = current;
+          }
+        }, 26);
+        counterObserver.unobserve(counter);
+      });
+    }, { threshold: 0.7 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    const progress = document.getElementById('progress');
+    const timelineFill = document.getElementById('timelineFill');
+    const timelineWrap = document.getElementById('timelineWrap');
+
+    function updateScrollEffects() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${(scrollTop / docHeight) * 100}%`;
+
+      const rect = timelineWrap.getBoundingClientRect();
+      const timelineHeight = timelineWrap.offsetHeight - window.innerHeight * 0.25;
+      const progressWithin = Math.min(1, Math.max(0, (window.innerHeight * 0.65 - rect.top) / timelineHeight));
+      timelineFill.style.height = `${progressWithin * 100}%`;
+    }
+    window.addEventListener('scroll', updateScrollEffects);
+    updateScrollEffects();
+
+    const cursorGlow = document.getElementById('cursorGlow');
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = `${e.clientX}px`;
+      cursorGlow.style.top = `${e.clientY}px`;
+    });
+
+    const navLinks = [...document.querySelectorAll('.nav-links a')];
+    const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    window.addEventListener('scroll', () => {
+      let current = sections[0]?.id;
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 180) current = section.id;
+      });
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('light-mode') ? 'Dark' : 'Light';
+    });
+  </script>
+</body>
+</html>

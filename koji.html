@@ -6,12 +6,14 @@
   <title>Yeezy and the Story of Kanye West</title>
   <style>
     :root {
-      --sand: #d9ccb8;
-      --stone: #b7a58d;
-      --earth: #7c634a;
+      --sand: #e3d2b8;
+      --stone: #a69684;
+      --earth: #77604b;
       --charcoal: #171717;
       --cream: #f4efe7;
-      --accent: #c78d3b;
+      --accent: #d89a3d;
+      --red: #b33b36;
+      --blue: #567c96;
       --card: rgba(255, 255, 255, 0.08);
       --border: rgba(255, 255, 255, 0.15);
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -28,23 +30,35 @@
     }
 
     body {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(199, 141, 59, 0.14), transparent 30%),
-        linear-gradient(135deg, #0f0f0f, #262015 45%, #574431 100%);
+        radial-gradient(circle at top left, rgba(216, 154, 61, 0.14), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(86, 124, 150, 0.16), transparent 26%),
+        linear-gradient(135deg, #101010, #241d18 48%, #46362b 100%);
       color: var(--cream);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     img {
       display: block;
       width: 100%;
-      border-radius: 18px;
+      border-radius: 12px;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--red), var(--blue));
     }
 
     .page-shell {
@@ -71,7 +85,7 @@
 
     .logo {
       font-size: 1.1rem;
-      letter-spacing: 0.2rem;
+      letter-spacing: 0.18rem;
       text-transform: uppercase;
       font-weight: bold;
     }
@@ -85,7 +99,7 @@
 
     .nav-links a {
       padding: 0.4rem 0.8rem;
-      border-radius: 999px;
+      border-radius: 8px;
       transition: 0.25s ease;
     }
 
@@ -108,6 +122,7 @@
       line-height: 0.95;
       margin-bottom: 1rem;
       text-transform: uppercase;
+      letter-spacing: 0;
     }
 
     .hero-text p {
@@ -115,6 +130,14 @@
       font-size: 1.05rem;
       color: rgba(244, 239, 231, 0.88);
       margin-bottom: 1.5rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
     }
 
     .hero-buttons {
@@ -125,7 +148,7 @@
 
     .button {
       padding: 0.9rem 1.2rem;
-      border-radius: 999px;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.08);
       color: var(--cream);
@@ -141,9 +164,10 @@
     .hero-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
       border: 1px solid var(--border);
-      border-radius: 26px;
+      border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
     }
 
     .hero-card img {
@@ -179,7 +203,7 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 22px;
+      border-radius: 8px;
       padding: 1.4rem;
       box-shadow: var(--shadow);
     }
@@ -198,7 +222,7 @@
 
     .era-button {
       padding: 0.85rem 1rem;
-      border-radius: 14px;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background: transparent;
       color: var(--cream);
@@ -219,10 +243,106 @@
       align-items: stretch;
     }
 
+    .timeline-text {
+      min-height: 280px;
+    }
+
     .timeline-image img {
       height: 100%;
       min-height: 340px;
       object-fit: cover;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .timeline-image img.switching {
+      opacity: 0.2;
+      transform: scale(0.98);
+    }
+
+    .album-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .album-card {
+      overflow: hidden;
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(216, 154, 61, 0.55);
+    }
+
+    .album-card.reveal.visible:hover {
+      transform: translateY(-8px);
+    }
+
+    .album-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .album-card p {
+      color: rgba(244, 239, 231, 0.78);
+    }
+
+    .fan-badge {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border: 1px solid rgba(216, 154, 61, 0.45);
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fashion-stack {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .fashion-item {
+      display: grid;
+      grid-template-columns: 0.85fr 1.35fr;
+      gap: 1rem;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .fashion-item h3 {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+    }
+
+    .fashion-item p {
+      color: rgba(244, 239, 231, 0.78);
+    }
+
+    .mini-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .mini-gallery img {
+      height: 170px;
+      object-fit: cover;
+      border-radius: 6px;
+      filter: saturate(0.85);
+      transition: transform 0.28s ease, filter 0.28s ease;
+    }
+
+    .mini-gallery img:hover {
+      transform: scale(1.04);
+      filter: saturate(1.15);
     }
 
     .gallery {
@@ -232,7 +352,7 @@
     .gallery figure {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border);
-      border-radius: 22px;
+      border-radius: 8px;
       overflow: hidden;
     }
 
@@ -249,7 +369,7 @@
     .quote-box {
       text-align: center;
       padding: 2rem;
-      border-radius: 22px;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.06);
       max-width: 850px;
@@ -273,15 +393,34 @@
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
+    .reveal-left {
+      transform: translateX(-36px);
+    }
+
+    .reveal-right {
+      transform: translateX(36px);
+    }
+
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .reveal-left.visible,
+    .reveal-right.visible {
+      transform: translateX(0);
+    }
+
+    .stagger {
+      transition-delay: var(--delay, 0s);
     }
 
     @media (max-width: 900px) {
       .hero,
       .timeline-panel,
       .overview-grid,
+      .album-grid,
+      .fashion-item,
       .gallery {
         grid-template-columns: 1fr;
       }
@@ -295,16 +434,24 @@
       .timeline-image img {
         min-height: 260px;
       }
+
+      .mini-gallery img {
+        height: 135px;
+      }
     }
   </style>
+
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <header class="site-header">
     <div class="page-shell nav-bar">
       <a class="logo" href="#top">YEEZY</a>
       <ul class="nav-links">
         <li><a href="#story">Story</a></li>
+        <li><a href="#albums">Albums</a></li>
         <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#fashion">Fashion</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#impact">Impact</a></li>
       </ul>
@@ -314,53 +461,103 @@
   <main id="top" class="page-shell">
     <section class="hero reveal">
       <div class="hero-text">
-        <p>Music. Fashion. Sneaker culture.</p>
-        <h1>The Yeezy Era and the History of Kanye West</h1>
+        <p class="eyebrow">Music / design / sneaker culture</p>
+        <h1>Ye and Yeezy: Creative Eras in Sound and Style</h1>
         <p>
-          Kanye West, also known as Ye, became one of the most talked-about artists of the 21st century.
-          His career started in music production, grew into chart-topping albums, and expanded into the
-          fashion world through the Yeezy brand.
+          A visual overview of Kanye West's creative eras, from stadium-sized album rollouts to Yeezy
+          sneakers, oversized silhouettes, neutral palettes, and the product language that shaped streetwear.
         </p>
         <div class="hero-buttons">
-          <a class="button" href="#timeline">Explore the timeline</a>
+          <a class="button" href="#albums">Album wall</a>
+          <a class="button" href="#fashion">Yeezy fashion</a>
           <button class="button" id="quoteButton" type="button">Show another highlight</button>
         </div>
       </div>
       <div class="hero-card">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg" alt="Kanye West at an event">
+        <img class="parallax-img" src="images/kanye1.png" alt="Kanye West hero image">
       </div>
     </section>
 
-    <section id="story" class="reveal">
+    <section id="story" class="reveal reveal-left">
       <h2 class="section-title">From Chicago Producer to Global Brand</h2>
       <p class="section-copy">
         Kanye West first gained attention as a producer, helping shape early 2000s hip-hop with soulful
-        beats and bold sampling. After releasing <em>The College Dropout</em> in 2004, he became one of
-        the biggest names in music. Later, he pushed into fashion and sneaker design, building Yeezy into
-        one of the most recognizable style brands of its era.
+        beats and bold sampling. His music kept shifting from victory-lap stadium rap to emotional pop,
+        maximalist art rap, industrial production, and gospel-inspired performances. Later, Yeezy turned
+        that same world-building energy into sneakers, clothing, and instantly recognizable silhouettes.
       </p>
 
       <div class="grid overview-grid">
-        <article class="card">
-          <h3>Early Life</h3>
+        <article class="card reveal stagger" style="--delay: 0.05s">
+          <span class="fan-badge">Origin</span>
+          <h3>Chicago Energy</h3>
           <p>
-            Born in Atlanta and raised in Chicago, Kanye developed an interest in art, design, and music
-            at a young age. Those influences later shaped both his albums and his fashion direction.
+            Raised in Chicago, Ye brought a producer's ear and a designer's eye into everything: samples,
+            stage sets, album covers, videos, and rollouts.
           </p>
         </article>
-        <article class="card">
-          <h3>Music Breakthrough</h3>
+        <article class="card reveal stagger" style="--delay: 0.15s">
+          <span class="fan-badge">Sound</span>
+          <h3>Era Switches</h3>
           <p>
-            His first albums mixed emotional storytelling, ambition, and experimental production. That
-            sound helped redefine mainstream rap in the 2000s.
+            Every major era felt different. Graduation felt huge, 808s felt lonely and futuristic, Yeezus
+            sounded sharp and industrial, and Donda turned the rollout into an event.
           </p>
         </article>
-        <article class="card">
+        <article class="card reveal stagger" style="--delay: 0.25s">
+          <span class="fan-badge">Style</span>
           <h3>Yeezy Influence</h3>
           <p>
             Yeezy became known for neutral colors, oversized silhouettes, minimal design, and sneaker
             drops that changed how streetwear and fashion worked together.
           </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="albums" class="reveal reveal-right">
+      <h2 class="section-title">Album Wall</h2>
+      <p class="section-copy">
+        A compact look at later albums that helped define Ye's changing sound, visual direction, and
+        cultural presence.
+      </p>
+
+      <div class="grid album-grid">
+        <article class="card album-card reveal stagger" style="--delay: 0.05s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/6d75a8/f4efe7.png&text=Graduation" alt="Placeholder cover for Graduation">
+          <span class="fan-badge">2007</span>
+          <h3>Graduation</h3>
+          <p>Bright, stadium-sized, and made for big hooks. This era pushed rap toward a larger pop and arena sound.</p>
+        </article>
+        <article class="card album-card reveal stagger" style="--delay: 0.1s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/242424/f4efe7.png&text=808s+%26+Heartbreak" alt="Placeholder cover for 808s and Heartbreak">
+          <span class="fan-badge">2008</span>
+          <h3>808s &amp; Heartbreak</h3>
+          <p>Minimal drums, Auto-Tune melodies, and emotional songwriting that influenced a whole wave of artists.</p>
+        </article>
+        <article class="card album-card reveal stagger" style="--delay: 0.15s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/b33b36/f4efe7.png&text=MBDTF" alt="Placeholder cover for My Beautiful Dark Twisted Fantasy">
+          <span class="fan-badge">2010</span>
+          <h3>My Beautiful Dark Twisted Fantasy</h3>
+          <p>A maximalist project with huge features, layered production, and a rollout that felt cinematic.</p>
+        </article>
+        <article class="card album-card reveal stagger" style="--delay: 0.2s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/bfbfbf/111111.png&text=Yeezus" alt="Placeholder cover for Yeezus">
+          <span class="fan-badge">2013</span>
+          <h3>Yeezus</h3>
+          <p>Raw, loud, and industrial. This album stood apart because it refused to sound comfortable.</p>
+        </article>
+        <article class="card album-card reveal stagger" style="--delay: 0.25s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/e08445/111111.png&text=The+Life+of+Pablo" alt="Placeholder cover for The Life of Pablo">
+          <span class="fan-badge">2016</span>
+          <h3>The Life of Pablo</h3>
+          <p>A messy, colorful, streaming-era collage with gospel, flexing, jokes, and some of Ye's most replayed moments.</p>
+        </article>
+        <article class="card album-card reveal stagger" style="--delay: 0.3s">
+          <img class="album-cover" src="https://dummyimage.com/900x900/111111/f4efe7.png&text=Donda" alt="Placeholder cover for Donda">
+          <span class="fan-badge">2021</span>
+          <h3>Donda</h3>
+          <p>Dark visuals, listening events, and a huge tracklist made the release feel architectural in scale.</p>
         </article>
       </div>
     </section>
@@ -372,42 +569,103 @@
       </p>
 
       <div class="timeline-controls">
-        <button class="era-button selected" data-era="0" type="button">2004 Breakthrough</button>
-        <button class="era-button" data-era="1" type="button">Creative Expansion</button>
-        <button class="era-button" data-era="2" type="button">Yeezy Era</button>
+        <button class="era-button selected" data-era="0" type="button">Graduation</button>
+        <button class="era-button" data-era="1" type="button">808s</button>
+        <button class="era-button" data-era="2" type="button">MBDTF</button>
+        <button class="era-button" data-era="3" type="button">Yeezus</button>
+        <button class="era-button" data-era="4" type="button">Yeezy</button>
       </div>
 
       <div class="timeline-panel">
         <div class="card timeline-text">
-          <h3 id="eraTitle">2004: The College Dropout</h3>
+          <h3 id="eraTitle">2007: Graduation Goes Stadium Size</h3>
           <p id="eraText">
-            Kanye West's debut album introduced him as more than a producer. It showed humor, honesty,
-            confidence, and a new style of hip-hop that connected with a huge audience.
+            The Graduation era made everything feel bigger: brighter visuals, massive hooks, and a sound
+            built for arenas. It remains one of the clearest examples of his stadium-scale sound.
           </p>
         </div>
         <div class="timeline-image">
-          <img id="eraImage" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg" alt="Kanye West portrait">
+          <img id="eraImage" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80" alt="Concert crowd with stage lights">
         </div>
+      </div>
+    </section>
+
+    <section id="fashion" class="reveal reveal-left">
+      <h2 class="section-title">Yeezy Fashion Fits</h2>
+      <p class="section-copy">
+        Key footwear and apparel pieces that helped define the Yeezy design language: minimal branding,
+        sculptural shapes, utility colors, and everyday silhouettes.
+      </p>
+
+      <div class="fashion-stack">
+        <article class="card fashion-item reveal stagger" style="--delay: 0.05s">
+          <div>
+            <span class="fan-badge">Sneaker staple</span>
+            <h3>Yeezy Boost 350</h3>
+            <p>The low-profile knit sneaker became one of the most recognizable Yeezy shapes and helped make drops feel like internet events.</p>
+          </div>
+          <div class="mini-gallery">
+            <img src="https://dummyimage.com/600x700/b9aa95/111111.png&text=350+Side" alt="Placeholder Yeezy Boost 350 side image">
+            <img src="https://dummyimage.com/600x700/d7cfc2/111111.png&text=350+Detail" alt="Placeholder Yeezy Boost 350 detail image">
+            <img src="https://dummyimage.com/600x700/5a5149/f4efe7.png&text=350+Fit" alt="Placeholder Yeezy Boost 350 outfit image">
+          </div>
+        </article>
+        <article class="card fashion-item reveal stagger" style="--delay: 0.1s">
+          <div>
+            <span class="fan-badge">Molded icon</span>
+            <h3>Foam Runner</h3>
+            <p>Part sneaker, part sculpture. Its unusual shape made it one of Yeezy's most recognizable design statements.</p>
+          </div>
+          <div class="mini-gallery">
+            <img src="https://dummyimage.com/600x700/c8bfae/111111.png&text=Foam+Runner" alt="Placeholder Foam Runner image">
+            <img src="https://dummyimage.com/600x700/7f7b70/f4efe7.png&text=Foam+Detail" alt="Placeholder Foam Runner detail image">
+            <img src="https://dummyimage.com/600x700/ebe5da/111111.png&text=Foam+Fit" alt="Placeholder Foam Runner outfit image">
+          </div>
+        </article>
+        <article class="card fashion-item reveal stagger" style="--delay: 0.15s">
+          <div>
+            <span class="fan-badge">Everyday wear</span>
+            <h3>Yeezy Slides</h3>
+            <p>Simple, chunky, and easy to spot. The slides turned comfort footwear into a hype item.</p>
+          </div>
+          <div class="mini-gallery">
+            <img src="https://dummyimage.com/600x700/9e8872/f4efe7.png&text=Slide+Pair" alt="Placeholder Yeezy Slides image">
+            <img src="https://dummyimage.com/600x700/d1c1a6/111111.png&text=Slide+Color" alt="Placeholder Yeezy Slides color image">
+            <img src="https://dummyimage.com/600x700/3f3934/f4efe7.png&text=Slide+Fit" alt="Placeholder Yeezy Slides outfit image">
+          </div>
+        </article>
+        <article class="card fashion-item reveal stagger" style="--delay: 0.2s">
+          <div>
+            <span class="fan-badge">Signature layer</span>
+            <h3>Gap Hoodie</h3>
+            <p>Heavy cotton, cropped fit, bold colors, and a quiet logo-free look made the hoodie feel simple but collectible.</p>
+          </div>
+          <div class="mini-gallery">
+            <img src="https://dummyimage.com/600x700/2f4f6f/f4efe7.png&text=Blue+Hoodie" alt="Placeholder blue hoodie image">
+            <img src="https://dummyimage.com/600x700/7d2628/f4efe7.png&text=Red+Hoodie" alt="Placeholder red hoodie image">
+            <img src="https://dummyimage.com/600x700/111111/f4efe7.png&text=Black+Hoodie" alt="Placeholder black hoodie image">
+          </div>
+        </article>
       </div>
     </section>
 
     <section id="gallery" class="reveal">
       <h2 class="section-title">Visual Gallery</h2>
       <p class="section-copy">
-        These images help give the page a fashion and sneaker feel. You can replace any image later with
-        your own favorites.
+        Mood images for the world around the music: stages, sneakers, streetwear, and the product drops
+        that made each release feel connected to a larger visual identity.
       </p>
 
       <div class="grid gallery">
-        <figure>
+        <figure class="reveal stagger" style="--delay: 0.05s">
           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80" alt="Sneaker close-up">
           <figcaption>Modern sneaker culture helped make Yeezy drops a major event.</figcaption>
         </figure>
-        <figure>
+        <figure class="reveal stagger" style="--delay: 0.15s">
           <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=80" alt="Neutral-toned fashion clothing">
           <figcaption>Muted earth tones became one of the signature visuals connected to Yeezy design.</figcaption>
         </figure>
-        <figure>
+        <figure class="reveal stagger" style="--delay: 0.25s">
           <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Fashion runway style">
           <figcaption>Yeezy connected music, streetwear, and high-fashion presentation.</figcaption>
         </figure>
@@ -417,53 +675,64 @@
     <section id="impact" class="reveal">
       <h2 class="section-title">Why Yeezy Mattered</h2>
       <p class="section-copy">
-        Yeezy was important because it blurred the lines between artist branding, sneaker design, and
-        luxury fashion. Kanye West's work influenced music visuals, clothing trends, and the way fans
-        followed product launches online.
+        Yeezy mattered because it made product design feel connected to album eras, concerts, and visual
+        identity. The shoes and clothes were not just merch. They became part of the story.
       </p>
 
       <div class="quote-box">
         <p id="highlightText">
-          Kanye West built a career that moved from studio production to albums, fashion shows, sneakers, and cultural influence.
+          Every Ye era has its own sound, color palette, silhouettes, and visual language.
         </p>
         <button class="button" id="nextHighlight" type="button">Next highlight</button>
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="page-shell">
-      <p>Created for IST444 | <span id="year"></span> | Yeezy and Kanye West fan page</p>
+      <p>Created for IST444 | <span id="year"></span> | Ye and Yeezy creative eras</p>
     </div>
   </footer>
 
   <script>
     const eraData = [
       {
-        title: "2004: The College Dropout",
-        text: "Kanye West's debut album introduced him as more than a producer. It showed humor, honesty, confidence, and a new style of hip-hop that connected with a huge audience.",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kanye%20West%20at%20the%202009%20Tribeca%20Film%20Festival.jpg",
-        alt: "Kanye West at an event"
+        title: "2007: Graduation Goes Stadium Size",
+        text: "The Graduation era made everything feel bigger: brighter visuals, massive hooks, and a sound built for arenas. It remains one of the clearest examples of his stadium-scale sound.",
+        image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80",
+        alt: "Concert crowd with stage lights"
       },
       {
-        title: "2008 to 2013: Creative Expansion",
-        text: "Over the next several years, Kanye kept changing his sound and public image. Albums like 808s & Heartbreak and My Beautiful Dark Twisted Fantasy showed how willing he was to experiment.",
-        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80",
-        alt: "Concert lights and stage atmosphere"
+        title: "2008: 808s Changes the Mood",
+        text: "808s & Heartbreak traded victory energy for icy drums, Auto-Tune, and heartbreak. It became one of the most influential left turns in modern rap.",
+        image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
+        alt: "Moody microphone and performance lights"
+      },
+      {
+        title: "2010: Fantasy Mode",
+        text: "My Beautiful Dark Twisted Fantasy sounded expensive, dramatic, and packed with detail. It created a full world of features, visuals, samples, and mythology.",
+        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+        alt: "Large live music stage with dramatic lighting"
+      },
+      {
+        title: "2013: Yeezus Turns Sharp",
+        text: "Yeezus stripped things down and made the edges louder. The sound was industrial, aggressive, and intentionally confrontational.",
+        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+        alt: "Concrete architectural scene"
       },
       {
         title: "2015 and Beyond: The Yeezy Era",
-        text: "As Yeezy grew, Kanye became a bigger force in fashion. The brand became famous for limited sneaker releases, neutral palettes, and a minimalist style that influenced streetwear worldwide.",
+        text: "As Yeezy grew, Ye became a bigger force in fashion. The brand became famous for limited sneaker releases, neutral palettes, sculptural footwear, and oversized streetwear.",
         image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=80",
         alt: "Sneakers displayed in a stylish fashion image"
       }
     ];
 
     const highlights = [
-      "Kanye West first became famous as a producer before becoming a solo superstar.",
+      "Every Ye era has its own sound, color palette, silhouettes, and visual language.",
       "Yeezy helped make sneaker releases feel like major pop-culture events.",
-      "The brand's neutral colors and oversized silhouettes influenced fashion trends for years.",
-      "Kanye's career connected music, design, performance, and branding in a unique way."
+      "The neutral colors, oversized silhouettes, and chunky shapes changed streetwear mood boards for years.",
+      "The strongest eras connect albums, outfits, stage design, and product ideas into one visual world.",
+      "The album covers here can be swapped later for finished artwork or project images."
     ];
 
     const eraButtons = document.querySelectorAll(".era-button");
@@ -476,6 +745,8 @@
     const navLinks = document.querySelectorAll(".nav-links a");
     const revealItems = document.querySelectorAll(".reveal");
     const year = document.getElementById("year");
+    const scrollProgress = document.getElementById("scrollProgress");
+    const parallaxImage = document.querySelector(".parallax-img");
 
     let highlightIndex = 0;
 
@@ -483,8 +754,13 @@
       const era = eraData[index];
       eraTitle.textContent = era.title;
       eraText.textContent = era.text;
-      eraImage.src = era.image;
-      eraImage.alt = era.alt;
+      eraImage.classList.add("switching");
+
+      setTimeout(() => {
+        eraImage.src = era.image;
+        eraImage.alt = era.alt;
+        eraImage.classList.remove("switching");
+      }, 140);
 
       eraButtons.forEach((button) => button.classList.remove("selected"));
       eraButtons[index].classList.add("selected");
@@ -520,6 +796,17 @@
     }, { threshold: 0.25 });
 
     revealItems.forEach((item) => observer.observe(item));
+
+    window.addEventListener("scroll", () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      scrollProgress.style.width = progress + "%";
+
+      if (parallaxImage) {
+        parallaxImage.style.transform = "translateY(" + window.scrollY * 0.04 + "px)";
+      }
+    });
+
     year.textContent = new Date().getFullYear();
   </script>
 </body>

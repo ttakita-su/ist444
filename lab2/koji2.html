@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeezy</title>
+  <style>
+    :root {
+      --yeezy-beige: #EDEDE3;
+      --yeezy-taupe: #979691;
+      --yeezy-charcoal: #20201E;
+      --yeezy-surface: #f7f7ef;
+      --yeezy-panel: #e3e3d8;
+      --yeezy-line: rgba(32, 32, 30, 0.18);
+      --display-font: "Yeezy Tstar Bold", "Arial Black", Arial, Helvetica, sans-serif;
+      --mono-font: "VCR OSD Mono", "Courier New", Courier, monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--display-font);
+      background: var(--yeezy-beige);
+      color: var(--yeezy-charcoal);
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 100vh;
+      background: linear-gradient(rgba(237, 237, 227, 0.6), rgba(237, 237, 227, 0.88)),
+        url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: var(--display-font);
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: var(--yeezy-charcoal);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 1px solid var(--yeezy-charcoal);
+      color: var(--yeezy-charcoal);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 0.85rem;
+      font-family: var(--mono-font);
+      transition: 0.25s;
+    }
+
+    .btn:hover {
+      background: var(--yeezy-charcoal);
+      color: var(--yeezy-beige);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(237, 237, 227, 0.95);
+      border-bottom: 1px solid var(--yeezy-line);
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--yeezy-charcoal);
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-family: var(--mono-font);
+    }
+
+    nav a:hover {
+      color: var(--yeezy-taupe);
+    }
+
+    section {
+      padding: 80px 8%;
+      border-bottom: 1px solid var(--yeezy-line);
+    }
+
+    .section-title {
+      font-family: var(--display-font);
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 0;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      color: var(--yeezy-charcoal);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--yeezy-surface);
+      border: 1px solid var(--yeezy-line);
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .card-img,
+    .album-cover,
+    .wide-img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border: 1px solid var(--yeezy-line);
+      background: var(--yeezy-panel);
+    }
+
+    .card-img {
+      aspect-ratio: 1;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .album-cover {
+      width: 96px;
+      aspect-ratio: 1;
+      border-radius: 10px;
+    }
+
+    .wide-img {
+      aspect-ratio: 1;
+      border-radius: 18px;
+      margin: 28px 0 40px;
+    }
+
+    .image-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .image-link .card-img {
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .image-link:hover .card-img {
+      transform: scale(0.98);
+      filter: contrast(1.08);
+    }
+
+    .card h3 {
+      font-family: var(--display-font);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--yeezy-charcoal);
+    }
+
+    .card p {
+      color: var(--yeezy-charcoal);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--yeezy-panel);
+      color: var(--yeezy-charcoal);
+      border: 1px solid var(--yeezy-line);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-family: var(--mono-font);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--yeezy-taupe);
+      padding-left: 24px;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item span {
+      color: var(--yeezy-charcoal);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-family: var(--mono-font);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .quote-box {
+      background: var(--yeezy-panel);
+      color: var(--yeezy-charcoal);
+      border: 1px solid var(--yeezy-line);
+      padding: 36px;
+      border-radius: 22px;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      font-weight: bold;
+    }
+
+    ul {
+      margin-left: 20px;
+      color: var(--yeezy-charcoal);
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .album-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .album-table th,
+    .album-table td {
+      border: 1px solid var(--yeezy-line);
+      padding: 16px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .album-table th:first-child,
+    .album-table td:first-child {
+      width: 130px;
+    }
+
+    .album-table th {
+      background: var(--yeezy-panel);
+      color: var(--yeezy-charcoal);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0;
+      font-family: var(--mono-font);
+    }
+
+    .album-table td {
+      background: var(--yeezy-surface);
+      color: var(--yeezy-charcoal);
+    }
+
+    .highlight {
+      color: var(--yeezy-charcoal);
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 40px 8%;
+      text-align: center;
+      color: var(--yeezy-charcoal);
+      background: var(--yeezy-panel);
+      font-family: var(--mono-font);
+    }
+
+    @media (max-width: 800px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
+
+      .album-cover {
+        width: 74px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <h1>Yeezy</h1>
+      <p>A visual archive of Ye’s music, Yeezy fashion, sneaker culture, unreleased albums, and why his creative eras still shape modern culture.</p>
+      <div class="button-row">
+        <a class="btn" href="#intro">Start Reading</a>
+        <a class="btn" href="#yeezy">Explore Yeezy</a>
+        <a class="btn" href="#legacy">Legacy</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#intro">Intro</a>
+    <a href="#music">Music</a>
+    <a href="#unreleased">Yandhi</a>
+    <a href="#yeezy">Yeezy</a>
+    <a href="#influence">Influence</a>
+    <a href="#legacy">Legacy</a>
+  </nav>
+
+  <section id="intro">
+    <h2 class="section-title">Who Is Kanye West?</h2>
+    <p class="section-intro">
+      Kanye West, also known as Ye, is an American rapper, producer, fashion designer, and cultural figure. He first became known as a producer, especially through his work with Jay-Z, before becoming one of the most important solo artists in hip-hop. What makes Kanye different is that he did not stay in one lane. He changed his sound, image, fashion, stage design, and business ideas many times throughout his career.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Studio+Production" alt="Placeholder image for music production">
+        <span class="tag">Music</span>
+        <h3>Artist and Producer</h3>
+        <p>Kanye helped popularize soulful sample-based production in the early 2000s, then later pushed hip-hop toward electronic sounds, Auto-Tune, gospel, industrial music, and stadium-sized album experiences.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+Design" alt="Placeholder image for Yeezy design">
+        <span class="tag">Fashion</span>
+        <h3>Yeezy Designer</h3>
+        <p>Through Yeezy, Kanye helped make earth tones, oversized fits, futuristic footwear, and minimalist streetwear a major part of modern fashion.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Creative+Rollout" alt="Placeholder image for creative rollouts">
+        <span class="tag">Culture</span>
+        <h3>Creative Disruptor</h3>
+        <p>His influence goes beyond music. Album rollouts, listening parties, sneaker drops, fashion shows, and visual branding became part of his artistic identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <h2 class="section-title">Music Timeline</h2>
+    <p class="section-intro">
+      Kanye’s discography is important because each era has a different sound and style. Instead of making the same type of album repeatedly, he used each project to introduce a new version of himself.
+    </p>
+
+    <img class="wide-img" src="https://dummyimage.com/1200x1200/E3E3D8/20201E.png&text=Album+Era+Visual+Placeholder" alt="Wide placeholder image for Kanye album eras">
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span>2007</span>
+        <h3>Graduation</h3>
+        <p>Graduation brought a brighter, stadium-sized sound influenced by electronic music. Songs like “Stronger” helped move hip-hop toward bigger pop and arena sounds.</p>
+      </div>
+      <div class="timeline-item">
+        <span>2008</span>
+        <h3>808s & Heartbreak</h3>
+        <p>This album used Auto-Tune, drum machines, loneliness, and heartbreak. It became one of his most influential projects because it opened the door for more emotional and melodic rap.</p>
+      </div>
+      <div class="timeline-item">
+        <span>2010</span>
+        <h3>My Beautiful Dark Twisted Fantasy</h3>
+        <p>Often seen as Kanye’s masterpiece, this album combines luxury, ego, regret, orchestration, rap, and art-pop into one grand project. It raised expectations for what a hip-hop album could sound like.</p>
+      </div>
+      <div class="timeline-item">
+        <span>2013</span>
+        <h3>Yeezus</h3>
+        <p>Yeezus is aggressive, industrial, minimal, and experimental. It shocked many listeners at first, but it became important because it showed Kanye was willing to destroy expectations.</p>
+      </div>
+      <div class="timeline-item">
+        <span>2016</span>
+        <h3>The Life of Pablo</h3>
+        <p>This project mixed gospel, rap, chaos, humor, and emotion. It also became known as a “living album” because Kanye changed parts of it after release.</p>
+      </div>
+      <div class="timeline-item">
+        <span>2021</span>
+        <h3>Donda</h3>
+        <p>Donda is named after Kanye’s mother, Donda West. The album uses dark visuals, religious themes, choirs, and large listening events to create a stadium-like experience.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px; font-size: 2rem;">Most Influential Albums</h3>
+    <table class="album-table">
+      <tr>
+        <th>Cover</th>
+        <th>Album</th>
+        <th>Why It Matters</th>
+      </tr>
+      <tr>
+        <td><img class="album-cover" src="https://dummyimage.com/900x900/979691/20201E.png&text=Graduation" alt="Placeholder album cover for Graduation"></td>
+        <td><strong>Graduation</strong></td>
+        <td>Helped move rap into a bigger, electronic, arena-ready sound. It made Kanye feel less like only a rapper and more like a global pop artist.</td>
+      </tr>
+      <tr>
+        <td><img class="album-cover" src="https://dummyimage.com/900x900/EDEDE3/20201E.png&text=808s" alt="Placeholder album cover for 808s and Heartbreak"></td>
+        <td><strong>808s & Heartbreak</strong></td>
+        <td>Changed the emotional direction of hip-hop. Its Auto-Tune singing and vulnerable lyrics influenced artists like Drake, Travis Scott, Kid Cudi, Juice WRLD, and many melodic rappers.</td>
+      </tr>
+      <tr>
+        <td><img class="album-cover" src="https://dummyimage.com/900x900/20201E/EDEDE3.png&text=MBDTF" alt="Placeholder album cover for My Beautiful Dark Twisted Fantasy"></td>
+        <td><strong>My Beautiful Dark Twisted Fantasy</strong></td>
+        <td>Showed how rap could be maximalist, artistic, cinematic, and critically serious. Many listeners and critics view it as his greatest album.</td>
+      </tr>
+      <tr>
+        <td><img class="album-cover" src="https://dummyimage.com/900x900/D8D8CD/20201E.png&text=Yeezus" alt="Placeholder album cover for Yeezus"></td>
+        <td><strong>Yeezus</strong></td>
+        <td>Pushed industrial and experimental sounds into mainstream rap. It also matched Kanye’s darker, minimalist fashion direction.</td>
+      </tr>
+      <tr>
+        <td><img class="album-cover" src="https://dummyimage.com/900x900/CFCFC4/20201E.png&text=Donda" alt="Placeholder album cover for Donda"></td>
+        <td><strong>Donda</strong></td>
+        <td>Connected music, memory, faith, performance art, and massive public listening events. It showed Kanye’s ability to turn an album release into a cultural moment.</td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="unreleased">
+    <h2 class="section-title">The Lost Albums: Yandhi</h2>
+    <p class="section-intro">
+      One of the most interesting parts of Kanye’s creative history is the unreleased music. The most famous unreleased Kanye project is <span class="highlight">Yandhi</span>. It was expected after the Ye era, but it was never officially released in its original form. Over time, leaks and later versions of songs made Yandhi feel like a legendary “what could have been” album.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yandhi+Cover" alt="Placeholder image for Yandhi">
+        <h3>Why Yandhi Matters</h3>
+        <p>Yandhi feels like a missing chapter between Ye, Jesus Is King, and later Kanye projects. It had futuristic, spiritual, and experimental ideas that were later changed or reused.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yandhi+Tracks" alt="Placeholder image for Yandhi-era tracks">
+        <h3>Popular Yandhi-Era Songs</h3>
+        <p>Commonly discussed songs include “Alien,” “New Body,” “Chakras,” “The Storm,” and early versions of “Hurricane.” Some songs changed direction before appearing in later projects.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Unreleased+Projects" alt="Placeholder image for unreleased projects">
+        <h3>Other Unreleased Projects</h3>
+        <p>Projects like Good Ass Job, So Help Me God, TurboGrafx16, and Donda 2 also show how open, messy, and constantly changing his creative process can be.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="yeezy">
+    <h2 class="section-title">Yeezy Fashion and Sneaker Timeline</h2>
+    <p class="section-intro">
+      Yeezy became one of the most recognizable fashion and sneaker movements of the 2010s. Kanye’s fashion ideas focused on earth tones, oversized silhouettes, futuristic shoes, minimal branding, and the idea that clothing could feel like a uniform for everyday life.
+    </p>
+
+    <img class="wide-img" src="https://dummyimage.com/1200x1200/E3E3D8/20201E.png&text=Yeezy+Fashion+Visual+Placeholder" alt="Wide placeholder image for Yeezy fashion and sneakers">
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span>Early Style</span>
+        <h3>Pre-Yeezy Era</h3>
+        <p>In the early years, Kanye was known for polos, backpacks, colorful outfits, and shutter shades. This made him stand out from the dominant rapper image of the time.</p>
+      </div>
+      <div class="timeline-item">
+        <span>Nike Era</span>
+        <h3>Air Yeezy</h3>
+        <p>Before Adidas, Kanye worked with Nike on the Air Yeezy line. These sneakers proved that a rapper could have serious influence in sneaker design, not just endorsement deals.</p>
+      </div>
+      <div class="timeline-item">
+        <span>Adidas Era</span>
+        <h3>Yeezy Becomes a Sneaker Giant</h3>
+        <p>The Adidas Yeezy era made models like the 350, 700, 500, Slides, and Foam Runners famous worldwide. Yeezy sneakers became collectibles, fashion statements, and everyday shoes.</p>
+      </div>
+      <div class="timeline-item">
+        <span>Yeezy GAP</span>
+        <h3>The Affordable Design Dream</h3>
+        <p>Kanye wanted to make simple, futuristic clothing available to more people. His Yeezy GAP idea was built around hoodies, jackets, everyday basics, and the dream of making designer-level clothing more affordable.</p>
+      </div>
+      <div class="timeline-item">
+        <span>$20 Clothing Idea</span>
+        <h3>Fashion for Everyone</h3>
+        <p>One of Kanye’s biggest fashion ideas was that clothing should not only be for rich people. He often talked about wanting basic but well-designed clothing to be much cheaper, even around $20. This connects to his larger goal of making design more democratic.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px; font-size: 2rem;">Most Popular Yeezy Models</h3>
+    <div class="grid" style="margin-top: 20px;">
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+350" alt="Placeholder image for Yeezy Boost 350">
+        </a>
+        <span class="tag">Sneaker</span>
+        <h3>Yeezy Boost 350 / 350 V2</h3>
+        <p>The most recognizable Yeezy model. Its knit upper, Boost cushioning, and simple silhouette made it one of the most popular sneakers of the 2010s.</p>
+      </div>
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+700" alt="Placeholder image for Yeezy 700 Wave Runner">
+        </a>
+        <span class="tag">Sneaker</span>
+        <h3>Yeezy 700 Wave Runner</h3>
+        <p>A chunky “dad shoe” design that helped popularize bulky sneakers in mainstream fashion. At first it looked strange to many people, but later became iconic.</p>
+      </div>
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Foam+Runner" alt="Placeholder image for Yeezy Foam Runner">
+        </a>
+        <span class="tag">Foam</span>
+        <h3>Yeezy Foam Runner</h3>
+        <p>A futuristic one-piece foam shoe with holes and a sculpted shape. It is one of the clearest examples of Kanye turning weird design into mainstream fashion.</p>
+      </div>
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+Slides" alt="Placeholder image for Yeezy Slides">
+        </a>
+        <span class="tag">Slides</span>
+        <h3>Yeezy Slides</h3>
+        <p>Simple, soft, and minimal. Yeezy Slides became extremely popular because they fit the comfort-focused fashion trend.</p>
+      </div>
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+500" alt="Placeholder image for Yeezy 500">
+        </a>
+        <span class="tag">Sneaker</span>
+        <h3>Yeezy 500</h3>
+        <p>A chunky model with a rugged shape and no Boost cushioning. It fits the earth-tone and utility look of Yeezy fashion.</p>
+      </div>
+      <div class="card">
+        <a class="image-link" href="https://yeezy.com" target="_blank" rel="noopener">
+          <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Yeezy+750" alt="Placeholder image for Yeezy 750">
+        </a>
+        <span class="tag">High Top</span>
+        <h3>Yeezy 750</h3>
+        <p>One of the earliest major Adidas Yeezy releases. Its high-top shape made it feel more like luxury fashion than a normal sneaker.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="influence">
+    <h2 class="section-title">Influence on Artists and Culture</h2>
+    <p class="section-intro">
+      Kanye is influential because he changed what a hip-hop artist could be. He was not only a rapper. He became a producer, designer, performer, creative director, and brand builder. His career showed that an artist could control sound, fashion, visuals, business, and public image all at once.
+    </p>
+
+    <img class="wide-img" src="https://dummyimage.com/1200x1200/E3E3D8/20201E.png&text=Influence+Visual+Placeholder" alt="Wide placeholder image for influence on artists and culture">
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size: 2rem; margin-bottom: 16px;">Artists He Influenced</h3>
+        <ul>
+          <li><strong>Drake:</strong> emotional rap, singing, vulnerability, and genre blending.</li>
+          <li><strong>Travis Scott:</strong> dark production, Auto-Tune, fashion, and album-world building.</li>
+          <li><strong>Kid Cudi:</strong> emotional honesty and melodic rap, while also influencing Kanye himself.</li>
+          <li><strong>Tyler, the Creator:</strong> artist-as-world-builder approach, visuals, production, and fashion identity.</li>
+          <li><strong>Chance the Rapper:</strong> gospel influence, positivity, and independent artist energy.</li>
+          <li><strong>Juice WRLD and melodic rap artists:</strong> emotional singing, heartbreak, and Auto-Tune-based rap styles.</li>
+        </ul>
+      </div>
+      <div class="quote-box">
+        Kanye’s biggest influence is not one song, one album, or one sneaker. His influence is the idea that an artist can build an entire universe.
+      </div>
+    </div>
+  </section>
+
+  <section id="legacy">
+    <h2 class="section-title">Legacy: Why Kanye Is One of the Most Influential Artists of All Time</h2>
+    <p class="section-intro">
+      Kanye West is one of the most influential artists of all time because he changed multiple industries at once. In music, he shifted the sound of hip-hop several times. In fashion, he helped bring streetwear, sneakers, earth tones, oversized fits, and futuristic footwear into the mainstream. In culture, he changed how artists present albums, create visual identities, and build personal brands.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Production" alt="Placeholder image for production influence">
+        <h3>1. He Changed Hip-Hop Production</h3>
+        <p>His early soul-sample production helped define a major sound of 2000s hip-hop. Later, he moved into electronic, industrial, gospel, and experimental production.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=808s+Influence" alt="Placeholder image for 808s influence">
+        <h3>2. He Made Vulnerability Mainstream</h3>
+        <p>808s & Heartbreak helped make emotional, melodic, Auto-Tune-based rap more accepted. Many modern artists use a style that Kanye helped popularize.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Album+Worlds" alt="Placeholder image for album art projects">
+        <h3>3. He Treated Albums Like Art Projects</h3>
+        <p>Albums like My Beautiful Dark Twisted Fantasy, Yeezus, The Life of Pablo, and Donda were not just collections of songs. They had visuals, fashion, performances, and strong concepts.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Sneaker+Culture" alt="Placeholder image for sneaker culture">
+        <h3>4. He Changed Sneaker Culture</h3>
+        <p>Yeezy proved that a musician could create sneaker models that competed with the biggest names in footwear. The 350, 700, Foam Runner, and Slides became part of fashion history.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Fashion+And+Music" alt="Placeholder image for fashion and music">
+        <h3>5. He Connected Fashion and Music</h3>
+        <p>Each Kanye era had a sound and a look. Graduation was colorful, Yeezus was dark and industrial, Pablo was oversized and merch-heavy, and Donda was black, masked, and minimal.</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://dummyimage.com/900x900/E3E3D8/20201E.png&text=Creative+Director" alt="Placeholder image for creative direction">
+        <h3>6. He Inspired Artists to Think Bigger</h3>
+        <p>Kanye showed that musicians could become designers, creative directors, founders, and cultural architects. His influence can be seen in how artists now release albums, design merch, and build brands.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px;" class="two-col">
+      <div>
+        <h3 style="font-size: 2rem; margin-bottom: 16px;">A Balanced View</h3>
+        <p style="color: var(--yeezy-charcoal);">
+          Kanye’s legacy is complicated. His creativity and influence are massive, but his career has also included public controversies, offensive statements, and damaged business relationships. His Adidas and Gap partnerships ended, and many people criticize his public behavior. Understanding Kanye means looking at both sides: the artistic impact and the controversy surrounding him.
+        </p>
+      </div>
+      <div>
+        <h3 style="font-size: 2rem; margin-bottom: 16px;">Final Statement</h3>
+        <p style="color: var(--yeezy-charcoal);">
+          Kanye West remains one of the most influential artists of all time because he repeatedly changed the direction of music, fashion, sneakers, and pop culture. Even when people disagree with him, his impact is hard to ignore. His albums changed how hip-hop sounds. His Yeezy designs changed how people dress. His rollouts changed how artists create cultural moments. That is why Kanye’s legacy is not only about being famous — it is about changing what modern artists can become.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Yeezy | Music, fashion, influence, and legacy.</p>
+  </footer>
+</body>
+</html>
