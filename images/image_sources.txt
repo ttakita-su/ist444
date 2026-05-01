@@ -7,6 +7,7 @@ Kanye photos and Wikimedia/Commons assets:
 - yandhi-cover.jpg: https://commons.wikimedia.org/wiki/File:Yandhi_Cover_Art_(Free_License).jpg
 - yandhi-minidisc.png: https://commons.wikimedia.org/wiki/File:MiniDisc_and_AA-battery_IMG00.png
 - turbografx16.png: https://commons.wikimedia.org/wiki/File:TurboGrafx16-Console-Set.png
+- turbo-grafx-16-kanye-west-cover.jpg: https://musicbrainz.org/release/343e4461-4143-4c5c-9fb9-bc7fbc79d5e1/cover-art
 - recording-console.jpg: https://commons.wikimedia.org/wiki/File:Mixing_desk_at_the_Hipposonic_Recording_Studio.jpg
 - archive-room.jpg: https://commons.wikimedia.org/wiki/File:Archive_Room,_Leasowe_Lighthouse.jpg
 - gap-store.jpg: https://commons.wikimedia.org/wiki/File:Gap_Store_(14749146254).jpg
@@ -17,6 +18,8 @@ Kanye photos and Wikimedia/Commons assets:
 Sneaker photos:
 - yeezy-700.jpg: https://unsplash.com/photos/white-adidas-yeezy-700-shoes-on-gray-surface-LOn2xM86wSs
 - yeezy-foam-runner.jpg: https://www.pexels.com/photo/black-adidas-yeezy-foam-runner-sneakers-11220592/
+- yeezy-foam-runner-kanye-holding.jpg: https://www.ketr.org/2022-10-27/skechers-says-ye-was-escorted-out-of-its-offices-after-an-unannounced-visit
+- section-6-saint-pablo-background.jpg: user-provided local file from Desktop
 - yeezy-slide.jpg: https://www.pexels.com/photo/white-and-brown-adidas-yeezy-slide-sandals-13698234/
 - yeezy-350-v2-zebra.jpg and yeezy-350-v2-onyx.jpg: downloaded from Pexels image CDN search results.
 
@@ -26,14 +29,30 @@ Album artwork:
   album-donda.jpg: Apple/iTunes artwork URLs from https://itunes.apple.com/search
 - album-yeezus.png: https://en.wikipedia.org/wiki/File:Yeezus_album_cover.png
 - donda-2-cover.jpg: https://en.wikipedia.org/wiki/File:Donda_2_streaming_album_cover.jpg
+- donda-2-scroll.gif: copied from /Users/tomoyoshitakita/Desktop/kanye-west-donda-2 (1).gif.
+- donda-2-scroll-frames/frame-000.webp through frame-059.webp: locally generated from donda-2-scroll.gif so the Donda 2 card can animate only when the page scrolls.
 - yandhi-cover-animated.gif: locally generated from yandhi-cover.jpg for the interactive Yandhi card.
 - album-vultures-1.png: https://commons.wikimedia.org/wiki/File:Kanye_West_and_Ty_Dolla_Sign_-_Vultures_Vol._1_(Cover).png
+- yandhi-scroll-frames/frame-000.webp through frame-059.webp: locally generated from vultures.gif so the Yandhi card can animate only when the page scrolls.
+- yhandhi.gif: local Vultures 1 animated cover asset used as the source for the Vultures album-card scroll animation.
+- vultures-scroll-frames/frame-000.webp through frame-059.webp: locally generated from yhandhi.gif so the Vultures 1 album card can animate only when the page scrolls.
+- yeezus.gif: copied from /Users/tomoyoshitakita/Desktop/yeezus.gif.
+- yeezus-scroll-frames/frame-000.webp through frame-059.webp: locally generated from yeezus.gif so the Yeezus album card can animate only when the page scrolls.
+- graduation-scroll-bg.gif: https://tenor.com/view/graduation-kanye-west-album-fly-bear-gif-5739679
+- graduation-scroll-bg-frames/frame-000.webp through frame-022.webp: locally generated from graduation-scroll-bg.gif so the album guide background can animate only when the page scrolls.
 
 Influence section additions:
 - influence-mpc.jpg: https://commons.wikimedia.org/wiki/File:Akai_MPC5000.jpg
 - influence-microphone.jpg: https://commons.wikimedia.org/wiki/File:Neumann_U87_Condenser_Microphone_-_Studio_A,_In_Your_Ear_Studios.jpg
 - influence-crowd.jpg: https://commons.wikimedia.org/wiki/File:City_of_Manchester_Stadium_concert_crowd.jpg
 - influence-stage-lights.jpg: https://commons.wikimedia.org/wiki/File:Musicians_performing_live_on_stage_during_an_outdoor_concert_at_night_with_bright_stage_lights_in_a_vibrant_atmosphere.jpg
+- influence-production-kanye.jpg: https://commons.wikimedia.org/wiki/File:Kanyewest_(300dpi).jpg
+- influence-808s-live.jpg: https://commons.wikimedia.org/wiki/File:Kanye_West%27s_808s_%26_Heartbreak_%40_The_Hollywood_Bowl_-_Night_1_(09-25-15)_(21710824806).jpg
+- influence-donda-event.png: https://commons.wikimedia.org/wiki/File:Donda_Listening_Event_Chicago.png
+- influence-yeezy-350-onyx.jpg: https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_Boost_350_V2_Onyx_(3).jpg
+- influence-yeezus-stage.jpg: https://commons.wikimedia.org/wiki/File:Yeezus_Tour_Stage.jpg
+- influence-legacy-public.jpg: https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_Kanye_West_2018-10-11.jpg
+- influence-saint-pablo-stage.jpg: https://commons.wikimedia.org/wiki/File:Saint_pablo_tour.jpg
 
 Music folder:
 - ../music/soul-sample-loop.wav, ../music/808-heartbreak-loop.wav, and

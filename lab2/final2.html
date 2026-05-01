@@ -377,6 +377,164 @@
 			margin: 0 auto;
 		}
 
+		#albums {
+			--album-bg-blur: 0px;
+			--album-bg-scale: 1.02;
+			--album-shade: 0.18;
+			--album-content-opacity: 0;
+			--album-content-y: 92px;
+			min-height: 175vh;
+			padding-top: clamp(140px, 26vh, 240px);
+			padding-bottom: clamp(110px, 18vh, 180px);
+			overflow: hidden;
+			isolation: isolate;
+		}
+
+		#albums::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			pointer-events: none;
+			background:
+				radial-gradient(circle at 50% 20%, rgba(215, 181, 109, 0.18), transparent 28rem),
+				linear-gradient(180deg, rgba(8, 8, 7, 0.08), rgba(8, 8, 7, var(--album-shade)) 48%, rgba(8, 8, 7, 0.92));
+		}
+
+		.album-scroll-bg {
+			position: absolute;
+			inset: -60px;
+			z-index: 0;
+			pointer-events: none;
+			background:
+				linear-gradient(90deg, rgba(8, 8, 7, 0.28), rgba(8, 8, 7, 0.1), rgba(8, 8, 7, 0.5)),
+				url("../images/album-graduation.jpg");
+			background-size: auto 100%;
+			background-position: left center;
+			background-repeat: no-repeat;
+			filter: blur(var(--album-bg-blur)) saturate(1.08) contrast(1.08);
+			transform: scale(var(--album-bg-scale));
+			transform-origin: center;
+			will-change: filter, transform;
+		}
+
+		.album-scroll-bg::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background:
+				linear-gradient(90deg, rgba(8, 8, 7, 0.42), rgba(8, 8, 7, 0.06), rgba(8, 8, 7, 0.48)),
+				radial-gradient(circle at 52% 32%, rgba(215, 181, 109, 0.12), transparent 28rem);
+		}
+
+			#albums .section-inner {
+				position: relative;
+				z-index: 2;
+			}
+
+			.album-guide-head {
+				opacity: 1;
+				transform: none;
+				text-shadow: 0 18px 48px rgba(0, 0, 0, 0.72);
+			}
+
+			.album-guide-head .lead {
+				color: #f2e8d8;
+			}
+
+			.album-scroll-content {
+				opacity: var(--album-content-opacity);
+				transform: translateY(var(--album-content-y));
+				will-change: opacity, transform;
+			}
+
+		#albums .card,
+		#albums .chip {
+			background: rgba(12, 11, 9, 0.66);
+			backdrop-filter: blur(22px);
+		}
+
+		#albums .card {
+			border-color: rgba(255, 255, 255, 0.18);
+			box-shadow: 0 30px 90px rgba(0, 0, 0, 0.48);
+		}
+
+		#influence {
+			--influence-bg-blur: 0px;
+			--influence-bg-scale: 1.02;
+			--influence-shade: 0.2;
+			--influence-content-opacity: 0;
+			--influence-content-y: 86px;
+			min-height: 155vh;
+			padding-top: clamp(130px, 23vh, 220px);
+			padding-bottom: clamp(110px, 18vh, 180px);
+			overflow: hidden;
+			isolation: isolate;
+		}
+
+		#influence::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			pointer-events: none;
+			background:
+				radial-gradient(circle at 53% 22%, rgba(215, 181, 109, 0.18), transparent 30rem),
+				linear-gradient(180deg, rgba(8, 8, 7, 0.12), rgba(8, 8, 7, var(--influence-shade)) 46%, rgba(8, 8, 7, 0.94));
+		}
+
+		.influence-scroll-bg {
+			position: absolute;
+			inset: -60px;
+			z-index: 0;
+			pointer-events: none;
+			background:
+				linear-gradient(90deg, rgba(8, 8, 7, 0.48), rgba(8, 8, 7, 0.08), rgba(8, 8, 7, 0.38)),
+				url("../images/section-6-saint-pablo-background.jpg");
+			background-size: cover;
+			background-position: center 62%;
+			background-repeat: no-repeat;
+			filter: blur(var(--influence-bg-blur)) saturate(1.08) contrast(1.08);
+			transform: scale(var(--influence-bg-scale));
+			transform-origin: center;
+			will-change: filter, transform;
+		}
+
+		.influence-scroll-bg::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background:
+				linear-gradient(180deg, rgba(8, 8, 7, 0.2), rgba(8, 8, 7, 0.56)),
+				radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.12), transparent 24rem);
+		}
+
+		#influence .section-inner {
+			position: relative;
+			z-index: 2;
+		}
+
+		#influence .section-head {
+			text-shadow: 0 18px 48px rgba(0, 0, 0, 0.78);
+		}
+
+		#influence .section-head .lead {
+			color: #f4eadc;
+		}
+
+		.influence-scroll-content {
+			opacity: var(--influence-content-opacity);
+			transform: translateY(var(--influence-content-y));
+			will-change: opacity, transform;
+		}
+
+		#influence .impact-item,
+		#influence .influence-panel {
+			background: rgba(12, 11, 9, 0.68);
+			border-color: rgba(255, 255, 255, 0.18);
+			box-shadow: 0 30px 90px rgba(0, 0, 0, 0.48);
+		}
+
 		.section-head {
 			display: grid;
 			grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1fr);
@@ -542,6 +700,14 @@
 		.card:hover .card-img {
 			transform: scale(1.035);
 			filter: saturate(1.1) contrast(1.12);
+		}
+
+		.yandhi-scroll-gif,
+		.scroll-album-gif {
+			transform-origin: center;
+			will-change: transform, filter;
+			transition: filter .25s ease, box-shadow .25s ease;
+			box-shadow: 0 18px 50px rgba(215, 181, 109, 0.14);
 		}
 
 		.card-video {
@@ -1250,6 +1416,22 @@
 				scroll-behavior: auto !important;
 				transition-duration: 0.01ms !important;
 			}
+
+			#albums {
+				--album-bg-blur: 10px;
+				--album-bg-scale: 1.06;
+				--album-shade: 0.62;
+				--album-content-opacity: 1;
+				--album-content-y: 0px;
+			}
+
+			#influence {
+				--influence-bg-blur: 10px;
+				--influence-bg-scale: 1.06;
+				--influence-shade: 0.66;
+				--influence-content-opacity: 1;
+				--influence-content-y: 0px;
+			}
 		}
 
 		@media (max-width: 960px) {
@@ -1282,6 +1464,163 @@
 				align-items: flex-start;
 				flex-direction: column;
 			}
+
+			#albums {
+				min-height: 150vh;
+			}
+		}
+
+		@media (max-width: 700px) {
+			body {
+				line-height: 1.56;
+			}
+
+			.cursor-glow {
+				display: none;
+			}
+
+			header.hero {
+				min-height: 86vh;
+				padding: 76px 16px 44px;
+			}
+
+			.hero-subtitle {
+				font-size: 1rem;
+				margin-bottom: 24px;
+			}
+
+			.hero-actions {
+				gap: 10px;
+				margin-bottom: 28px;
+			}
+
+			.btn {
+				padding: 11px 14px;
+				font-size: 0.72rem;
+			}
+
+			nav {
+				padding: 10px 12px;
+			}
+
+			.nav-inner {
+				gap: 10px;
+			}
+
+			.nav-links {
+				width: 100%;
+				flex-wrap: nowrap;
+				overflow-x: auto;
+				justify-content: flex-start;
+				padding-bottom: 3px;
+				scrollbar-width: none;
+			}
+
+			.nav-links::-webkit-scrollbar {
+				display: none;
+			}
+
+			.nav-links a {
+				flex: 0 0 auto;
+				font-size: 0.7rem;
+				padding: 7px 9px;
+			}
+
+			section {
+				padding: 76px 16px;
+			}
+
+			.section-head {
+				gap: 18px;
+				margin-bottom: 28px;
+			}
+
+			h2 {
+				font-size: clamp(2.2rem, 13vw, 3.5rem);
+				line-height: 0.94;
+			}
+
+			.lead {
+				font-size: 1rem;
+			}
+
+			.card {
+				padding: 18px;
+				border-radius: 18px;
+			}
+
+			.card-img {
+				aspect-ratio: 4 / 3;
+				border-radius: 14px;
+			}
+
+			.album-card {
+				min-height: auto;
+			}
+
+			.timeline-card {
+				grid-template-columns: 92px 1fr;
+				gap: 14px;
+				padding: 16px;
+			}
+
+			.timeline-cover {
+				width: 92px;
+				height: 92px;
+				border-radius: 14px;
+			}
+
+			.timeline-card h3 {
+				font-size: 1.28rem;
+			}
+
+			#albums {
+				--album-bg-blur: 0px;
+				--album-bg-scale: 1;
+				--album-shade: 0.72;
+				--album-content-opacity: 1;
+				--album-content-y: 0px;
+				min-height: auto;
+				padding-top: 76px;
+				padding-bottom: 76px;
+				background:
+					linear-gradient(180deg, rgba(8, 8, 7, 0.82), rgba(8, 8, 7, 0.92)),
+					url("../images/album-graduation.jpg") left center / auto 100% no-repeat;
+			}
+
+			#albums::after,
+			.album-scroll-bg {
+				display: none;
+			}
+
+			.album-scroll-content {
+				opacity: 1;
+				transform: none;
+			}
+
+			#influence {
+				--influence-bg-blur: 0px;
+				--influence-bg-scale: 1;
+				--influence-shade: 0.74;
+				--influence-content-opacity: 1;
+				--influence-content-y: 0px;
+				min-height: auto;
+				padding-top: 76px;
+				padding-bottom: 76px;
+				background:
+					linear-gradient(180deg, rgba(8, 8, 7, 0.82), rgba(8, 8, 7, 0.94)),
+					url("../images/section-6-saint-pablo-background.jpg") center 62% / cover no-repeat;
+			}
+
+			#influence::after,
+			.influence-scroll-bg {
+				display: none;
+			}
+
+			.influence-scroll-content {
+				opacity: 1;
+				transform: none;
+			}
 		}
 
 		@media (max-width: 560px) {
@@ -1290,11 +1629,25 @@
 			}
 
 			.stats-strip {
-				grid-template-columns: 1fr;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 10px;
+			}
+
+			.stat {
+				padding: 14px 10px;
+			}
+
+			.stat strong {
+				font-size: 1.55rem;
+			}
+
+			.stat span {
+				font-size: 0.76rem;
 			}
 
 			h1 {
 				font-size: clamp(3.2rem, 17vw, 5rem);
+				letter-spacing: -0.04em;
 			}
 
 			.yeezy-thumb,
@@ -1317,6 +1670,22 @@
 			.music-player.open {
 				left: 12px;
 				width: auto;
+			}
+		}
+
+		@media (max-width: 380px) {
+			.stats-strip {
+				grid-template-columns: 1fr;
+			}
+
+			.timeline-card {
+				grid-template-columns: 1fr;
+			}
+
+			.timeline-cover {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1;
 			}
 		}
 	</style>
@@ -1422,8 +1791,9 @@
 		</section>
 
 		<section id="albums">
+			<div class="album-scroll-bg" aria-hidden="true"></div>
 			<div class="section-inner">
-				<div class="section-head reveal">
+				<div class="section-head album-guide-head">
 					<div>
 						<div class="section-kicker">03 / Albums</div>
 						<h2>Essential album guide.</h2>
@@ -1432,13 +1802,15 @@
 						Click each card for a deeper capsule. The page focuses on why each album matters, not just when it came out.
 					</p>
 				</div>
-				<div class="album-controls reveal" id="albumControls">
-					<button class="chip active" data-filter="all">All</button>
-					<button class="chip" data-filter="classic">Classic run</button>
-					<button class="chip" data-filter="experimental">Experimental</button>
-					<button class="chip" data-filter="spiritual">Spiritual / late era</button>
+				<div class="album-scroll-content" id="albumScrollContent">
+					<div class="album-controls reveal" id="albumControls">
+						<button class="chip active" data-filter="all">All</button>
+						<button class="chip" data-filter="classic">Classic run</button>
+						<button class="chip" data-filter="experimental">Experimental</button>
+						<button class="chip" data-filter="spiritual">Spiritual / late era</button>
+					</div>
+					<div class="grid" id="albumGrid"></div>
 				</div>
-				<div class="grid" id="albumGrid"></div>
 			</div>
 		</section>
 
@@ -1460,21 +1832,21 @@
 					<button class="chip" data-panel="siteidea">How to present it</button>
 				</div>
 
-				<div class="unreleased-panel active" id="facts">
-					<article class="card reveal">
-							<img class="card-img" src="../images/vultures.gif" alt="Animated Yandhi cover art">
-						<span class="tag">Yandhi</span>
-						<h3>The most famous missing Kanye album.</h3>
-						<p>Yandhi was publicly expected in 2018, delayed more than once, and never released in its original form. Some ideas and songs from that period later changed direction or appeared in later Kanye projects.</p>
+					<div class="unreleased-panel active" id="facts">
+						<article class="card reveal">
+							<img class="card-img yandhi-scroll-gif" id="yandhiScrollGif" src="../images/yandhi-scroll-frames/frame-000.webp" alt="Scroll-controlled animated Yandhi cover art">
+							<span class="tag">Yandhi</span>
+							<h3>The most famous missing Kanye album.</h3>
+							<p>Yandhi was publicly expected in 2018, delayed more than once, and never released in its original form. Some ideas and songs from that period later changed direction or appeared in later Kanye projects.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img" src="../images/donda-2-cover.jpg" alt="Donda 2 cover art">
+						<img class="card-img scroll-album-gif" data-scroll-album="donda2" src="../images/donda-2-scroll-frames/frame-000.webp" alt="Scroll-controlled Donda 2 burning house cover art">
 						<span class="tag">Donda 2</span>
 						<h3>A hardware-era album experiment.</h3>
 						<p>Donda 2 was tied to the Stem Player rather than a normal streaming rollout. It is best described as unfinished, mutable, and unusual in how it challenged the normal album-release model.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img" src="../images/turbografx16.png" alt="TurboGrafx-16 console">
+						<img class="card-img" src="../images/turbo-grafx-16-kanye-west-cover.jpg" alt="Kanye West TurboGrafx 16 cover art">
 						<span class="tag">TurboGrafx16</span>
 						<h3>A title that became fan mythology.</h3>
 						<p>Kanye announced TurboGrafx16 in 2016, named after the video game console, but no official stable public version became a standard released album.</p>
@@ -1591,6 +1963,7 @@
 		</section>
 
 		<section id="influence">
+			<div class="influence-scroll-bg" aria-hidden="true"></div>
 			<div class="section-inner">
 				<div class="section-head reveal">
 					<div>
@@ -1602,93 +1975,95 @@
 					</p>
 				</div>
 
-				<div class="impact-list">
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/influence-mpc.jpg" alt="Akai MPC sampler">
-							<div class="impact-number">1</div>
-						</div>
+				<div class="influence-scroll-content">
+					<div class="impact-list">
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/influence-production-kanye.jpg" alt="Kanye West performing during his early producer-rapper era">
+								<div class="impact-number">1</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Production language</span>
 							<h3>He made production feel like authorship.</h3>
 							<p>Kanye's early soul-sample sound made the producer feel like a storyteller, not just someone making beats. Chopped vocals, warm loops, sped-up samples, and emotional hooks became part of his signature.</p>
 							<p>That mattered because it helped people hear the producer as a central artist. His later albums kept changing the palette: orchestral arrangements, electronic synths, industrial distortion, gospel choirs, and minimalist drums.</p>
 						</div>
-					</article>
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/influence-microphone.jpg" alt="Studio microphone">
-							<div class="impact-number">2</div>
-						</div>
+						</article>
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/album-808s-heartbreak.jpg" alt="808s and Heartbreak album cover with the deflated heart balloon">
+								<div class="impact-number">2</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Emotion and melody</span>
 							<h3>He pushed vulnerability into mainstream rap.</h3>
 							<p>808s & Heartbreak helped make Auto-Tuned sadness, heartbreak, loneliness, and melodic rap feel normal in the center of hip-hop. It gave later artists permission to be less armored and more emotional.</p>
 							<p>You can hear that influence in the worlds of Drake, Travis Scott, Kid Cudi, Future, Juice WRLD, and many artists who blur rap, R&B, and pop melody.</p>
 						</div>
-					</article>
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/influence-crowd.jpg" alt="Large concert crowd in a stadium">
-							<div class="impact-number">3</div>
-						</div>
+						</article>
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/influence-saint-pablo-stage.jpg" alt="Kanye West performing on the floating Saint Pablo Tour stage">
+								<div class="impact-number">3</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Rollout as performance</span>
 							<h3>He made album releases feel like events.</h3>
 							<p>Kanye turned rollouts into part of the art. Listening parties, livestreams, merch drops, stage design, masks, architecture, and public revisions all became part of how the audience experienced the music.</p>
 							<p>The Life of Pablo and Donda especially show how an album can become a public process instead of a private release.</p>
 						</div>
-					</article>
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/yeezy-samples.jpg" alt="Yeezy sample sneaker designs">
-							<div class="impact-number">4</div>
-						</div>
+						</article>
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/influence-yeezy-350-onyx.jpg" alt="Adidas Yeezy Boost 350 V2 Onyx sneakers">
+								<div class="impact-number">4</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Sneaker culture</span>
 							<h3>He proved musician-led product design could compete.</h3>
 							<p>Yeezy showed that an artist could move beyond endorsement and create a real design language. The 350, 700, Foam Runner, Slide, and other models made strange shapes feel mainstream.</p>
 							<p>The influence is not only the shoes. It is the idea that an artist's taste can shape product design, resale culture, color palettes, and everyday uniforms.</p>
 						</div>
-					</article>
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/influence-stage-lights.jpg" alt="Concert stage lights">
-							<div class="impact-number">5</div>
-						</div>
+						</article>
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/influence-yeezus-stage.jpg" alt="Yeezus Tour stage design with mountain set">
+								<div class="impact-number">5</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Visual identity</span>
 							<h3>He connected sound, fashion, and stage design.</h3>
 							<p>Each era has a visual world: College Dropout has the bear and campus imagery, Graduation is colorful and futuristic, Yeezus is harsh and minimal, Pablo is merch-heavy and fragmented, and Donda is dark and stadium-sized.</p>
 							<p>That made fans read the clothes, cover art, lighting, and live design as part of the album, not just decoration around it.</p>
 						</div>
-					</article>
-					<article class="impact-item reveal">
-						<div class="impact-media">
-							<img src="../images/archive-room.jpg" alt="Archive room shelves">
-							<div class="impact-number">6</div>
-						</div>
+						</article>
+						<article class="impact-item reveal">
+							<div class="impact-media">
+								<img src="../images/influence-legacy-public.jpg" alt="Kanye West meeting President Donald Trump in the Oval Office in 2018">
+								<div class="impact-number">6</div>
+							</div>
 						<div class="impact-copy">
 							<span class="impact-note">Complicated legacy</span>
 							<h3>His influence is huge, but it is not simple.</h3>
 							<p>A stronger fan page should not pretend the story is only positive. His artistic impact is enormous, but his offensive public statements, controversies, and damaged business relationships are also part of how people understand him now.</p>
 							<p>That tension is why his legacy has to be discussed carefully: the art changed culture, while the public behavior also caused real criticism and consequences.</p>
 						</div>
-					</article>
-				</div>
-
-				<div class="influence-deep-dive reveal">
-					<div class="influence-panel">
-						<h3>The main idea: Kanye made the album bigger than music.</h3>
-						<p>On this page, his influence is shown as a system. The beats connect to the album covers, the album covers connect to fashion, the fashion connects to sneakers, and the sneakers connect back to how fans remember each era.</p>
-						<p>That is why Kanye's career is useful for a visual archive: every period has a sound, a look, a product language, and a public story around it.</p>
+						</article>
 					</div>
-					<div class="influence-panel">
-						<h3>Influence map</h3>
-						<div class="influence-metrics">
-							<div class="influence-metric"><strong>Sound</strong><span>Soul samples, Auto-Tune, gospel, industrial drums.</span></div>
-							<div class="influence-metric"><strong>Style</strong><span>Merch, earth tones, oversized fits, futuristic shoes.</span></div>
-							<div class="influence-metric"><strong>Events</strong><span>Listening parties, livestreams, public revisions.</span></div>
+
+					<div class="influence-deep-dive reveal">
+						<div class="influence-panel">
+							<h3>The main idea: Kanye made the album bigger than music.</h3>
+							<p>On this page, his influence is shown as a system. The beats connect to the album covers, the album covers connect to fashion, the fashion connects to sneakers, and the sneakers connect back to how fans remember each era.</p>
+							<p>That is why Kanye's career is useful for a visual archive: every period has a sound, a look, a product language, and a public story around it.</p>
+						</div>
+						<div class="influence-panel">
+							<h3>Influence map</h3>
+							<div class="influence-metrics">
+								<div class="influence-metric"><strong>Sound</strong><span>Soul samples, Auto-Tune, gospel, industrial drums.</span></div>
+								<div class="influence-metric"><strong>Style</strong><span>Merch, earth tones, oversized fits, futuristic shoes.</span></div>
+								<div class="influence-metric"><strong>Events</strong><span>Listening parties, livestreams, public revisions.</span></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1715,7 +2090,7 @@
 			<div class="player-top">
 				<div class="player-title">
 					<span>Archive soundtrack</span>
-					<strong id="trackTitle">Soul Sample Loop</strong>
+					<strong id="trackTitle">Hurricane</strong>
 				</div>
 				<div class="player-actions">
 					<button class="player-toggle" id="playToggle" type="button" aria-label="Play background music">Play</button>
@@ -1734,7 +2109,7 @@
 				<span>Volume</span>
 				<input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.35">
 			</label>
-			<audio id="archiveAudio" loop preload="auto" src="../music/soul-sample-loop.wav"></audio>
+			<audio id="archiveAudio" loop preload="auto" src="../music/yandhi/06hurricane.mp3"></audio>
 		</div>
 	</aside>
 
@@ -1787,8 +2162,8 @@
 				details: 'This is the album where Kanye combined almost all of his strengths: samples, orchestration, guest features, pop hooks, rap verses, luxury, darkness, and self-criticism. It feels grand and excessive on purpose.',
 				impact: 'Cultural impact: it became a benchmark for what a rap album could achieve as a complete artistic statement.'
 			},
-			{
-				title: 'Yeezus', year: '2013', filter: 'experimental', score: 'Metacritic 84', image: '../images/album-yeezus.png',
+				{
+					title: 'Yeezus', year: '2013', filter: 'experimental', score: 'Metacritic 84', image: '../images/yeezus-scroll-frames/frame-000.webp', scrollFrames: 'yeezus',
 				summary: 'Industrial, minimal, aggressive, and intentionally uncomfortable.',
 				key: ['New Slaves', 'Black Skinhead', 'Bound 2'],
 				details: 'Yeezus rejects polish. It uses harsh textures, clipped structures, and confrontational lyrics. Instead of trying to please everyone, it sounds like Kanye tearing down his previous style.',
@@ -1808,9 +2183,9 @@
 				details: 'Donda is about grief, faith, memory, family, and spectacle. The listening events became almost as important as the album, turning its creation process into a public performance.',
 				impact: 'Cultural impact: it showed Kanye’s ability to make an album release feel like a national pop-culture event, even when critics were divided.'
 			},
-			{
-				title: 'Vultures 1', year: '2024', filter: 'experimental', score: 'Collab era', image: '../images/yhandhi.gif',
-				summary: 'A dark, bass-heavy collaborative album with Ty Dolla Sign under the Vultures era.',
+				{
+					title: 'Vultures 1', year: '2024', filter: 'experimental', score: 'Collab era', image: '../images/vultures-scroll-frames/frame-000.webp', scrollFrames: 'vultures',
+					summary: 'A dark, bass-heavy collaborative album with Ty Dolla Sign under the Vultures era.',
 				key: ['Carnival', 'Back to Me', 'Burn'],
 				details: 'Vultures 1 belongs to Kanye’s later independent and collaborative period. The sound leans into heavy bass, club energy, rough edges, and viral moments instead of the more polished album architecture of his earlier work.',
 				impact: 'Cultural impact: it showed how Kanye could still create a major online moment and chart hit in a controversy-heavy era, while also showing how divided his audience had become.'
@@ -1835,8 +2210,8 @@
 			{
 				name: 'Yeezy Foam Runner',
 				era: 'futuristic foam',
-				image: '../images/yeezy-foam-runner.jpg',
-				thumb: '../images/yeezy-foam-runner.jpg',
+				image: '../images/yeezy-foam-runner-kanye-holding.jpg',
+				thumb: '../images/yeezy-foam-runner-kanye-holding.jpg',
 				info: 'The Foam Runner is one of the clearest examples of Yeezy futurism: one-piece, sculptural, strange at first, and instantly recognizable.'
 			},
 			{
@@ -1867,15 +2242,16 @@
 			`);
 		});
 
-		const albumGrid = document.getElementById('albumGrid');
-		function renderAlbums(filter = 'all') {
-			albumGrid.innerHTML = '';
-			albums.filter(album => filter === 'all' || album.filter === filter).forEach((album) => {
-				albumGrid.insertAdjacentHTML('beforeend', `
-					<article class="card album-card reveal in-view" data-index="${albums.indexOf(album)}">
-						<div>
-							<img class="card-img" src="${album.image}" alt="${album.title} album cover">
-							<span class="tag">${album.year}</span>
+			const albumGrid = document.getElementById('albumGrid');
+			function renderAlbums(filter = 'all') {
+				albumGrid.innerHTML = '';
+				albums.filter(album => filter === 'all' || album.filter === filter).forEach((album) => {
+					const scrollKey = album.scrollFrames || '';
+					albumGrid.insertAdjacentHTML('beforeend', `
+						<article class="card album-card reveal in-view" data-index="${albums.indexOf(album)}">
+							<div>
+								<img class="card-img${scrollKey ? ' scroll-album-gif' : ''}"${scrollKey ? ` data-scroll-album="${scrollKey}"` : ''} src="${album.image}" alt="${album.title} album cover">
+								<span class="tag">${album.year}</span>
 							<h3>${album.title}</h3>
 							<p>${album.summary}</p>
 							<div class="album-meta">
@@ -1890,12 +2266,13 @@
 		}
 		renderAlbums();
 
-		document.getElementById('albumControls').addEventListener('click', (e) => {
-			if (!e.target.matches('.chip')) return;
-			document.querySelectorAll('#albumControls .chip').forEach(btn => btn.classList.remove('active'));
-			e.target.classList.add('active');
-			renderAlbums(e.target.dataset.filter);
-		});
+			document.getElementById('albumControls').addEventListener('click', (e) => {
+				if (!e.target.matches('.chip')) return;
+				document.querySelectorAll('#albumControls .chip').forEach(btn => btn.classList.remove('active'));
+				e.target.classList.add('active');
+				renderAlbums(e.target.dataset.filter);
+				requestAnimationFrame(updateScrollEffects);
+			});
 
 		const modal = document.getElementById('albumModal');
 		const modalTitle = document.getElementById('modalTitle');
@@ -1982,8 +2359,8 @@
 		});
 
 		const soundtrack = [
-			{ title: 'Hurricance', src: '../music/yandhi/06hurricane.mp3' },
-			{ title: 'Alien', src: '../music/yandhi/07Alien(interlude).mp3' },
+			{ title: 'Hurricane', src: '../music/yandhi/06hurricane.mp3' },
+			{ title: 'Alien', src: '../music/yandhi/07Alien(Interlude).mp3' },
 			{ title: 'City In The Sky', src: '../music/yandhi/city.mp3' }
 		];
 		const musicPlayer = document.getElementById('musicPlayer');
@@ -2061,13 +2438,58 @@
 
 		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-		const progress = document.getElementById('progress');
-		const timelineFill = document.getElementById('timelineFill');
-		const timelineWrap = document.getElementById('timelineWrap');
-		const navLinks = [...document.querySelectorAll('.nav-links a')];
-		const navSections = navLinks
-			.map(link => document.querySelector(link.getAttribute('href')))
-			.filter(Boolean);
+			const progress = document.getElementById('progress');
+			const timelineFill = document.getElementById('timelineFill');
+			const timelineWrap = document.getElementById('timelineWrap');
+			const albumsSection = document.getElementById('albums');
+			const influenceSection = document.getElementById('influence');
+			const yandhiScrollGif = document.getElementById('yandhiScrollGif');
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const narrowScreen = window.matchMedia('(max-width: 700px)');
+			const scrollAlbumAnimations = {
+				donda2: { count: 60, folder: '../images/donda-2-scroll-frames', lastFrame: -1, yMove: 26, rotate: -3, scale: 0.1 },
+				yeezus: { count: 60, folder: '../images/yeezus-scroll-frames', lastFrame: -1, yMove: 24, rotate: 4, scale: 0.1 },
+				vultures: { count: 60, folder: '../images/vultures-scroll-frames', lastFrame: -1, yMove: 28, rotate: -5, scale: 0.12 }
+			};
+			Object.values(scrollAlbumAnimations).forEach((animation) => {
+				animation.paths = Array.from({ length: animation.count }, (_, index) => {
+					return `${animation.folder}/frame-${String(index).padStart(3, '0')}.webp`;
+				});
+			});
+			const yandhiFrameCount = 60;
+			const yandhiFramePaths = Array.from({ length: yandhiFrameCount }, (_, index) => {
+				return `../images/yandhi-scroll-frames/frame-${String(index).padStart(3, '0')}.webp`;
+			});
+			let yandhiLastFrame = -1;
+			const navLinks = [...document.querySelectorAll('.nav-links a')];
+			const navSections = navLinks
+				.map(link => document.querySelector(link.getAttribute('href')))
+				.filter(Boolean);
+
+			function clamp(value, min = 0, max = 1) {
+				return Math.min(max, Math.max(min, value));
+			}
+
+			function smoothStep(value) {
+				const clamped = clamp(value);
+				return clamped * clamped * (3 - 2 * clamped);
+			}
+
+			if (yandhiScrollGif && !reduceMotion) {
+				yandhiFramePaths.forEach((src) => {
+					const frame = new Image();
+					frame.src = src;
+				});
+			}
+
+			if (!reduceMotion) {
+				Object.values(scrollAlbumAnimations).forEach((animation) => {
+					animation.paths.forEach((src) => {
+						const frame = new Image();
+						frame.src = src;
+					});
+				});
+			}
 
 		function updateActiveNav() {
 			const current = navSections
@@ -2079,20 +2501,88 @@
 			});
 		}
 
-		function updateScrollEffects() {
-			const scrollTop = window.scrollY;
-			const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-			progress.style.width = `${(scrollTop / docHeight) * 100}%`;
+			function updateScrollEffects() {
+				const scrollTop = window.scrollY;
+				const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+				progress.style.width = `${(scrollTop / docHeight) * 100}%`;
 
-			const rect = timelineWrap.getBoundingClientRect();
-			const timelineHeight = timelineWrap.offsetHeight - window.innerHeight * 0.25;
-			const progressWithin = Math.min(1, Math.max(0, (window.innerHeight * 0.65 - rect.top) / timelineHeight));
-			timelineFill.style.height = `${progressWithin * 100}%`;
-			updateActiveNav();
-		}
+				const rect = timelineWrap.getBoundingClientRect();
+				const timelineHeight = timelineWrap.offsetHeight - window.innerHeight * 0.25;
+				const progressWithin = clamp((window.innerHeight * 0.65 - rect.top) / timelineHeight);
+				timelineFill.style.height = `${progressWithin * 100}%`;
 
-		window.addEventListener('scroll', updateScrollEffects);
-		updateScrollEffects();
+				if (albumsSection && !reduceMotion && !narrowScreen.matches) {
+					const albumRect = albumsSection.getBoundingClientRect();
+					const albumProgress = smoothStep((window.innerHeight * 0.2 - albumRect.top) / (albumRect.height * 0.28));
+					albumsSection.style.setProperty('--album-bg-blur', `${albumProgress * 16}px`);
+					albumsSection.style.setProperty('--album-bg-scale', `${1.02 + albumProgress * 0.08}`);
+					albumsSection.style.setProperty('--album-shade', `${0.18 + albumProgress * 0.62}`);
+					albumsSection.style.setProperty('--album-content-opacity', `${albumProgress}`);
+					albumsSection.style.setProperty('--album-content-y', `${(1 - albumProgress) * 92}px`);
+				} else if (albumsSection) {
+					albumsSection.style.setProperty('--album-bg-blur', '0px');
+					albumsSection.style.setProperty('--album-bg-scale', '1');
+					albumsSection.style.setProperty('--album-shade', '0.72');
+					albumsSection.style.setProperty('--album-content-opacity', '1');
+					albumsSection.style.setProperty('--album-content-y', '0px');
+				}
+
+				if (influenceSection && !reduceMotion && !narrowScreen.matches) {
+					const influenceRect = influenceSection.getBoundingClientRect();
+					const influenceProgress = smoothStep((window.innerHeight * 0.18 - influenceRect.top) / (influenceRect.height * 0.24));
+					influenceSection.style.setProperty('--influence-bg-blur', `${influenceProgress * 16}px`);
+					influenceSection.style.setProperty('--influence-bg-scale', `${1.02 + influenceProgress * 0.08}`);
+					influenceSection.style.setProperty('--influence-shade', `${0.2 + influenceProgress * 0.58}`);
+					influenceSection.style.setProperty('--influence-content-opacity', `${influenceProgress}`);
+					influenceSection.style.setProperty('--influence-content-y', `${(1 - influenceProgress) * 86}px`);
+				} else if (influenceSection) {
+					influenceSection.style.setProperty('--influence-bg-blur', '0px');
+					influenceSection.style.setProperty('--influence-bg-scale', '1');
+					influenceSection.style.setProperty('--influence-shade', '0.74');
+					influenceSection.style.setProperty('--influence-content-opacity', '1');
+					influenceSection.style.setProperty('--influence-content-y', '0px');
+				}
+
+				if (yandhiScrollGif && !reduceMotion) {
+					const gifRect = yandhiScrollGif.getBoundingClientRect();
+					const scrollRange = window.innerHeight + gifRect.height;
+					const gifProgress = clamp((window.innerHeight - gifRect.top) / scrollRange);
+					const frameIndex = Math.abs(Math.round(scrollTop / 14)) % yandhiFrameCount;
+					const yMove = (gifProgress - 0.5) * 34;
+					const rotate = (gifProgress - 0.5) * 7;
+					const glow = 1 + gifProgress * 0.24;
+					if (frameIndex !== yandhiLastFrame) {
+						yandhiScrollGif.src = yandhiFramePaths[frameIndex];
+						yandhiLastFrame = frameIndex;
+					}
+					yandhiScrollGif.style.transform = `translateY(${yMove}px) rotate(${rotate}deg) scale(${glow})`;
+				}
+
+				if (!reduceMotion) {
+					document.querySelectorAll('[data-scroll-album]').forEach((image) => {
+						const animation = scrollAlbumAnimations[image.dataset.scrollAlbum];
+						if (!animation) return;
+						const gifRect = image.getBoundingClientRect();
+						const scrollRange = window.innerHeight + gifRect.height;
+						const gifProgress = clamp((window.innerHeight - gifRect.top) / scrollRange);
+						const frameIndex = Math.abs(Math.round(scrollTop / 14)) % animation.count;
+						const yMove = (gifProgress - 0.5) * animation.yMove;
+						const rotate = (gifProgress - 0.5) * animation.rotate;
+						const scale = 1 + gifProgress * animation.scale;
+						if (image.dataset.lastFrame !== String(frameIndex)) {
+							image.src = animation.paths[frameIndex];
+							image.dataset.lastFrame = String(frameIndex);
+						}
+						image.style.transform = `translateY(${yMove}px) rotate(${rotate}deg) scale(${scale})`;
+					});
+				}
+
+				updateActiveNav();
+			}
+
+			window.addEventListener('scroll', updateScrollEffects);
+			window.addEventListener('resize', updateScrollEffects);
+			updateScrollEffects();
 
 		const cursorGlow = document.getElementById('cursorGlow');
 		window.addEventListener('mousemove', (e) => {
