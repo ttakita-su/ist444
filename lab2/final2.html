@@ -78,15 +78,18 @@
 
 		.cursor-glow {
 			position: fixed;
+			left: 0;
+			top: 0;
 			width: 420px;
 			height: 420px;
 			border-radius: 50%;
 			background:
 				radial-gradient(circle, rgba(215, 181, 109, 0.18), rgba(184, 68, 53, 0.08) 34%, transparent 68%);
-			transform: translate(-50%, -50%);
+			transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
 			pointer-events: none;
 			z-index: 1;
 			mix-blend-mode: screen;
+			will-change: transform;
 		}
 
 		.progress {
@@ -94,9 +97,12 @@
 			top: 0;
 			left: 0;
 			height: 4px;
-			width: 0%;
+			width: 100%;
 			background: linear-gradient(90deg, var(--gold), var(--red), var(--blue));
 			box-shadow: 0 0 18px rgba(215, 181, 109, 0.7);
+			transform: scaleX(0);
+			transform-origin: left center;
+			will-change: transform;
 			z-index: 999;
 		}
 
@@ -1314,9 +1320,12 @@
 			left: 20px;
 			top: 0;
 			width: 2px;
-			height: 0%;
+			height: 100%;
 			background: linear-gradient(var(--gold), #b84435);
 			box-shadow: 0 0 22px rgba(215, 181, 109, 0.36);
+			transform: scaleY(0);
+			transform-origin: top center;
+			will-change: transform;
 		}
 
 		.timeline-item {
@@ -1750,19 +1759,19 @@
 
 				<div class="intro-grid">
 					<article class="intro-card reveal">
-						<img src="../images/kanye-studio.jpg" alt="Kanye West working in a recording studio">
+						<img loading="lazy" decoding="async" src="../images/kanye-studio.jpg" alt="Kanye West working in a recording studio">
 						<span class="tag">Music</span>
 						<h3>Artist and Producer</h3>
 						<p>Kanye helped popularize soulful sample-based production in the early 2000s, then later pushed hip-hop toward electronic sounds, Auto-Tune, gospel, industrial music, and stadium-sized album experiences.</p>
 					</article>
 					<article class="intro-card reveal">
-						<img src="../images/yeezy-350-v2-zebra.jpg" alt="Adidas Yeezy Boost sneaker">
+						<img loading="lazy" decoding="async" src="../images/yeezy-350-v2-zebra.jpg" alt="Adidas Yeezy Boost sneaker">
 						<span class="tag">Fashion</span>
 						<h3>Yeezy Designer</h3>
 						<p>Through Yeezy, Kanye helped make earth tones , oversized fits, futuristic footwear, and minimalist streetwear a major part of modern fashion.</p>
 					</article>
 					<article class="intro-card reveal">
-						<img src="../images/kanye-performing.jpg" alt="Kanye West performing on stage">
+						<img loading="lazy" decoding="async" src="../images/kanye-performing.jpg" alt="Kanye West performing on stage">
 						<span class="tag">Culture</span>
 						<h3>Creative Disruptor</h3>
 						<p>His influence goes beyond music. Album rollouts, listening parties, sneaker drops, fashion shows, and visual branding became part of his artistic identity.</p>
@@ -1834,19 +1843,19 @@
 
 					<div class="unreleased-panel active" id="facts">
 						<article class="card reveal">
-							<img class="card-img yandhi-scroll-gif" id="yandhiScrollGif" src="../images/yandhi-scroll-frames/frame-000.webp" alt="Scroll-controlled animated Yandhi cover art">
+							<img loading="lazy" decoding="async" class="card-img yandhi-scroll-gif" id="yandhiScrollGif" src="../images/yandhi-scroll-frames/frame-000.webp" alt="Scroll-controlled animated Yandhi cover art">
 							<span class="tag">Yandhi</span>
 							<h3>The most famous missing Kanye album.</h3>
 							<p>Yandhi was publicly expected in 2018, delayed more than once, and never released in its original form. Some ideas and songs from that period later changed direction or appeared in later Kanye projects.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img scroll-album-gif" data-scroll-album="donda2" src="../images/donda-2-scroll-frames/frame-000.webp" alt="Scroll-controlled Donda 2 burning house cover art">
+						<img loading="lazy" decoding="async" class="card-img scroll-album-gif" data-scroll-album="donda2" src="../images/donda-2-scroll-frames/frame-000.webp" alt="Scroll-controlled Donda 2 burning house cover art">
 						<span class="tag">Donda 2</span>
 						<h3>A hardware-era album experiment.</h3>
 						<p>Donda 2 was tied to the Stem Player rather than a normal streaming rollout. It is best described as unfinished, mutable, and unusual in how it challenged the normal album-release model.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img" src="../images/turbo-grafx-16-kanye-west-cover.jpg" alt="Kanye West TurboGrafx 16 cover art">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/turbo-grafx-16-kanye-west-cover.jpg" alt="Kanye West TurboGrafx 16 cover art">
 						<span class="tag">TurboGrafx16</span>
 						<h3>A title that became fan mythology.</h3>
 						<p>Kanye announced TurboGrafx16 in 2016, named after the video game console, but no official stable public version became a standard released album.</p>
@@ -1855,19 +1864,19 @@
 
 				<div class="unreleased-panel" id="fanlore">
 					<article class="card">
-						<img class="card-img" src="../images/yandhi-minidisc.png" alt="MiniDisc and battery inspired by Yandhi fan lore">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/yandhi-minidisc.png" alt="MiniDisc and battery inspired by Yandhi fan lore">
 						<span class="tag">Fan favorite</span>
 						<h3>Yandhi as the missing bridge.</h3>
 						<p>Many fans imagine Yandhi as the bridge between the chaotic 2018 Ye era and the religious direction of Jesus Is King. That makes it feel like an alternate timeline in his discography.</p>
 					</article>
 					<article class="card">
-						<img class="card-img" src="../images/recording-console.jpg" alt="Recording studio mixing console">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/recording-console.jpg" alt="Recording studio mixing console">
 						<span class="tag">Leaks</span>
 						<h3>Why leaks became part of the story.</h3>
 						<p>Unreleased Kanye songs circulate heavily in fan communities, which makes fans feel like they are watching drafts, sketches, and abandoned ideas rather than only finished albums.</p>
 					</article>
 					<article class="card">
-						<img class="card-img" src="../images/archive-room.jpg" alt="Archive room shelves">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/archive-room.jpg" alt="Archive room shelves">
 						<span class="tag">Careful wording</span>
 						<h3>Do not fake a final tracklist.</h3>
 						<p>For unreleased albums, use words like reported, leaked, rumored, fan-favorite, or early version. Avoid presenting fan-made tracklists as official.</p>
@@ -1876,19 +1885,19 @@
 
 				<div class="unreleased-panel" id="siteidea">
 					<article class="card">
-						<img class="card-img" src="../images/archive-room.jpg" alt="Archive room for fan page design inspiration">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/archive-room.jpg" alt="Archive room for fan page design inspiration">
 						<span class="tag">Design idea</span>
 						<h3>Use a split card design.</h3>
 						<p>Put confirmed facts on the left and fan theories on the right. This lets visitors enjoy the mystery without confusing speculation with verified history.</p>
 					</article>
 					<article class="card">
-						<img class="card-img" src="../images/kanye-sxsw.jpg" alt="Kanye West at a public music event">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/kanye-sxsw.jpg" alt="Kanye West at a public music event">
 						<span class="tag">Interactive</span>
 						<h3>Add a “what if?” poll.</h3>
 						<p>Ask: Which unreleased project would you want officially finished? Options: Yandhi, TurboGrafx16, Good Ass Job, So Help Me God, Donda 2.</p>
 					</article>
 					<article class="card">
-						<img class="card-img" src="../images/yandhi-minidisc.png" alt="MiniDisc archive object">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/yandhi-minidisc.png" alt="MiniDisc archive object">
 						<span class="tag">Tone</span>
 						<h3>Make it feel like an archive room.</h3>
 						<p>Use darker colors, blurred cards, and labels like Draft, Lost Era, Fan Myth, and Alternate Timeline to make this section visually different.</p>
@@ -1911,13 +1920,13 @@
 
 				<div class="grid two">
 					<article class="card reveal">
-						<img class="card-img" src="../images/yeezy-red-octobers.jpg" alt="Nike Air Yeezy Red October sneakers">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/yeezy-red-octobers.jpg" alt="Nike Air Yeezy Red October sneakers">
 						<span class="tag">Nike chapter</span>
 						<h3>Air Yeezy made a musician signature shoe feel historic.</h3>
 						<p>Before adidas, Kanye's Nike Air Yeezy proved that a non-athlete could create real sneaker hysteria. This matters because it changed expectations for what a musician's product collaboration could be.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img" src="../images/yeezy-350-v2-onyx.jpg" alt="Adidas Yeezy Boost 350 V2 sneakers">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/yeezy-350-v2-onyx.jpg" alt="Adidas Yeezy Boost 350 V2 sneakers">
 						<span class="tag">adidas chapter</span>
 						<h3>The 350, 700, 500, Slide, and Foam Runner became a design system.</h3>
 						<p>The adidas era turned Yeezy into a full footwear identity: knit runners, chunky sneakers, minimal slides, and alien-looking foam shoes. The brand did not rely on one silhouette.</p>
@@ -1931,7 +1940,7 @@
 						<p>Yeezy Gap was built around accessible basics, hoodies, jackets, and muted colors. Kanye's public idea of extremely affordable basics, including the $20 clothing dream, works best as an ambition rather than the actual price of most major pieces.</p>
 					</article>
 					<article class="card reveal">
-						<img class="card-img" src="../images/yeezy-samples.jpg" alt="Yeezy sample designs">
+						<img loading="lazy" decoding="async" class="card-img" src="../images/yeezy-samples.jpg" alt="Yeezy sample designs">
 						<span class="tag">Design language</span>
 						<h3>Earth tones, oversized shapes, and futuristic utility.</h3>
 						<p>Yeezy's look is easy to recognize: beige, gray, brown, black, sculptural shoes, minimal logos, oversized fits, and clothing that feels like a uniform from a future city.</p>
@@ -1950,7 +1959,7 @@
 
 				<div class="yeezy-showcase reveal">
 					<article class="featured-yeezy">
-						<img id="featuredYeezyImage" src="../images/yeezy-350-v2-zebra.jpg" alt="Yeezy Boost 350 V2 sneaker">
+						<img loading="lazy" decoding="async" id="featuredYeezyImage" src="../images/yeezy-350-v2-zebra.jpg" alt="Yeezy Boost 350 V2 sneaker">
 						<div class="featured-copy">
 							<span class="tag" id="featuredYeezyEra">adidas chapter</span>
 							<h3 id="featuredYeezyName">Yeezy Boost 350 V2</h3>
@@ -1979,7 +1988,7 @@
 					<div class="impact-list">
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/influence-production-kanye.jpg" alt="Kanye West performing during his early producer-rapper era">
+								<img loading="lazy" decoding="async" src="../images/influence-production-kanye.jpg" alt="Kanye West performing during his early producer-rapper era">
 								<div class="impact-number">1</div>
 							</div>
 						<div class="impact-copy">
@@ -1991,7 +2000,7 @@
 						</article>
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/album-808s-heartbreak.jpg" alt="808s and Heartbreak album cover with the deflated heart balloon">
+								<img loading="lazy" decoding="async" src="../images/album-808s-heartbreak.jpg" alt="808s and Heartbreak album cover with the deflated heart balloon">
 								<div class="impact-number">2</div>
 							</div>
 						<div class="impact-copy">
@@ -2003,7 +2012,7 @@
 						</article>
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/influence-saint-pablo-stage.jpg" alt="Kanye West performing on the floating Saint Pablo Tour stage">
+								<img loading="lazy" decoding="async" src="../images/influence-saint-pablo-stage.jpg" alt="Kanye West performing on the floating Saint Pablo Tour stage">
 								<div class="impact-number">3</div>
 							</div>
 						<div class="impact-copy">
@@ -2015,7 +2024,7 @@
 						</article>
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/influence-yeezy-350-onyx.jpg" alt="Adidas Yeezy Boost 350 V2 Onyx sneakers">
+								<img loading="lazy" decoding="async" src="../images/influence-yeezy-350-onyx.jpg" alt="Adidas Yeezy Boost 350 V2 Onyx sneakers">
 								<div class="impact-number">4</div>
 							</div>
 						<div class="impact-copy">
@@ -2027,7 +2036,7 @@
 						</article>
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/influence-yeezus-stage.jpg" alt="Yeezus Tour stage design with mountain set">
+								<img loading="lazy" decoding="async" src="../images/influence-yeezus-stage.jpg" alt="Yeezus Tour stage design with mountain set">
 								<div class="impact-number">5</div>
 							</div>
 						<div class="impact-copy">
@@ -2039,7 +2048,7 @@
 						</article>
 						<article class="impact-item reveal">
 							<div class="impact-media">
-								<img src="../images/influence-legacy-public.jpg" alt="Kanye West meeting President Donald Trump in the Oval Office in 2018">
+								<img loading="lazy" decoding="async" src="../images/influence-legacy-public.jpg" alt="Kanye West meeting President Donald Trump in the Oval Office in 2018">
 								<div class="impact-number">6</div>
 							</div>
 						<div class="impact-copy">
@@ -2109,7 +2118,7 @@
 				<span>Volume</span>
 				<input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.35">
 			</label>
-			<audio id="archiveAudio" loop preload="auto" src="../music/yandhi/06hurricane.mp3"></audio>
+			<audio id="archiveAudio" loop preload="none" src="../music/yandhi/06hurricane.mp3"></audio>
 		</div>
 	</aside>
 
@@ -2230,7 +2239,7 @@
 					<div class="timeline-dot"></div>
 					<div class="timeline-card">
 						<div class="timeline-cover">
-							<img src="${era.image}" alt="${era.title} album cover">
+							<img loading="lazy" decoding="async" src="${era.image}" alt="${era.title} album cover">
 						</div>
 						<div>
 							<div class="year">${era.year}</div>
@@ -2243,6 +2252,12 @@
 		});
 
 			const albumGrid = document.getElementById('albumGrid');
+			let scrollAlbumImages = [];
+
+			function refreshScrollAlbumImages() {
+				scrollAlbumImages = [...document.querySelectorAll('[data-scroll-album]')];
+			}
+
 			function renderAlbums(filter = 'all') {
 				albumGrid.innerHTML = '';
 				albums.filter(album => filter === 'all' || album.filter === filter).forEach((album) => {
@@ -2250,7 +2265,7 @@
 					albumGrid.insertAdjacentHTML('beforeend', `
 						<article class="card album-card reveal in-view" data-index="${albums.indexOf(album)}">
 							<div>
-								<img class="card-img${scrollKey ? ' scroll-album-gif' : ''}"${scrollKey ? ` data-scroll-album="${scrollKey}"` : ''} src="${album.image}" alt="${album.title} album cover">
+								<img loading="lazy" decoding="async" class="card-img${scrollKey ? ' scroll-album-gif' : ''}"${scrollKey ? ` data-scroll-album="${scrollKey}"` : ''} src="${album.image}" alt="${album.title} album cover">
 								<span class="tag">${album.year}</span>
 							<h3>${album.title}</h3>
 							<p>${album.summary}</p>
@@ -2263,6 +2278,7 @@
 					</article>
 				`);
 			});
+			refreshScrollAlbumImages();
 		}
 		renderAlbums();
 
@@ -2271,7 +2287,7 @@
 				document.querySelectorAll('#albumControls .chip').forEach(btn => btn.classList.remove('active'));
 				e.target.classList.add('active');
 				renderAlbums(e.target.dataset.filter);
-				requestAnimationFrame(updateScrollEffects);
+				requestScrollEffectsUpdate();
 			});
 
 		const modal = document.getElementById('albumModal');
@@ -2321,11 +2337,12 @@
 		popularYeezys.forEach((shoe, index) => {
 			yeezyPicker.insertAdjacentHTML('beforeend', `
 				<button class="yeezy-thumb${index === 0 ? ' active' : ''}" type="button" data-index="${index}">
-					<img src="${shoe.thumb}" alt="${shoe.name} thumbnail">
+					<img loading="lazy" decoding="async" src="${shoe.thumb}" alt="${shoe.name} thumbnail">
 					<span><strong>${shoe.name}</strong>${shoe.era}</span>
 				</button>
 			`);
 		});
+		const yeezyThumbs = [...yeezyPicker.querySelectorAll('.yeezy-thumb')];
 
 		function showYeezy(index) {
 			activeYeezy = index;
@@ -2339,7 +2356,7 @@
 				featuredYeezyInfo.textContent = shoe.info;
 				requestAnimationFrame(() => featuredYeezyImage.classList.remove('switching'));
 			}, 140);
-			document.querySelectorAll('.yeezy-thumb').forEach((button, buttonIndex) => {
+			yeezyThumbs.forEach((button, buttonIndex) => {
 				button.classList.toggle('active', buttonIndex === activeYeezy);
 			});
 		}
@@ -2461,10 +2478,18 @@
 				return `../images/yandhi-scroll-frames/frame-${String(index).padStart(3, '0')}.webp`;
 			});
 			let yandhiLastFrame = -1;
+			const frameCache = [];
+			const queuedFrameSrcs = new Set();
+			const framePreloadQueue = [];
+			let framePreloadScheduled = false;
+			const requestIdle = window.requestIdleCallback || ((callback) => {
+				return window.setTimeout(() => callback({ timeRemaining: () => 8 }), 120);
+			});
 			const navLinks = [...document.querySelectorAll('.nav-links a')];
 			const navSections = navLinks
 				.map(link => document.querySelector(link.getAttribute('href')))
 				.filter(Boolean);
+			let activeNavId = '';
 
 			function clamp(value, min = 0, max = 1) {
 				return Math.min(max, Math.max(min, value));
@@ -2475,20 +2500,40 @@
 				return clamped * clamped * (3 - 2 * clamped);
 			}
 
-			if (yandhiScrollGif && !reduceMotion) {
-				yandhiFramePaths.forEach((src) => {
-					const frame = new Image();
-					frame.src = src;
+			function isNearViewport(rect, margin = window.innerHeight) {
+				return rect.bottom > -margin && rect.top < window.innerHeight + margin;
+			}
+
+			function scheduleFramePreload() {
+				if (framePreloadScheduled) return;
+				framePreloadScheduled = true;
+				requestIdle((deadline) => {
+					framePreloadScheduled = false;
+					let loadedThisPass = 0;
+					while (framePreloadQueue.length && loadedThisPass < 8 && (loadedThisPass === 0 || deadline.timeRemaining() > 2)) {
+						const src = framePreloadQueue.shift();
+						const frame = new Image();
+						frame.decoding = 'async';
+						frame.src = src;
+						frameCache.push(frame);
+						loadedThisPass += 1;
+					}
+					if (framePreloadQueue.length) scheduleFramePreload();
 				});
 			}
 
-			if (!reduceMotion) {
-				Object.values(scrollAlbumAnimations).forEach((animation) => {
-					animation.paths.forEach((src) => {
-						const frame = new Image();
-						frame.src = src;
-					});
+			function queueFramePreload(paths) {
+				paths.forEach((src) => {
+					if (queuedFrameSrcs.has(src)) return;
+					queuedFrameSrcs.add(src);
+					framePreloadQueue.push(src);
 				});
+				scheduleFramePreload();
+			}
+
+			if (!reduceMotion) {
+				if (yandhiScrollGif) queueFramePreload(yandhiFramePaths);
+				Object.values(scrollAlbumAnimations).forEach((animation) => queueFramePreload(animation.paths));
 			}
 
 		function updateActiveNav() {
@@ -2496,6 +2541,8 @@
 				.slice()
 				.reverse()
 				.find(section => section.getBoundingClientRect().top <= 140) || navSections[0];
+			if (!current || current.id === activeNavId) return;
+			activeNavId = current.id;
 			navLinks.forEach(link => {
 				link.classList.toggle('active', link.getAttribute('href') === `#${current.id}`);
 			});
@@ -2504,21 +2551,24 @@
 			function updateScrollEffects() {
 				const scrollTop = window.scrollY;
 				const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-				progress.style.width = `${(scrollTop / docHeight) * 100}%`;
+				const pageProgress = docHeight > 0 ? clamp(scrollTop / docHeight) : 0;
+				progress.style.transform = `scaleX(${pageProgress})`;
 
 				const rect = timelineWrap.getBoundingClientRect();
 				const timelineHeight = timelineWrap.offsetHeight - window.innerHeight * 0.25;
 				const progressWithin = clamp((window.innerHeight * 0.65 - rect.top) / timelineHeight);
-				timelineFill.style.height = `${progressWithin * 100}%`;
+				timelineFill.style.transform = `scaleY(${progressWithin})`;
 
 				if (albumsSection && !reduceMotion && !narrowScreen.matches) {
 					const albumRect = albumsSection.getBoundingClientRect();
-					const albumProgress = smoothStep((window.innerHeight * 0.2 - albumRect.top) / (albumRect.height * 0.28));
-					albumsSection.style.setProperty('--album-bg-blur', `${albumProgress * 16}px`);
-					albumsSection.style.setProperty('--album-bg-scale', `${1.02 + albumProgress * 0.08}`);
-					albumsSection.style.setProperty('--album-shade', `${0.18 + albumProgress * 0.62}`);
-					albumsSection.style.setProperty('--album-content-opacity', `${albumProgress}`);
-					albumsSection.style.setProperty('--album-content-y', `${(1 - albumProgress) * 92}px`);
+					if (isNearViewport(albumRect, window.innerHeight * 0.8)) {
+						const albumProgress = smoothStep((window.innerHeight * 0.2 - albumRect.top) / (albumRect.height * 0.28));
+						albumsSection.style.setProperty('--album-bg-blur', `${albumProgress * 16}px`);
+						albumsSection.style.setProperty('--album-bg-scale', `${1.02 + albumProgress * 0.08}`);
+						albumsSection.style.setProperty('--album-shade', `${0.18 + albumProgress * 0.62}`);
+						albumsSection.style.setProperty('--album-content-opacity', `${albumProgress}`);
+						albumsSection.style.setProperty('--album-content-y', `${(1 - albumProgress) * 92}px`);
+					}
 				} else if (albumsSection) {
 					albumsSection.style.setProperty('--album-bg-blur', '0px');
 					albumsSection.style.setProperty('--album-bg-scale', '1');
@@ -2529,12 +2579,14 @@
 
 				if (influenceSection && !reduceMotion && !narrowScreen.matches) {
 					const influenceRect = influenceSection.getBoundingClientRect();
-					const influenceProgress = smoothStep((window.innerHeight * 0.18 - influenceRect.top) / (influenceRect.height * 0.24));
-					influenceSection.style.setProperty('--influence-bg-blur', `${influenceProgress * 16}px`);
-					influenceSection.style.setProperty('--influence-bg-scale', `${1.02 + influenceProgress * 0.08}`);
-					influenceSection.style.setProperty('--influence-shade', `${0.2 + influenceProgress * 0.58}`);
-					influenceSection.style.setProperty('--influence-content-opacity', `${influenceProgress}`);
-					influenceSection.style.setProperty('--influence-content-y', `${(1 - influenceProgress) * 86}px`);
+					if (isNearViewport(influenceRect, window.innerHeight * 0.8)) {
+						const influenceProgress = smoothStep((window.innerHeight * 0.18 - influenceRect.top) / (influenceRect.height * 0.24));
+						influenceSection.style.setProperty('--influence-bg-blur', `${influenceProgress * 16}px`);
+						influenceSection.style.setProperty('--influence-bg-scale', `${1.02 + influenceProgress * 0.08}`);
+						influenceSection.style.setProperty('--influence-shade', `${0.2 + influenceProgress * 0.58}`);
+						influenceSection.style.setProperty('--influence-content-opacity', `${influenceProgress}`);
+						influenceSection.style.setProperty('--influence-content-y', `${(1 - influenceProgress) * 86}px`);
+					}
 				} else if (influenceSection) {
 					influenceSection.style.setProperty('--influence-bg-blur', '0px');
 					influenceSection.style.setProperty('--influence-bg-scale', '1');
@@ -2545,24 +2597,27 @@
 
 				if (yandhiScrollGif && !reduceMotion) {
 					const gifRect = yandhiScrollGif.getBoundingClientRect();
-					const scrollRange = window.innerHeight + gifRect.height;
-					const gifProgress = clamp((window.innerHeight - gifRect.top) / scrollRange);
-					const frameIndex = Math.abs(Math.round(scrollTop / 14)) % yandhiFrameCount;
-					const yMove = (gifProgress - 0.5) * 34;
-					const rotate = (gifProgress - 0.5) * 7;
-					const glow = 1 + gifProgress * 0.24;
-					if (frameIndex !== yandhiLastFrame) {
-						yandhiScrollGif.src = yandhiFramePaths[frameIndex];
-						yandhiLastFrame = frameIndex;
+					if (isNearViewport(gifRect, window.innerHeight * 0.75)) {
+						const scrollRange = window.innerHeight + gifRect.height;
+						const gifProgress = clamp((window.innerHeight - gifRect.top) / scrollRange);
+						const frameIndex = Math.abs(Math.round(scrollTop / 14)) % yandhiFrameCount;
+						const yMove = (gifProgress - 0.5) * 34;
+						const rotate = (gifProgress - 0.5) * 7;
+						const glow = 1 + gifProgress * 0.24;
+						if (frameIndex !== yandhiLastFrame) {
+							yandhiScrollGif.src = yandhiFramePaths[frameIndex];
+							yandhiLastFrame = frameIndex;
+						}
+						yandhiScrollGif.style.transform = `translateY(${yMove}px) rotate(${rotate}deg) scale(${glow})`;
 					}
-					yandhiScrollGif.style.transform = `translateY(${yMove}px) rotate(${rotate}deg) scale(${glow})`;
 				}
 
-				if (!reduceMotion) {
-					document.querySelectorAll('[data-scroll-album]').forEach((image) => {
+				if (!reduceMotion && scrollAlbumImages.length) {
+					scrollAlbumImages.forEach((image) => {
 						const animation = scrollAlbumAnimations[image.dataset.scrollAlbum];
 						if (!animation) return;
 						const gifRect = image.getBoundingClientRect();
+						if (!isNearViewport(gifRect, window.innerHeight * 0.75)) return;
 						const scrollRange = window.innerHeight + gifRect.height;
 						const gifProgress = clamp((window.innerHeight - gifRect.top) / scrollRange);
 						const frameIndex = Math.abs(Math.round(scrollTop / 14)) % animation.count;
@@ -2580,15 +2635,37 @@
 				updateActiveNav();
 			}
 
-			window.addEventListener('scroll', updateScrollEffects);
-			window.addEventListener('resize', updateScrollEffects);
+			let scrollUpdateScheduled = false;
+			function requestScrollEffectsUpdate() {
+				if (scrollUpdateScheduled) return;
+				scrollUpdateScheduled = true;
+				requestAnimationFrame(() => {
+					scrollUpdateScheduled = false;
+					updateScrollEffects();
+				});
+			}
+
+			window.addEventListener('scroll', requestScrollEffectsUpdate, { passive: true });
+			window.addEventListener('resize', requestScrollEffectsUpdate);
 			updateScrollEffects();
 
 		const cursorGlow = document.getElementById('cursorGlow');
+		let cursorUpdateScheduled = false;
+		let cursorX = -999;
+		let cursorY = -999;
+
+		function updateCursorGlow() {
+			cursorUpdateScheduled = false;
+			cursorGlow.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+		}
+
 		window.addEventListener('mousemove', (e) => {
-			cursorGlow.style.left = `${e.clientX}px`;
-			cursorGlow.style.top = `${e.clientY}px`;
-		});
+			cursorX = e.clientX;
+			cursorY = e.clientY;
+			if (cursorUpdateScheduled) return;
+			cursorUpdateScheduled = true;
+			requestAnimationFrame(updateCursorGlow);
+		}, { passive: true });
 	</script>
 </body>
 </html>
