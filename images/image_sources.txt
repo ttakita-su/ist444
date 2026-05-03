@@ -53,6 +53,9 @@ Influence section additions:
 - influence-yeezus-stage.jpg: https://commons.wikimedia.org/wiki/File:Yeezus_Tour_Stage.jpg
 - influence-legacy-public.jpg: https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_Kanye_West_2018-10-11.jpg
 - influence-saint-pablo-stage.jpg: https://commons.wikimedia.org/wiki/File:Saint_pablo_tour.jpg
+- yeezy-adidas-lineup-kickscrew.jpg: https://www.kickscrew.com/en-ae/blogs/sneakernews/what-is-the-best-yeezy-350-v2-colorway
+- yeezy-designer-shoe-circle-forbes.jpg: https://www.forbesindia.com/article/cross-border/kanyes-second-coming/54559/1
+- donda-rollout-stadium-house.jpg: https://christopherborrelli.com/2021/08/27/kanye-west-gives-fans-a-remarkable-bonkers-experience-at-soldier-field-donda-listening-party-with-marilyn-manson-dababy-and-kim-kardashian/
 
 Music folder:
 - ../music/soul-sample-loop.wav, ../music/808-heartbreak-loop.wav, and
