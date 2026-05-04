@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kanye West Archive Style Tile</title>
+
+	<style>
+		:root {
+			--bg: #080807;
+			--bg-soft: #11100e;
+			--card: rgba(255, 255, 255, 0.06);
+			--card-strong: rgba(255, 255, 255, 0.1);
+			--line: rgba(255, 255, 255, 0.13);
+			--text: #f5f0e8;
+			--muted: #c9beb0;
+			--dim: #8f8578;
+			--gold: #d7b56d;
+			--gold-soft: rgba(215, 181, 109, 0.16);
+			--red: #b84435;
+			--blue: #5aa7ff;
+			--green: #7b9b6f;
+			--shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+			--glow: 0 0 36px rgba(215, 181, 109, 0.18);
+			--radius: 24px;
+			--max: 1180px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			min-height: 100vh;
+			font-family: Inter, Arial, Helvetica, sans-serif;
+			background:
+				radial-gradient(circle at 20% 10%, rgba(215, 181, 109, 0.16), transparent 26rem),
+				radial-gradient(circle at 80% 25%, rgba(184, 68, 53, 0.11), transparent 24rem),
+				linear-gradient(180deg, #0b0a09 0%, var(--bg) 42%, #0d0c0a 100%);
+			color: var(--text);
+			line-height: 1.65;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			background:
+				linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+			background-size: 64px 64px;
+			mask-image: linear-gradient(180deg, transparent, #000 20%, #000 78%, transparent);
+		}
+
+		body::after {
+			content: "";
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			opacity: 0.055;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		}
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.page {
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero {
+			min-height: 82vh;
+			display: grid;
+			align-items: end;
+			padding: 92px 22px 54px;
+			position: relative;
+			overflow: hidden;
+			isolation: isolate;
+			background:
+				linear-gradient(135deg, rgba(8, 8, 7, 0.48), rgba(8, 8, 7, 0.9)),
+				url("../images/kanye-performing.jpg") center / cover;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.hero::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			background:
+				linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+				radial-gradient(circle at 50% 42%, rgba(215, 181, 109, 0.2), transparent 26rem),
+				linear-gradient(180deg, rgba(8, 8, 7, 0.24), rgba(8, 8, 7, 0.92));
+			background-size: 120px 100%, auto, auto;
+		}
+
+		.hero-inner,
+		.section-inner {
+			width: min(var(--max), 100%);
+			margin: 0 auto;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			color: var(--gold);
+			border: 1px solid var(--line);
+			background: var(--card);
+			padding: 8px 14px;
+			border-radius: 999px;
+			text-transform: uppercase;
+			font-size: 0.78rem;
+			letter-spacing: 0.16em;
+			margin-bottom: 22px;
+			backdrop-filter: blur(18px);
+			box-shadow: var(--glow);
+		}
+
+		.pulse-dot {
+			width: 8px;
+			height: 8px;
+			background: var(--gold);
+			border-radius: 50%;
+			box-shadow: 0 0 0 8px rgba(215, 181, 109, 0.08);
+		}
+
+		h1 {
+			max-width: 860px;
+			font-size: clamp(3.2rem, 11vw, 8.8rem);
+			line-height: 0.86;
+			letter-spacing: -0.08em;
+			text-transform: uppercase;
+			margin-bottom: 24px;
+			background: linear-gradient(100deg, #fffaf1 0%, var(--gold) 44%, #f2d7ce 62%, #ffffff 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			text-shadow: 0 0 60px rgba(215, 181, 109, 0.2);
+		}
+
+		.hero-subtitle {
+			max-width: 760px;
+			color: var(--muted);
+			font-size: clamp(1.04rem, 2vw, 1.28rem);
+			margin-bottom: 30px;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 14px;
+		}
+
+		.btn,
+		.chip {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid var(--line);
+			background: var(--card);
+			color: var(--text);
+			border-radius: 999px;
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 0.11em;
+			font-size: 0.78rem;
+			backdrop-filter: blur(18px);
+		}
+
+		.btn {
+			padding: 13px 20px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+		}
+
+		.btn.primary {
+			background: var(--gold);
+			color: #15110d;
+			border-color: var(--gold);
+			font-weight: 800;
+			box-shadow: 0 14px 42px rgba(215, 181, 109, 0.28);
+		}
+
+		nav {
+			position: sticky;
+			top: 0;
+			z-index: 20;
+			padding: 12px 16px;
+			background: rgba(8, 8, 7, 0.76);
+			backdrop-filter: blur(18px);
+			border-bottom: 1px solid var(--line);
+			box-shadow: 0 12px 38px rgba(0, 0, 0, 0.24);
+		}
+
+		.nav-inner {
+			width: min(var(--max), 100%);
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.logo {
+			font-weight: 900;
+			letter-spacing: -0.05em;
+			text-transform: uppercase;
+		}
+
+		.nav-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			gap: 6px;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: var(--muted);
+			font-size: 0.78rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			padding: 8px 10px;
+			border-radius: 999px;
+		}
+
+		.nav-links a.active,
+		.nav-links a:hover {
+			color: #15110d;
+			background: var(--gold);
+		}
+
+		section {
+			padding: 86px 22px;
+			border-bottom: 1px solid var(--line);
+			position: relative;
+		}
+
+		section::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			height: 1px;
+			background: linear-gradient(90deg, transparent, rgba(215, 181, 109, 0.42), transparent);
+		}
+
+		.section-head {
+			display: grid;
+			grid-template-columns: minmax(0, 0.75fr) minmax(280px, 1fr);
+			gap: 42px;
+			align-items: end;
+			margin-bottom: 34px;
+		}
+
+		.section-kicker {
+			color: var(--gold);
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+			font-size: 0.78rem;
+			margin-bottom: 14px;
+			text-shadow: 0 0 18px rgba(215, 181, 109, 0.28);
+		}
+
+		h2 {
+			font-size: clamp(2.35rem, 6vw, 5.2rem);
+			line-height: 0.92;
+			text-transform: uppercase;
+			letter-spacing: -0.065em;
+			text-wrap: balance;
+		}
+
+		h3 {
+			font-size: 1.35rem;
+			line-height: 1.15;
+			letter-spacing: -0.03em;
+			margin-bottom: 10px;
+		}
+
+		p {
+			color: var(--muted);
+			max-width: 760px;
+		}
+
+		.lead {
+			font-size: 1.06rem;
+		}
+
+		.tile-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 18px;
+		}
+
+		.tile-grid.two {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.card {
+			position: relative;
+			overflow: hidden;
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: var(--card);
+			padding: 24px;
+			box-shadow: var(--shadow);
+			backdrop-filter: blur(18px);
+		}
+
+		.card::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(215, 181, 109, 0.09), transparent 45%);
+			opacity: 0.75;
+			pointer-events: none;
+		}
+
+		.card > * {
+			position: relative;
+			z-index: 1;
+		}
+
+		.card-img {
+			width: 100%;
+			aspect-ratio: 16 / 10;
+			object-fit: cover;
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			margin-bottom: 18px;
+			background: var(--bg-soft);
+			filter: saturate(0.94) contrast(1.06);
+		}
+
+		.logo-card {
+			min-height: 220px;
+			display: grid;
+			align-content: space-between;
+		}
+
+		.brand-mark {
+			font-size: clamp(2.4rem, 6vw, 5.2rem);
+			font-weight: 900;
+			line-height: 0.9;
+			letter-spacing: -0.08em;
+			text-transform: uppercase;
+		}
+
+		.brand-mini {
+			width: 82px;
+			height: 82px;
+			display: grid;
+			place-items: center;
+			border-radius: 18px;
+			background: var(--gold);
+			color: #15110d;
+			font-size: 2rem;
+			font-weight: 900;
+			box-shadow: 0 0 28px rgba(215, 181, 109, 0.28);
+		}
+
+		.color-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.color-card {
+			min-height: 188px;
+			display: grid;
+			align-content: space-between;
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			background: var(--card);
+			padding: 14px;
+			backdrop-filter: blur(16px);
+		}
+
+		.swatch {
+			height: 82px;
+			border: 1px solid rgba(255, 255, 255, 0.18);
+			border-radius: 14px;
+			margin-bottom: 14px;
+			box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.22);
+		}
+
+		.color-card strong,
+		.color-card span {
+			display: block;
+		}
+
+		.color-card strong {
+			color: var(--text);
+			line-height: 1.2;
+			margin-bottom: 3px;
+		}
+
+		.color-card span {
+			color: var(--dim);
+			font-size: 0.78rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.type-stack {
+			display: grid;
+			gap: 18px;
+		}
+
+		.type-row {
+			display: grid;
+			grid-template-columns: 160px 1fr;
+			gap: 24px;
+			align-items: start;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.type-row:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+
+		.type-label {
+			color: var(--gold);
+			font-size: 0.72rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+
+		.display-example {
+			font-size: clamp(2.6rem, 8vw, 6.4rem);
+			line-height: 0.86;
+			letter-spacing: -0.08em;
+			text-transform: uppercase;
+			background: linear-gradient(100deg, #fffaf1 0%, var(--gold) 44%, #f2d7ce 62%, #ffffff 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		.heading-example {
+			font-size: clamp(2rem, 5vw, 4.5rem);
+			line-height: 0.92;
+			letter-spacing: -0.065em;
+			text-transform: uppercase;
+		}
+
+		.body-example {
+			color: var(--muted);
+			font-size: 1rem;
+			max-width: 660px;
+		}
+
+		.caption-example {
+			color: var(--dim);
+			font-size: 0.78rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		.chip {
+			padding: 9px 13px;
+			color: var(--muted);
+			font-size: 0.82rem;
+		}
+
+		.chip.active {
+			color: #15110d;
+			background: var(--gold);
+			border-color: var(--gold);
+		}
+
+		.material-sample {
+			min-height: 150px;
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			margin-bottom: 14px;
+			overflow: hidden;
+		}
+
+		.material-gradient {
+			background:
+				radial-gradient(circle at 26% 22%, rgba(215, 181, 109, 0.26), transparent 12rem),
+				radial-gradient(circle at 72% 34%, rgba(184, 68, 53, 0.18), transparent 12rem),
+				linear-gradient(180deg, #0b0a09, var(--bg));
+		}
+
+		.material-grid {
+			background:
+				linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+				#11100e;
+			background-size: 32px 32px;
+		}
+
+		.material-glass {
+			background:
+				linear-gradient(135deg, rgba(215, 181, 109, 0.12), rgba(90, 167, 255, 0.05)),
+				rgba(12, 11, 9, 0.84);
+			box-shadow: var(--glow);
+			backdrop-filter: blur(22px);
+		}
+
+		footer {
+			padding: 38px 22px;
+			color: var(--dim);
+			text-align: center;
+		}
+
+		@media (max-width: 960px) {
+			.section-head,
+			.tile-grid,
+			.tile-grid.two {
+				grid-template-columns: 1fr;
+			}
+
+			.color-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+		}
+
+		@media (max-width: 700px) {
+			.hero {
+				min-height: 76vh;
+				padding: 72px 16px 44px;
+			}
+
+			nav {
+				padding: 10px 12px;
+			}
+
+			.nav-inner {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.nav-links {
+				width: 100%;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				overflow-x: auto;
+				padding-bottom: 4px;
+				scrollbar-width: none;
+			}
+
+			.nav-links::-webkit-scrollbar {
+				display: none;
+			}
+
+			.nav-links a {
+				flex: 0 0 auto;
+			}
+
+			section {
+				padding: 72px 16px;
+			}
+
+			h1 {
+				font-size: clamp(3.1rem, 16vw, 5.5rem);
+				letter-spacing: -0.05em;
+			}
+
+			h2 {
+				font-size: clamp(2.2rem, 13vw, 3.5rem);
+			}
+
+			.card {
+				padding: 18px;
+				border-radius: 18px;
+			}
+
+			.type-row {
+				grid-template-columns: 1fr;
+				gap: 10px;
+			}
+		}
+
+		@media (max-width: 460px) {
+			.color-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.hero-actions {
+				align-items: stretch;
+				flex-direction: column;
+			}
+
+			.btn {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero-inner">
+				<div class="eyebrow"><span class="pulse-dot"></span> Style tile from final2.html</div>
+				<h1>Kanye West Archive</h1>
+				<p class="hero-subtitle">
+					This page documents the visual style used in final2.html: dark archive backgrounds, warm gold accents, glass cards, large uppercase type, and textured material samples.
+				</p>
+				<div class="hero-actions">
+					<a class="btn primary" href="final2.html">View Final Site</a>
+					<a class="btn" href="#colors">Colors</a>
+					<a class="btn" href="#materials">Materials</a>
+				</div>
+			</div>
+		</header>
+
+		<nav>
+			<div class="nav-inner">
+				<div class="logo">Ye Archive</div>
+				<div class="nav-links">
+					<a class="active" href="#top">Top</a>
+					<a href="#brand">Brand</a>
+					<a href="#colors">Colors</a>
+					<a href="#type">Type</a>
+					<a href="#materials">Materials</a>
+				</div>
+			</div>
+		</nav>
+
+		<main>
+			<section id="brand">
+				<div class="section-inner">
+					<div class="section-head">
+						<div>
+							<div class="section-kicker">01 / Brand</div>
+							<h2>Archive, music, fashion.</h2>
+						</div>
+						<p class="lead">
+							The identity is text-based and bold. It should feel like a digital exhibit, fan archive, music catalog, and fashion timeline instead of a simple school report.
+						</p>
+					</div>
+
+					<div class="tile-grid two">
+						<article class="card logo-card">
+							<div class="brand-mark">Ye Archive</div>
+							<p>Main logo treatment: heavy uppercase sans-serif, tight letter spacing, and warm text on a dark background.</p>
+						</article>
+						<article class="card logo-card">
+							<div class="brand-mini">YA</div>
+							<p>Secondary mark for small spaces, buttons, thumbnails, or a compact archive stamp.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section id="colors">
+				<div class="section-inner">
+					<div class="section-head">
+						<div>
+							<div class="section-kicker">02 / Colors</div>
+							<h2>Dark base, gold signal.</h2>
+						</div>
+						<p class="lead">
+							The palette comes directly from final2.html CSS variables. Black and warm off-white do most of the work, while gold, red, blue, and green appear as accents.
+						</p>
+					</div>
+
+					<div class="color-grid">
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#080807;"></div>
+								<strong>Archive Black</strong>
+								<span>--bg / #080807</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#11100e;"></div>
+								<strong>Soft Black</strong>
+								<span>--bg-soft / #11100e</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#f5f0e8;"></div>
+								<strong>Warm White</strong>
+								<span>--text / #f5f0e8</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#c9beb0;"></div>
+								<strong>Muted Copy</strong>
+								<span>--muted / #c9beb0</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#8f8578;"></div>
+								<strong>Dim Detail</strong>
+								<span>--dim / #8f8578</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#d7b56d;"></div>
+								<strong>Archive Gold</strong>
+								<span>--gold / #d7b56d</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#b84435;"></div>
+								<strong>Signal Red</strong>
+								<span>--red / #b84435</span>
+							</div>
+						</div>
+						<div class="color-card">
+							<div>
+								<div class="swatch" style="background:#5aa7ff;"></div>
+								<strong>Electric Blue</strong>
+								<span>--blue / #5aa7ff</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="type">
+				<div class="section-inner">
+					<div class="section-head">
+						<div>
+							<div class="section-kicker">03 / Typography</div>
+							<h2>Huge headlines, clean reading.</h2>
+						</div>
+						<p class="lead">
+							The site uses Inter, Arial, Helvetica, sans-serif. Titles are uppercase with tight tracking, while body copy stays simple and readable.
+						</p>
+					</div>
+
+					<article class="card type-stack">
+						<div class="type-row">
+							<div class="type-label">Hero h1</div>
+							<div class="display-example">Kanye West Archive</div>
+						</div>
+						<div class="type-row">
+							<div class="type-label">Section h2</div>
+							<div class="heading-example">Essential album guide.</div>
+						</div>
+						<div class="type-row">
+							<div class="type-label">Body</div>
+							<p class="body-example">A fan-made archive covering Ye's biography, major album eras, unreleased projects, Yeezy fashion, popular sneaker models, creative influence, and cultural legacy.</p>
+						</div>
+						<div class="type-row">
+							<div class="type-label">Caption</div>
+							<div class="caption-example">01 / Introduction / Music, fashion, and sneaker archive</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section id="materials">
+				<div class="section-inner">
+					<div class="section-head">
+						<div>
+							<div class="section-kicker">04 / Materials</div>
+							<h2>Grid, glow, and glass.</h2>
+						</div>
+						<p class="lead">
+							The final site uses a moving grid, subtle noise, radial highlights, and translucent panels to make the page feel like a digital archive room.
+						</p>
+					</div>
+
+					<div class="tile-grid">
+						<article class="card">
+							<div class="material-sample material-gradient"></div>
+							<h3>Dark gradient background</h3>
+							<p>Layered black, red, and gold gradients give the site depth without changing the dark archive mood.</p>
+						</article>
+						<article class="card">
+							<div class="material-sample material-grid"></div>
+							<h3>Subtle grid overlay</h3>
+							<p>A thin fixed grid creates the tech/archive feeling used behind the full final site.</p>
+						</article>
+						<article class="card">
+							<div class="material-sample material-glass"></div>
+							<h3>Blurred glass panels</h3>
+							<p>Cards, nav, buttons, and the music player use translucent fills with border lines and blur.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<footer>
+			Style tile based on the visual system in final2.html.
+		</footer>
+	</div>
+</body>
+</html>
