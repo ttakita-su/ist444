@@ -53,6 +53,7 @@
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.65;
+      overflow-x: hidden;
     }
 
     a {
@@ -582,6 +583,25 @@
       align-items: start;
     }
 
+    .about-photo {
+      width: 100vw;
+      max-width: 100vw;
+      margin: 0 0 clamp(1.6rem, 4vw, 3rem);
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      transform-origin: center top;
+      will-change: opacity, transform;
+      transition: opacity 180ms linear, transform 180ms linear;
+    }
+
+    .about-photo img {
+      width: 100%;
+      max-width: none;
+      aspect-ratio: 1958 / 745;
+      object-fit: cover;
+      object-position: center center;
+    }
+
     .bio h3,
     .side-panel h3 {
       margin: 1.7rem 0 0.65rem;
@@ -953,6 +973,10 @@
         <p data-i18n="aboutIntro">Global knowledge, local expertise, and practical advice for New York and international real estate clients.</p>
       </div>
 
+      <figure class="about-photo" data-scroll-fade>
+        <img src="images/yoshi-about-banner.jpeg" alt="Yoshi Takita real estate banner with New York City skyline and contact information" data-i18n-alt="aboutPhotoAlt">
+      </figure>
+
       <div class="profile-grid">
         <article class="bio">
           <h3 data-i18n="bioNetworkHeading">New York Real Estate With a Global Network</h3>
@@ -1116,6 +1140,9 @@
     const menuToggle = document.querySelector(".menu-toggle");
     const languageButtons = document.querySelectorAll("[data-language]");
     const pageDescription = document.querySelector('meta[name="description"]');
+    const scrollFadeItems = document.querySelectorAll("[data-scroll-fade]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let scrollFadeQueued = false;
     const translations = {
       ja: {
         pageTitle: "Yoshinori Takita, REALTOR | C&R Real Estate Group NY LLC",
@@ -1162,6 +1189,7 @@
         sellButton: "売却計画を相談",
         aboutHeading: "プロフィール",
         aboutIntro: "グローバルな知識、地域の専門性、そして実用的なアドバイスを、ニューヨークと国際不動産のお客様へ。",
+        aboutPhotoAlt: "ニューヨーク市のスカイラインと連絡先情報が入ったYoshi Takitaの不動産バナー",
         bioNetworkHeading: "グローバルネットワークを活かしたニューヨーク不動産",
         bioServing: "<strong>対応:</strong> ニューヨーク市、クイーンズ、ロングアイランド、移住、投資、バケーションホーム、グローバル不動産ネットワーク。",
         bioFairHousing: "<strong>フェアハウジング通知:</strong><br><a href=\"https://www.dos.ny.gov/licensing/docs/FairHousingNotice_new.pdf\">https://www.dos.ny.gov/licensing/docs/FairHousingNotice_new.pdf</a>",
@@ -1307,6 +1335,43 @@
       setExternalLinkBehavior();
     }
 
+    function updateScrollFadeItems() {
+      if (reducedMotion) {
+        scrollFadeItems.forEach((item) => {
+          item.style.opacity = "1";
+          item.style.transform = "none";
+        });
+        scrollFadeQueued = false;
+        return;
+      }
+
+      const viewportHeight = window.innerHeight || 1;
+
+      scrollFadeItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const start = viewportHeight * 0.72;
+        const end = viewportHeight * 0.18;
+        const progress = Math.max(0, Math.min(1, (rect.top - end) / (start - end)));
+        const opacity = Math.max(0.18, progress);
+        const lift = (1 - opacity) * -24;
+        const scale = 1 - (1 - opacity) * 0.025;
+
+        item.style.opacity = opacity.toFixed(3);
+        item.style.transform = `translateY(${lift.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+      });
+
+      scrollFadeQueued = false;
+    }
+
+    function requestScrollFadeUpdate() {
+      if (scrollFadeQueued) {
+        return;
+      }
+
+      scrollFadeQueued = true;
+      window.requestAnimationFrame(updateScrollFadeItems);
+    }
+
     menuToggle.addEventListener("click", () => {
       const isOpen = header.classList.toggle("is-open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -1327,7 +1392,11 @@
       });
     });
 
+    window.addEventListener("scroll", requestScrollFadeUpdate, { passive: true });
+    window.addEventListener("resize", requestScrollFadeUpdate);
+
     applyLanguage("en");
+    updateScrollFadeItems();
   </script>
 </body>
 </html>
