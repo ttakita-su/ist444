@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ttakita-su.github.io/ist444/twisted-takes/sitemap.xml
