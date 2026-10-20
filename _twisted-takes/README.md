@@ -75,7 +75,8 @@ twisted-takes/
 ├── assets/js/site.js      Mobile menu, share buttons, TT.track() analytics helper
 ├── assets/js/catalog.js   Reviews page search/filter/sort and its analytics events
 ├── assets/images/         covers/ (4:5 review art), editorial/ (8:5 article art),
-│                          social/ (1200×630 link previews), favicon.svg, apple-touch-icon.png
+│                          social/ (1200×630 link previews), logo-*.png, favicon.png, apple-touch-icon.png
+├── brand/                 Master logo file and notes on the web versions (not published)
 ├── templates/             Starting files to copy for reviews, TV reviews, posts, Watch Next (not published)
 ├── tools/                 Optional Node scripts: check-site, browser-check, social-cards (not published)
 ├── README.md              This file (not published)

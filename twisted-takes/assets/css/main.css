@@ -229,13 +229,9 @@ main:focus { outline: none; }
   white-space: nowrap;
 }
 .wordmark:hover { color: var(--color-text); }
-.wordmark__twisted {
-  font-style: italic;
-  color: var(--color-accent);
-  display: inline-block;
-  transform: rotate(-3deg) translateY(-0.04em);
-}
-.wordmark__takes { font-weight: bold; }
+.wordmark__logo { display: block; width: auto; height: 56px; }
+.wordmark--small .wordmark__logo { height: auto; width: 160px; }
+@media (max-width: 760px) { .masthead__bar .wordmark__logo { height: 44px; } }
 .wordmark--small { font-size: 1.5rem; }
 
 .site-search {

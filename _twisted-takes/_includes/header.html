@@ -2,7 +2,7 @@
 <header class="masthead">
   <div class="masthead__bar wrap">
     <a class="wordmark" href="{{ '/' | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>
-      <span class="wordmark__twisted">Twisted</span> <span class="wordmark__takes">Takes</span>
+      <img class="wordmark__logo" src="{{ '/assets/images/logo-horizontal.png' | relative_url }}" alt="{{ site.title }}" width="234" height="56">
     </a>
     <form class="site-search" role="search" action="{{ '/reviews/' | relative_url }}" method="get" data-site-search>
       <label class="visually-hidden" for="site-search-input">Search reviews</label>

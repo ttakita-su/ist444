@@ -1,4 +1,5 @@
 // Twisted Takes: generate 1200×630 social preview images (Open Graph cards).
+// The logo files themselves (header, favicon, touch icon) are described in brand/README.md.
 //
 // Optional. The site builds and publishes without this; it only refreshes the
 // PNGs in assets/images/social/ after you add a review or article or change a
@@ -84,15 +85,13 @@ function cardHtml({ image, portrait, kicker, title, subtitle, accent }) {
     .media.wide { width: 600px; }
     .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .text { flex: 1; padding: 64px 64px 56px; display: flex; flex-direction: column; border-top: 10px solid #7A2944; }
-    .brand { font-size: 34px; }
-    .brand i { color: #7A2944; display: inline-block; transform: rotate(-3deg); }
-    .brand b { font-weight: bold; }
+    .brand img { height: 64px; width: auto; display: block; }
     .kicker { margin-top: auto; font: 700 20px/1.2 -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; letter-spacing: 3px; text-transform: uppercase; color: ${accent}; }
     .title { margin-top: 18px; font-size: ${title.length > 60 ? 42 : title.length > 38 ? 50 : 60}px; line-height: 1.1; }
     .subtitle { margin-top: 18px; font-size: 26px; color: #5F6368; font-style: italic; }
     .rule { margin-top: 28px; height: 4px; width: 72px; background: ${accent}; }
   </style></head><body>${media}<div class="text">
-    <div class="brand"><i>Twisted</i> <b>Takes</b></div>
+    <div class="brand"><img src="${imageSrc('/assets/images/logo-horizontal.png')}" alt=""></div>
     <div class="kicker">${esc(kicker)}</div>
     <div class="title">${esc(title)}</div>
     ${subtitle ? `<div class="subtitle">${esc(subtitle)}</div>` : ''}
@@ -143,12 +142,4 @@ for (const job of jobs) {
   console.log('wrote', job.out);
 }
 
-// Apple touch icon from the favicon.
-if (!filter) {
-  const icon = join(site, 'assets/images/apple-touch-icon.png');
-  await page.setViewportSize({ width: 180, height: 180 });
-  await page.setContent(`<html><body style="margin:0;background:#7A2944"> <img src="${imageSrc('/assets/images/favicon.svg')}" style="width:180px;height:180px;display:block"></body></html>`, { waitUntil: 'load' });
-  await page.screenshot({ path: icon });
-  console.log('wrote /assets/images/apple-touch-icon.png');
-}
 await browser.close();

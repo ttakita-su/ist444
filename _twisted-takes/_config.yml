@@ -152,4 +152,5 @@ exclude:
   - node_modules
   - tools
   - templates
+  - brand
   - .jekyll-cache

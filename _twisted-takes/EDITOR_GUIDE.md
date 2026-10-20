@@ -155,19 +155,18 @@ All site colors are CSS custom properties at the top of `assets/css/main.css`, i
 | `--color-focus` | `#7A2944` | Keyboard focus outline |
 | `--font-serif` / `--font-sans` | Georgia… / system-ui… | Headings and wordmark / interface text |
 
-Keep text readable: check text-on-background pairs with a contrast checker (at least 4.5:1). Each genre's accent color is `accent:` in `_data/genres.yml`. The brand burgundy is also hard-coded in `assets/images/favicon.svg`, in `tools/social-cards.mjs` (social cards) and as a fallback (`#7A2944`) in a few layouts; update those if you change the accent. `tools/browser-check.mjs` reads the background color from the stylesheet, so it follows your change.
+Keep text readable: check text-on-background pairs with a contrast checker (at least 4.5:1). Each genre's accent color is `accent:` in `_data/genres.yml`. The brand burgundy is also hard-coded in `tools/social-cards.mjs` (social cards) and as a fallback (`#7A2944`) in a few layouts; update those if you change the accent. `tools/browser-check.mjs` reads the background color from the stylesheet, so it follows your change.
 
-### Logo (wordmark) and favicon
+### Logo and favicon
 
-The logo is text, not an image: `<span class="wordmark__twisted">Twisted</span> <span class="wordmark__takes">Takes</span>`, in both `_includes/header.html` and `_includes/footer.html`. Its look (italic, tilted burgundy "Twisted", bold "Takes") is the `.wordmark` CSS in `main.css`. To use an image logo instead, upload it (e.g. `assets/images/logo.svg`) and replace the two spans in **both** files with:
+The site uses the team logo. The master file is `brand/twisted-takes-logo-original.png` (not published); the web versions cut from it are in `assets/images/` and listed in [`brand/README.md`](brand/README.md):
 
-```html
-<img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Twisted Takes" width="200" height="40">
-```
+- Header: `logo-horizontal.png` (mark beside the wordmark), in `_includes/header.html`, shown 56px tall (44px on phones; see `.wordmark__logo` in `main.css`).
+- Footer: `logo-stacked.png`, in `_includes/footer.html`.
+- Browser tab: `favicon.png`; phone home screen: `apple-touch-icon.png` (both linked in `_includes/head.html`).
+- Social preview cards place `logo-horizontal.png` in the corner; rerun `npm run social-cards` after changing it.
 
-(set `width`/`height` to your file's proportions). The social cards draw their own wordmark in `tools/social-cards.mjs`.
-
-The browser-tab icon is `assets/images/favicon.svg` (square). After replacing it, run `npm run social-cards` with no filter to regenerate `assets/images/apple-touch-icon.png`.
+To update the logo, export new PNGs with the same names and proportions (transparent background for the header and footer versions) and replace the files. If the proportions change, update the `width`/`height` attributes in the header and footer includes.
 
 ### Featured story
 
