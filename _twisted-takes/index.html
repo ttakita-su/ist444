@@ -4,7 +4,7 @@ body_class: home
 ---
 {%- comment -%}
   Home page. The featured story is chosen in _config.yml (featured:).
-  Genre sections list every movie review in that genre, oldest film first.
+  Genre sections list every review in that genre (movies and TV), oldest first.
 {%- endcomment -%}
 {%- assign featured = nil -%}
 {%- if site.featured.collection == "posts" -%}
@@ -49,14 +49,14 @@ body_class: home
     <li class="genre-strip__item" style="--genre-accent: {{ genre.accent }}">
       <a class="genre-strip__link" href="{{ '/genres/' | append: genre.key | append: '/' | relative_url }}">{{ genre.name }}</a>
       <p class="genre-strip__desc">{{ genre.short_description }}</p>
-      <p class="genre-strip__count">{{ genre_count }} movie {% if genre_count == 1 %}review{% else %}reviews{% endif %}{% if genre_tv_count > 0 %}, {{ genre_tv_count }} TV{% endif %} · <a href="#genre-{{ genre.key }}">Jump to the list<span class="visually-hidden"> of {{ genre.name }} reviews</span></a></p>
+      <p class="genre-strip__count">{% if genre_count > 0 or genre_tv_count == 0 %}{{ genre_count }} movie {% if genre_count == 1 %}review{% else %}reviews{% endif %}{% endif %}{% if genre_count > 0 and genre_tv_count > 0 %}, {% endif %}{% if genre_tv_count > 0 %}{{ genre_tv_count }} TV {% if genre_tv_count == 1 %}review{% else %}reviews{% endif %}{% endif %} · <a href="#genre-{{ genre.key }}">Jump to the list<span class="visually-hidden"> of {{ genre.name }} reviews</span></a></p>
     </li>
     {%- endfor %}
   </ul>
 </section>
 
 {%- for genre in site.data.genres %}
-  {%- assign genre_movies = site.reviews | where: "primary_genre", genre.key | where: "media_type", "movie" | sort: "year" %}
+  {%- assign genre_movies = site.reviews | where: "primary_genre", genre.key | sort: "year" %}
 <section class="home-genre wrap" id="genre-{{ genre.key }}" aria-labelledby="home-genre-{{ genre.key }}" style="--genre-accent: {{ genre.accent }}">
   <div class="section-head">
     <h2 class="section-heading section-heading--genre" id="home-genre-{{ genre.key }}">{{ genre.name }}</h2>

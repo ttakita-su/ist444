@@ -68,3 +68,14 @@
     instagram: ""
     tiktok: ""
     youtube: ""
+
+- key: "comedy"
+  name: "Comedy"
+  accent: "#B3470F"
+  short_description: "Satire, sitcoms and jokes with a point. Stories built to make you laugh first and think a beat later."
+  labels: ["Satire", "Adult animation", "Sitcom", "Political comedy", "Internet culture"]
+  discussion_question: "Is any topic off-limits for comedy, or is everything fair game if the joke is good enough?"
+  discussion_links:
+    instagram: ""
+    tiktok: ""
+    youtube: ""

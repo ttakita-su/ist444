@@ -94,7 +94,7 @@ Front matter is the block between the two `---` lines at the very top of a conte
 
 **Facts.** Verify director, runtime, rating and release year against official or authoritative sources (studio or distributor pages, network or streamer pages, [filmratings.com](https://www.filmratings.com) for MPA ratings, the AFI Catalog). List them under `sources`. If you cannot verify a fact, set it to `null`.
 
-**Images.** Use original artwork or images you have permission to use, and credit them ([section 8](#8-replace-cover-art-and-credit-it)).
+**Images.** Use original artwork, an official poster or key art used as described in [section 8](#8-replace-cover-art-and-credit-it), or images you have permission to use, and credit every one.
 
 ## Review front matter reference
 
@@ -106,7 +106,7 @@ Front matter is the block between the two `---` lines at the very top of a conte
 | `slug` | Yes | Same as the file name without `.md` | The page address `/reviews/<slug>/`; how other files refer to this review | — |
 | `year` | Yes | Number, e.g. `2016` (TV: year the season premiered) | "(2016)" after the title, card meta, year sorting; genre sections list oldest first | — |
 | `media_type` | Yes | `"movie"` or `"tv"` | "Movie review"/"TV review" label, Format filter, which genre-page section it appears in | Defaults to `"movie"` |
-| `primary_genre` | Yes | `sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`, `drama` (a `key` in `_data/genres.yml`) | Genre sections, genre filter, accent color, breadcrumb | Misspelled: review appears only on the Reviews page |
+| `primary_genre` | Yes | `sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`, `drama`, `comedy` (a `key` in `_data/genres.yml`) | Genre sections, genre filter, accent color, breadcrumb | Misspelled: review appears only on the Reviews page |
 | `subgenre` | No | Short label | Added to the Genre row and the card kicker; searchable | Hidden |
 | `tags` | Yes | 3–6 lowercase hyphenated words | Tags row (each links to a Reviews search); search | Row hidden |
 | `moods` | No | 2–3 of: thoughtful, mind-bending, tense, eerie, cozy, romantic, funny, adventurous, emotional, unsettling, investigative | Mood row; search | Row hidden |
@@ -210,7 +210,7 @@ What updates automatically:
 
 | Place | What it shows |
 |---|---|
-| Home page genre section | Every movie in the genre, oldest release first (a fifth card wraps to a new row) |
+| Home page genre section | Every review in the genre, movies and TV, oldest first (a fifth card wraps to a new row) |
 | Home "Pick a genre" strip | Movie review count for the genre, plus a TV count once TV reviews exist |
 | Genre hub (`/genres/<key>/`) | Every movie in "<Genre> movies", oldest first |
 | Genres index (`/genres/`) | Every title as a link; **only the first 4 covers** by release year |
@@ -250,13 +250,7 @@ TV reviews use the same folder, layout and design as movies.
 
 What happens automatically: the review page shows "TV review", ", season 1" after the title and the Created by / Network / Season rows. The Reviews page **Format → TV** filter lists it instead of the "TV reviews are on the way" message, and the page intro adds the TV count. The genre hub's "<Genre> TV" section shows the card instead of its placeholder note. Cards show "· TV" and "Season 1". Search includes it.
 
-The home page genre sections list **movies only** (`index.html` filters on `media_type "movie"`). To show TV there too (optional), edit this line in `index.html`:
-
-```liquid
-{%- assign genre_movies = site.reviews | where: "primary_genre", genre.key | where: "media_type", "movie" | sort: "year" %}
-```
-
-and remove `| where: "media_type", "movie"`, so it reads:
+The home page genre sections list movies **and** TV, oldest first, so a genre whose only review is a TV show (Comedy, with South Park) still has a card there. To go back to movies only, add `| where: "media_type", "movie"` to this line in `index.html`:
 
 ```liquid
 {%- assign genre_movies = site.reviews | where: "primary_genre", genre.key | sort: "year" %}
@@ -291,9 +285,18 @@ A post dated in the future stays hidden until the first build on or after that d
 
 ## 8. Replace cover art and credit it
 
-The covers in `assets/images/covers/` are **original Twisted Takes artwork**, not official posters (the footer says so). Keep it that way unless you have the right to use another image.
+Most covers in `assets/images/covers/` are **original Twisted Takes artwork**. Hocus Pocus, Don't Say Good Luck and South Park use **official posters or key art**, which the team decided to use as fair use for criticism and identification. The footer says covers are mostly original and that official art is credited on each review.
 
-Allowed: your own photos or artwork; images with a license that allows this use (follow its attribution terms); press-kit or publicity images only when the team has permission. Not allowed: copying posters or stills from search results, fan sites or streaming services, or hotlinking images from other sites.
+Allowed:
+
+- your own photos or artwork;
+- images with a license that allows this use (follow its attribution terms);
+- press-kit or publicity images when the team has permission;
+- one **official poster or key art** image per review, for identification alongside the review. Take it from the studio's, distributor's or network's own page where you can (or from a listing that credits the distributor), save a copy into `assets/images/covers/` (never hotlink), keep it at cover size (800×1000), and credit the owner, e.g. `image_credit: "Official poster © Walt Disney Pictures. Used for review and identification."`
+
+Not allowed: fan art, unofficial edits or watermarked copies; screenshots grabbed from streaming services; stills or galleries beyond the one identifying image; hotlinking images from other sites.
+
+Cards crop covers to the top 800×640 (5:4), so official art goes in that top area with the usual title panel underneath (see `hocus-pocus.jpg`): a portrait poster sits centered on a blurred copy of itself, and landscape key art fills the area.
 
 1. Make the image 4:5 portrait, ideally 800×1000 px, saved as JPG or WebP under about 200 KB (SVG for flat artwork).
 2. Name it after the slug and upload it to `assets/images/covers/`, e.g. `assets/images/covers/arrival.jpg`.
@@ -423,7 +426,7 @@ discussion_links:                # this week's posts; empty values fall back to 
 - **Rating scale:** `_data/rating_scale.yml` holds the 1–5 labels and meanings shown on the About page. A review shows stars only when its own `score` is set.
 - **Other About text** (mission, the five launch genres, the Sample-label note) is in `about/index.md`.
 
-Adding another genre (optional; Drama was added this way): add an entry to `_data/genres.yml` (`key`, `name`, `accent`, `short_description`, `labels`, `discussion_question`, `discussion_links`), create `genres/<key>.md` (copy an existing hub and change `title`, `genre_key`, `permalink`, `description` and the intro), review the hard-coded "six genres" wording in `reviews/index.html`, `genres/index.html` and `about/index.md`, add the key to the `primary_genre` lists in `templates/` and this guide, and add it to `GENRES` in `tools/browser-check.mjs`.
+Adding another genre (optional; Drama and Comedy were added this way): add an entry to `_data/genres.yml` (`key`, `name`, `accent`, `short_description`, `labels`, `discussion_question`, `discussion_links`), create `genres/<key>.md` (copy an existing hub and change `title`, `genre_key`, `permalink`, `description` and the intro), review the hard-coded "seven genres" wording in `reviews/index.html`, `genres/index.html` and `about/index.md`, add the key to the `primary_genre` lists in `templates/` and this guide, and add it to `GENRES` in `tools/browser-check.mjs`.
 
 ## Pre-publish checklist
 

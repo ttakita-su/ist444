@@ -59,7 +59,7 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const u = (p) => origin + base + p;
 
 // The genre hubs, in the order of _data/genres.yml. Add a key here when you add a genre.
-const GENRES = ['sci-fi', 'true-crime', 'fantasy', 'rom-com', 'horror', 'drama'];
+const GENRES = ['sci-fi', 'true-crime', 'fantasy', 'rom-com', 'horror', 'drama', 'comedy'];
 
 // Expected counts come from the built search index, so adding reviews later does not break the checks.
 const index = JSON.parse(readFileSync(join(siteDir, 'search.json'), 'utf8'));
@@ -109,15 +109,15 @@ async function shot(page, name) {
 
 const desktop = await newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
 
-await check(`Home: ${GENRES.length} genre sections with every movie, featured link and current nav`, async () => {
+await check(`Home: ${GENRES.length} genre sections with every review, featured link and current nav`, async () => {
   const { page, response } = await open(desktop, '/');
   assert(response.status() === 200, `status ${response.status()}`);
   assert(await page.locator('.home-genre').count() === GENRES.length, `expected ${GENRES.length} genre sections`);
   const cards = await page.locator('.home-genre .card').count();
-  assert(cards === reviewsIn(null, 'movie'), `expected ${reviewsIn(null, 'movie')} movie cards, found ${cards}`);
+  assert(cards === reviewsIn(), `expected ${reviewsIn()} review cards (movies and TV), found ${cards}`);
   for (const key of GENRES) {
     const n = await page.locator(`#genre-${key} .card`).count();
-    assert(n >= 1 && n === reviewsIn(key, 'movie'), `${key}: expected ${reviewsIn(key, 'movie')} cards, found ${n}`);
+    assert(n >= 1 && n === reviewsIn(key), `${key}: expected ${reviewsIn(key)} cards, found ${n}`);
   }
   assert(await page.locator('.site-nav [aria-current="page"]').textContent() === 'Home', 'Home not marked current');
   const featured = page.locator('.featured__title a');
@@ -214,7 +214,7 @@ await check('Reviews: search, combined filters, sorting, URL state, clear filter
   await direct.page.close();
 });
 
-await check('Reviews: TV filter shows the TV empty state, and "Show movie reviews" recovers', async () => {
+await check('Reviews: TV filter lists TV reviews (or the empty state, and "Show movie reviews" recovers)', async () => {
   const { page } = await open(desktop, '/reviews/?type=tv');
   const tvTotal = +(await page.locator('[data-catalog]').getAttribute('data-tv-total'));
   if (tvTotal === 0) {
@@ -240,12 +240,14 @@ await check('Header search from another page lands on filtered Reviews', async (
   await page.close();
 });
 
-await check(`Genre hubs: ${GENRES.length} pages, every movie, TV note, links to the other genres`, async () => {
+await check(`Genre hubs: ${GENRES.length} pages, every movie and TV review, links to the other genres`, async () => {
   for (const key of GENRES) {
     const { page, response } = await open(desktop, `/genres/${key}/`);
     assert(response.status() === 200, `${key}: status ${response.status()}`);
     const movies = await page.locator('.genre-section').first().locator('.card').count();
-    assert(movies >= 1 && movies === reviewsIn(key, 'movie'), `${key}: expected ${reviewsIn(key, 'movie')} movies, found ${movies}`);
+    assert(movies === reviewsIn(key, 'movie'), `${key}: expected ${reviewsIn(key, 'movie')} movies, found ${movies}`);
+    const all = await page.locator('.genre-section .card').count();
+    assert(all >= 1 && all === reviewsIn(key), `${key}: expected ${reviewsIn(key)} reviews, found ${all}`);
     assert(await page.locator('.genre-links__list li').count() === GENRES.length - 1, `${key}: expected ${GENRES.length - 1} other-genre links`);
     assert(await page.locator('.discuss__question').count() === 1, `${key}: discussion question missing`);
     assert(await page.locator('.site-nav [aria-current]').textContent() === 'Genres', `${key}: Genres not current`);

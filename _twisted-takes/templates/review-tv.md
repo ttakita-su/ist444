@@ -12,7 +12,7 @@ creator: "Creator Name"                 # shown as "Created by"; verified only, 
 network: "Streaming service or network" # verified only, else null
 director: null                          # usually null for TV
 runtime_minutes: 50                     # typical episode length; verified only, else null
-primary_genre: "sci-fi"                 # (required) sci-fi | true-crime | fantasy | rom-com | horror | drama
+primary_genre: "sci-fi"                 # (required) sci-fi | true-crime | fantasy | rom-com | horror | drama | comedy
 subgenre: "Short label"
 tags: ["tag-one", "tag-two", "tag-three"]
 moods: ["thoughtful", "tense"]

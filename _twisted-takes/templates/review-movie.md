@@ -6,7 +6,7 @@ title: "Movie Title"                    # (required) exact title
 slug: "movie-title"                     # (required) same as the file name
 year: 2024                              # (required) original release year
 media_type: "movie"                     # (required) movie | tv
-primary_genre: "sci-fi"                 # (required) sci-fi | true-crime | fantasy | rom-com | horror | drama
+primary_genre: "sci-fi"                 # (required) sci-fi | true-crime | fantasy | rom-com | horror | drama | comedy
 subgenre: "Short label"                 # e.g. "Space survival"; or null
 tags: ["tag-one", "tag-two", "tag-three"]   # 3–6 lowercase, hyphenated; searchable
 moods: ["thoughtful", "tense"]          # 2–3 of: thoughtful, mind-bending, tense, eerie, cozy, romantic, funny, adventurous, emotional, unsettling, investigative

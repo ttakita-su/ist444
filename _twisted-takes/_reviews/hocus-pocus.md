@@ -10,9 +10,9 @@ moods: ["funny", "cozy", "adventurous"]
 headline: "Hocus Pocus Is Messy, Silly and Saved by Three Perfect Witches"
 excerpt: "Bette Midler, Sarah Jessica Parker and Kathy Najimy turn a lumpy kids' adventure into the Halloween rewatch nobody outgrows."
 description: "Disney's 1993 witch comedy flopped in theaters and still owns October. How three gleeful witches carry it, and where its kid heroes drag it down."
-image: "/assets/images/covers/hocus-pocus.svg"
-image_alt: "Original Twisted Takes cover art for Hocus Pocus: three witch silhouettes fly across a huge orange moon above a cottage where a black cat sits on the roof, while a tall black candle burns with a pale green flame"
-image_credit: "Original cover art by Twisted Takes. Not an official poster."
+image: "/assets/images/covers/hocus-pocus.jpg"
+image_alt: "Official Hocus Pocus poster: Sarah Jessica Parker, Bette Midler and Kathy Najimy as the Sanderson sisters lean over a glowing full moon, conjuring purple lightning between their fingers, under the film's spiky white title"
+image_credit: "Official poster © Walt Disney Pictures, from Disney's Hocus Pocus page. Used for review and identification."
 social_image: "/assets/images/social/hocus-pocus.png"
 director: "Kenny Ortega"
 runtime_minutes: 96
@@ -35,6 +35,8 @@ sources:
     url: "https://www.filmratings.com/search-results/?search=hocus+pocus"
   - label: "AFI Catalog of Feature Films"
     url: "https://catalog.afi.com/Catalog/moviedetails/68215"
+  - label: "Official film page and poster (Disney)"
+    url: "https://movies.disney.com/hocus-pocus"
   - label: "Disney+ listing"
     url: "https://www.disneyplus.com/movies/hocus-pocus/2iCcYcGrx7qD"
 trailer_url: null

@@ -10,9 +10,9 @@ moods: ["emotional", "funny"]
 headline: "Don't Say Good Luck Finds the Laughs Backstage While Life Gets Heavy at Home"
 excerpt: "A theater kid lands the lead in her school's Waitress as her mom's cancer returns, in a gentle, funny drama that refuses to become a weepie."
 description: "Julia Hart's Netflix drama follows a theater kid whose big role arrives as her mom's cancer returns. Why Melanie Lynskey anchors it, and who it suits."
-image: "/assets/images/covers/dont-say-good-luck.svg"
-image_alt: "Original Twisted Takes cover art for Don't Say Good Luck: an empty stage between deep red curtains, lit by a single bare-bulb ghost light, with a pie missing one slice resting on a stool at the edge of the stage"
-image_credit: "Original cover art by Twisted Takes. Not an official poster."
+image: "/assets/images/covers/dont-say-good-luck.jpg"
+image_alt: "Official Don't Say Good Luck poster: the title in tall cream letters over four photo strips of the cast, led by Sunny Sandler and Melanie Lynskey, laughing, embracing and resting quietly in a car"
+image_credit: "Official poster © Netflix. Used for review and identification."
 social_image: "/assets/images/social/dont-say-good-luck.png"
 director: "Julia Hart"
 runtime_minutes: 95
