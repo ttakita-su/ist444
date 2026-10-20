@@ -106,7 +106,7 @@ Front matter is the block between the two `---` lines at the very top of a conte
 | `slug` | Yes | Same as the file name without `.md` | The page address `/reviews/<slug>/`; how other files refer to this review | — |
 | `year` | Yes | Number, e.g. `2016` (TV: year the season premiered) | "(2016)" after the title, card meta, year sorting; genre sections list oldest first | — |
 | `media_type` | Yes | `"movie"` or `"tv"` | "Movie review"/"TV review" label, Format filter, which genre-page section it appears in | Defaults to `"movie"` |
-| `primary_genre` | Yes | `sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror` (a `key` in `_data/genres.yml`) | Genre sections, genre filter, accent color, breadcrumb | Misspelled: review appears only on the Reviews page |
+| `primary_genre` | Yes | `sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`, `drama` (a `key` in `_data/genres.yml`) | Genre sections, genre filter, accent color, breadcrumb | Misspelled: review appears only on the Reviews page |
 | `subgenre` | No | Short label | Added to the Genre row and the card kicker; searchable | Hidden |
 | `tags` | Yes | 3–6 lowercase hyphenated words | Tags row (each links to a Reviews search); search | Row hidden |
 | `moods` | No | 2–3 of: thoughtful, mind-bending, tense, eerie, cozy, romantic, funny, adventurous, emotional, unsettling, investigative | Mood row; search | Row hidden |
@@ -423,7 +423,7 @@ discussion_links:                # this week's posts; empty values fall back to 
 - **Rating scale:** `_data/rating_scale.yml` holds the 1–5 labels and meanings shown on the About page. A review shows stars only when its own `score` is set.
 - **Other About text** (mission, the five launch genres, the Sample-label note) is in `about/index.md`.
 
-Adding a sixth genre (optional): add an entry to `_data/genres.yml` (`key`, `name`, `accent`, `short_description`, `labels`, `discussion_question`, `discussion_links`), create `genres/<key>.md` (copy an existing hub and change `title`, `genre_key`, `permalink`, `description` and the intro), and review the hard-coded "five genres" wording in `reviews/index.html`, `genres/index.html`, `about/index.md` and `_data/weekly_prompt.yml`.
+Adding another genre (optional; Drama was added this way): add an entry to `_data/genres.yml` (`key`, `name`, `accent`, `short_description`, `labels`, `discussion_question`, `discussion_links`), create `genres/<key>.md` (copy an existing hub and change `title`, `genre_key`, `permalink`, `description` and the intro), review the hard-coded "six genres" wording in `reviews/index.html`, `genres/index.html` and `about/index.md`, add the key to the `primary_genre` lists in `templates/` and this guide, and add it to `GENRES` in `tools/browser-check.mjs`.
 
 ## Pre-publish checklist
 

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <clipPath id="m"><rect width="800" height="640"/></clipPath>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E1230"/><stop offset="1" stop-color="#4A2A57"/></linearGradient>
+    <radialGradient id="moon" cx=".42" cy=".4" r=".7"><stop offset="0" stop-color="#F8CF7E"/><stop offset="1" stop-color="#E98F3C"/></radialGradient>
+    <radialGradient id="halo"><stop offset=".55" stop-color="#F2A24C" stop-opacity=".28"/><stop offset="1" stop-color="#F2A24C" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#C6EFA9" stop-opacity=".5"/><stop offset="1" stop-color="#C6EFA9" stop-opacity="0"/></radialGradient>
+    <g id="witch" fill="#170C22">
+      <path d="M-74 14L62 -8" stroke="#170C22" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-70 13L-108 -2L-116 13L-109 30Z"/>
+      <path d="M-20 8Q-30 -18 -8 -38L12 -37Q22 -16 22 6Z"/>
+      <path d="M-8 -32Q-44 -28 -58 -4Q-34 -10 -20 4Z"/>
+      <circle cx="4" cy="-47" r="10"/>
+      <path d="M-16 -52L24 -60L22 -54L-14 -47Z"/>
+      <path d="M-8 -54L16 -58L-20 -94Q-14 -74 -8 -54Z"/>
+      <path d="M14 2L32 16L40 13" fill="none" stroke="#170C22" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <rect width="800" height="1000" fill="#1E1230"/>
+  <g clip-path="url(#m)">
+    <rect width="800" height="640" fill="url(#sky)"/>
+    <g fill="#F4E9D2">
+      <circle cx="70" cy="70" r="2.5"/><circle cx="160" cy="140" r="1.8"/><circle cx="250" cy="48" r="2.2"/><circle cx="96" cy="250" r="1.6"/><circle cx="214" cy="300" r="2"/>
+      <circle cx="730" cy="60" r="2.4"/><circle cx="760" cy="200" r="1.7"/><circle cx="700" cy="380" r="1.9"/><circle cx="330" cy="120" r="1.5"/><circle cx="40" cy="380" r="1.8"/>
+      <circle cx="300" cy="380" r="1.4"/><circle cx="770" cy="300" r="1.5"/>
+    </g>
+    <circle cx="500" cy="250" r="250" fill="url(#halo)"/>
+    <circle cx="500" cy="250" r="172" fill="url(#moon)"/>
+    <g fill="#D97F34" opacity=".35"><circle cx="440" cy="200" r="26"/><circle cx="560" cy="310" r="18"/><circle cx="575" cy="180" r="12"/><circle cx="470" cy="330" r="10"/></g>
+    <use href="#witch" transform="translate(424 318) scale(.74) rotate(-8)"/>
+    <use href="#witch" transform="translate(526 246) scale(.88) rotate(-8)"/>
+    <use href="#witch" transform="translate(630 176) scale(1) rotate(-8)"/>
+    <path d="M0 560Q200 540 420 552T800 548V640H0Z" fill="#170C22"/>
+    <g transform="translate(-44 0)">
+    <path d="M236 560V430L322 336L408 430V560Z" fill="#170C22"/>
+    <path d="M228 436L322 330L416 436" fill="none" stroke="#170C22" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M356 388L362 340H384L378 404Z" fill="#170C22"/>
+    <rect x="268" y="462" width="30" height="36" rx="3" fill="#F3B65A"/>
+    <rect x="344" y="462" width="30" height="36" rx="3" fill="#F3B65A" opacity=".75"/>
+    <path d="M283 462V498M268 480H298M359 462V498M344 480H374" stroke="#170C22" stroke-width="3"/>
+    <g fill="#170C22">
+      <ellipse cx="322" cy="324" rx="11" ry="13"/>
+      <circle cx="322" cy="304" r="9"/>
+      <path d="M314 300L313 288L320 297ZM330 300L331 288L324 297Z"/>
+      <path d="M332 330Q348 326 344 310" fill="none" stroke="#170C22" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+    <circle cx="318.5" cy="303" r="1.8" fill="#D9E86A"/><circle cx="325.5" cy="303" r="1.8" fill="#D9E86A"/>
+    </g>
+    <path d="M660 560C664 500 652 460 640 420M650 470C676 452 700 446 716 420M644 440C622 424 612 400 616 376M660 520C694 512 724 494 742 468" fill="none" stroke="#170C22" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="130" cy="372" r="110" fill="url(#glow)"/>
+    <rect x="102" y="432" width="56" height="210" fill="#0E0815"/>
+    <path d="M102 432Q106 448 110 444Q112 470 118 466Q120 448 126 442Q132 456 136 450Q140 476 146 470Q148 450 158 432Z" fill="#2A1B36"/>
+    <path d="M112 470V640" stroke="#3A2A48" stroke-width="3" opacity=".6"/>
+    <path d="M130 432V414" stroke="#0E0815" stroke-width="3"/>
+    <path d="M130 352Q148 386 140 404Q130 418 120 404Q112 386 130 352Z" fill="#C6EFA9"/>
+    <path d="M130 378Q138 394 134 404Q130 410 126 404Q122 394 130 378Z" fill="#5E9E64"/>
+  </g>
+  <rect x="0" y="640" width="800" height="360" fill="#F6F3EC"/>
+  <rect x="60" y="676" width="56" height="4" fill="#2E6B4F"/>
+  <text x="60" y="722" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="4" fill="#2E6B4F">FANTASY &#183; 1993</text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="68" fill="#1E1230"><tspan x="60" y="800">Hocus Pocus</tspan></text>
+  <text x="740" y="952" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="22" fill="#5F6368">Twisted Takes</text>
+</svg>

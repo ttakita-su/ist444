@@ -57,3 +57,14 @@
     instagram: ""
     tiktok: ""
     youtube: ""
+
+- key: "drama"
+  name: "Drama"
+  accent: "#1E6470"
+  short_description: "School musicals, family secrets and growing up too fast. Real-life stakes, told with heart and a few laughs."
+  labels: ["Coming-of-age", "Family drama", "Dramedy", "Backstage stories", "Inspired by real life"]
+  discussion_question: "Does a sad movie need a few laughs to be worth watching, or do the jokes let it off the hook?"
+  discussion_links:
+    instagram: ""
+    tiktok: ""
+    youtube: ""

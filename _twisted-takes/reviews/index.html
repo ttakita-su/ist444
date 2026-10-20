@@ -13,7 +13,7 @@ scripts:
 <div class="wrap catalog" data-catalog data-index-url="{{ '/search.json' | relative_url }}" data-tv-total="{{ tv_count }}">
   <header class="page-header page-header--wide">
     <h1 class="page-title">Reviews</h1>
-    <p class="lede">Every Twisted Takes review in one place: {{ movie_count }} movies across five genres{% if tv_count > 0 %} and {{ tv_count }} TV {% if tv_count == 1 %}review{% else %}reviews{% endif %}{% else %}, with TV reviews on the way{% endif %}.</p>
+    <p class="lede">Every Twisted Takes review in one place: {{ movie_count }} movies across six genres{% if tv_count > 0 %} and {{ tv_count }} TV {% if tv_count == 1 %}review{% else %}reviews{% endif %}{% else %}, with TV reviews on the way{% endif %}.</p>
   </header>
 
   <form class="catalog-controls" role="search" aria-label="Filter reviews" action="{{ '/reviews/' | relative_url }}" method="get" data-catalog-controls hidden>
@@ -89,7 +89,7 @@ scripts:
 
   <div class="empty-state empty-state--panel" data-catalog-tv-empty hidden>
     <h2 class="empty-state__heading">TV reviews are on the way</h2>
-    <p>We launched Twisted Takes with movies. TV reviews will appear here, in the same five genres, as soon as the team publishes them.</p>
+    <p>We launched Twisted Takes with movies. TV reviews will appear here, in the same six genres, as soon as the team publishes them.</p>
     <p>Until then, browse the movie reviews or pick something from <a href="{{ '/watch-next/' | relative_url }}">Watch Next</a>.</p>
     <p><button class="button" type="button" data-catalog-show-movies>Show movie reviews</button></p>
   </div>

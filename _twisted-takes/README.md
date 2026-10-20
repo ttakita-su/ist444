@@ -56,7 +56,7 @@ twisted-takes/
 ├── index.html             Home page: intro, featured story, genre sections, recent articles, weekly question
 ├── reviews/index.html     Reviews page: search, genre and format filters, sorting
 ├── genres/index.html      Genre index (all genre hubs)
-├── genres/<key>.md        One hub per genre: sci-fi, true-crime, fantasy, rom-com, horror
+├── genres/<key>.md        One hub per genre: sci-fi, true-crime, fantasy, rom-com, horror, drama
 ├── watch-next/index.html  List of Watch Next collections
 ├── articles/index.html    All blog posts and Watch Next collections, newest first
 ├── community/index.html   Weekly question, optional form, ground rules, channel links
@@ -316,7 +316,7 @@ All settings live in `_config.yml`. Restart `bundle exec jekyll serve` after edi
 | Event | When it fires | Parameters |
 |---|---|---|
 | `search` | Reviews page, about 1.2 s after typing stops (2+ characters), once per distinct term; also when the page opens with `?q=` from the header search | `search_term`: the normalized term (lowercase, max 60 characters) **only if it matched at least one review** and contains no `@` or 5+ digit run, otherwise `(no match)`; `results_count`: number of reviews shown |
-| `filter_genre` | A genre checkbox is checked or unchecked | `genre` (`sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`); `filter_action` (`add` or `remove`) |
+| `filter_genre` | A genre checkbox is checked or unchecked | `genre` (`sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`, `drama`); `filter_action` (`add` or `remove`) |
 | `filter_format` | A Format option is chosen | `format` (`all`, `movie`, `tv`) |
 | `sort_reviews` | The Sort menu changes | `sort_order` (`title`, `title-desc`, `year-desc`, `year`) |
 | `share` | **Copy link** succeeds, or the device share sheet completes | `method` (`copy_link` or `native_share`); `content_type` (`review`, `article`, `collection`); `item_id` (the page's slug) |
@@ -422,7 +422,7 @@ Both scripts read `url` and `baseurl` from `_config.yml` and check the built `_s
 | `--screenshots shots` | Also save full-page screenshots into `shots/` |
 | `--expect-analytics` | Require analytics requests (production build with an ID) |
 
-> `browser-check.mjs` reads its expected counts (reviews per genre, movie cards, Watch Next collections) from the built `search.json`, and the expected page background from `--color-bg` in `assets/css/main.css`, so adding reviews or collections or changing colors does not break it. It does assume the five genre hubs (`sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`); add a key to its genre list if you add a sixth genre.
+> `browser-check.mjs` reads its expected counts (reviews per genre, movie cards, Watch Next collections) from the built `search.json`, and the expected page background from `--color-bg` in `assets/css/main.css`, so adding reviews or collections or changing colors does not break it. It does assume the six genre hubs (`sci-fi`, `true-crime`, `fantasy`, `rom-com`, `horror`, `drama`); add the key to `GENRES` at the top of the script if you add another genre.
 
 ## Troubleshooting
 

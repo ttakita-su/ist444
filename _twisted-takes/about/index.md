@@ -7,7 +7,7 @@ lede: "A student team that reviews movies and TV, argues about them in good fait
 
 ## What we do
 
-Twisted Takes reviews and discusses movies and TV across several genres. We launched with five: [Sci-Fi]({{ '/genres/sci-fi/' | relative_url }}), [True Crime]({{ '/genres/true-crime/' | relative_url }}), [Fantasy]({{ '/genres/fantasy/' | relative_url }}), [Rom-Com]({{ '/genres/rom-com/' | relative_url }}) and [Horror]({{ '/genres/horror/' | relative_url }}). Movies came first; TV reviews will join the same genre pages.
+Twisted Takes reviews and discusses movies and TV across several genres. We launched with five: [Sci-Fi]({{ '/genres/sci-fi/' | relative_url }}), [True Crime]({{ '/genres/true-crime/' | relative_url }}), [Fantasy]({{ '/genres/fantasy/' | relative_url }}), [Rom-Com]({{ '/genres/rom-com/' | relative_url }}) and [Horror]({{ '/genres/horror/' | relative_url }}). [Drama]({{ '/genres/drama/' | relative_url }}) joined in October 2026. Movies came first; TV reviews will join the same genre pages.
 
 Our goal is simple: help people discover entertainment worth their time, and put different opinions side by side so you can decide for yourself.
 
