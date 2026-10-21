@@ -63,7 +63,7 @@ social:
 # production build (GitHub Pages always builds in production); see README.md,
 # "Analytics", to test it locally.
 analytics:
-  ga4_measurement_id: ""
+  ga4_measurement_id: "G-ZY51T56G5Z"
 
 # --- Community form (optional) -----------------------------------------------------
 # A real external form or poll (Google Forms, Microsoft Forms, Tally, ...).
