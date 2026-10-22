@@ -13,7 +13,7 @@ moods: ["thoughtful", "tense"]          # 2–3 of: thoughtful, mind-bending, te
 headline: "A Descriptive Headline, Not Just the Title"   # (required) no spoilers
 excerpt: "One spoiler-free sentence for cards, under 150 characters."   # (required)
 description: "Search and social description, 120–155 characters, spoiler-free."   # (required)
-image: "/assets/images/covers/movie-title.svg"   # (required) cover path, or a full https:// URL you may use
+image: "/assets/images/covers/movie-title.svg"   # (required) local cover path; save images here, never hotlink
 image_alt: "What the cover image shows, for people who cannot see it."   # (required)
 image_credit: "Original cover art by Twisted Takes. Not an official poster."   # (required) who made the image / license
 social_image: null                      # optional 1200×630 PNG/JPG for link previews; null uses the site default

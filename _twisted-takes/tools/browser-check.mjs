@@ -6,6 +6,7 @@
 //   node browser-check.mjs                     # uses baseurl from _config.yml
 //   node browser-check.mjs --baseurl ""        # after building with --baseurl ""
 //   node browser-check.mjs --screenshots shots # also save page screenshots
+//   node browser-check.mjs --site ../../twisted-takes   # check a build folder other than _site/
 //
 // Checks navigation, direct article loads, search, combined filters, sorting,
 // URL state, clear filters, the TV empty state, copy-link feedback, the mobile
@@ -20,12 +21,13 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const site = resolve(here, '..');
-const siteDir = join(site, '_site');
+
 const require = createRequire(process.env.PLAYWRIGHT_FROM || join(here, 'package.json'));
 const { chromium } = require('playwright');
 
 const args = process.argv.slice(2);
 const arg = (name) => { const i = args.indexOf(name); return i === -1 ? undefined : args[i + 1]; };
+const siteDir = arg('--site') ? resolve(process.cwd(), arg('--site')) : join(site, '_site');
 const config = readFileSync(join(site, '_config.yml'), 'utf8');
 const configBase = (config.match(/^baseurl:\s*"?([^"\n#]*)"?/m) || [])[1] || '';
 const base = (arg('--baseurl') ?? configBase).trim().replace(/\/$/, '');
@@ -84,7 +86,11 @@ const consoleErrors = [];
 const analyticsRequests = [];
 async function newContext(opts = {}) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, ...opts });
-  ctx.on('request', (req) => { if (/google-analytics|googletagmanager/.test(req.url())) analyticsRequests.push(req.url()); });
+  // Analytics requests are counted, then blocked, so test runs never send real hits to the team's GA4 property.
+  await ctx.route(/google-analytics\.com|googletagmanager\.com|analytics\.google\.com/, (route) => {
+    analyticsRequests.push(route.request().url());
+    return route.abort();
+  });
   return ctx;
 }
 async function open(ctx, path, opts = {}) {
@@ -93,6 +99,8 @@ async function open(ctx, path, opts = {}) {
     if (msg.type() !== 'error') return;
     // The 404 check requests a missing page on purpose; that one 404 is expected.
     if (opts.expect404 && /status of 404/.test(msg.text())) return;
+    // Analytics requests are blocked on purpose (see newContext), so their load errors are expected.
+    if (/google-analytics\.com|googletagmanager\.com|analytics\.google\.com/.test(msg.location().url || '')) return;
     consoleErrors.push(`${path}: ${msg.text()}`);
   });
   page.on('pageerror', (err) => consoleErrors.push(`${path}: ${err.message}`));

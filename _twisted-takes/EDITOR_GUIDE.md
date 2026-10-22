@@ -23,7 +23,7 @@ Also: [How editing works](#how-editing-works) · [Where content lives](#where-co
 
 ## How editing works
 
-Every change is a commit to the `main` branch. Each commit rebuilds the live site; allow up to 10 minutes, and watch the **Actions** tab for the **pages build and deployment** run.
+The live site is the built copy in `ist444/twisted-takes/`; GitHub Pages serves it as plain files and does not run Jekyll. After changing anything in `_twisted-takes/`, run `sh _twisted-takes/tools/build-ist444.sh` from the `ist444` folder, then commit and push **both** folders. Editing a file on the GitHub website changes the source only; the live page updates after someone rebuilds and pushes. Pages usually publishes within a minute or two of the push.
 
 **On the GitHub website (no installs):**
 

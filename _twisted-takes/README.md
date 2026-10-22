@@ -125,7 +125,7 @@ Gems go into `vendor/bundle/` inside the project. Run `bundle install` again onl
 bundle exec jekyll serve
 ```
 
-Open **http://127.0.0.1:4000/twisted-takes/**. Note the `/twisted-takes/` base path: the bare `http://127.0.0.1:4000/` does not show the site. Press **Ctrl+C** in the terminal to stop.
+Open **http://127.0.0.1:4000/ist444/twisted-takes/**. Note the base path: the bare `http://127.0.0.1:4000/` does not show the site. Press **Ctrl+C** in the terminal to stop.
 
 | Situation | What to do |
 |---|---|

@@ -3,8 +3,8 @@
 #
 # This is the one file to edit for brand, address, social channels, analytics
 # and the community form. After changing it, restart `bundle exec jekyll serve`
-# (Jekyll does not reload _config.yml on its own). On GitHub Pages, pushing the
-# change triggers a rebuild.
+# (Jekyll does not reload _config.yml on its own). To publish, run
+# tools/build-ist444.sh and commit both folders (see CLAUDE.md).
 # =============================================================================
 
 # --- Brand -------------------------------------------------------------------
@@ -145,6 +145,7 @@ defaults:
 # renders stray Markdown files, so documentation and templates are listed here.
 exclude:
   - README.md
+  - CLAUDE.md
   - EDITOR_GUIDE.md
   - Gemfile
   - Gemfile.lock
